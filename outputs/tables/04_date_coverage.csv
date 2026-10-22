@@ -1,0 +1,4 @@
+scope,sheet_name,date_column,minimum_transaction_datetime,maximum_transaction_datetime,invalid_unparseable_date_count
+Year 2009-2010,Year 2009-2010,InvoiceDate,2009-12-01T07:45:00,2010-12-09T20:01:00,0
+Year 2010-2011,Year 2010-2011,InvoiceDate,2010-12-01T08:26:00,2011-12-09T12:50:00,0
+overall,overall,InvoiceDate,2009-12-01T07:45:00,2011-12-09T12:50:00,0

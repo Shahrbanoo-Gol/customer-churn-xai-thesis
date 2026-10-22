@@ -1,0 +1,4 @@
+scope,sheet_name,invoice_column,unique_invoices,unique_invoices_beginning_with_C,percentage_unique_invoices_beginning_with_C,rows_associated_with_C_prefix_invoices
+Year 2009-2010,Year 2009-2010,Invoice,28816,4592,15.935591338145475,10206
+Year 2010-2011,Year 2010-2011,Invoice,25900,3836,14.810810810810812,9288
+overall,overall,Invoice,53628,8292,15.46207205191318,19494

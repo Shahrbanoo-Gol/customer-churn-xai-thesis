@@ -1,0 +1,37 @@
+scope,sheet_name,condition,count,percentage_of_rows
+Year 2009-2010,Year 2009-2010,missing_customer_id,107927,20.53948818275762
+Year 2009-2010,Year 2009-2010,missing_description,2928,0.5572249891048051
+Year 2009-2010,Year 2009-2010,exact_duplicate_row,13283,2.5278755226363137
+Year 2009-2010,Year 2009-2010,cancellation_prefix_invoice,10206,1.9422944804657245
+Year 2009-2010,Year 2009-2010,quantity_less_than_zero,12326,2.3457497321399687
+Year 2009-2010,Year 2009-2010,quantity_equal_to_zero,0,0.0
+Year 2009-2010,Year 2009-2010,price_less_than_zero,3,0.0005709272429352512
+Year 2009-2010,Year 2009-2010,price_equal_to_zero,3687,0.7016695815674237
+Year 2009-2010,Year 2009-2010,invalid_invoice_date,0,0.0
+Year 2009-2010,Year 2009-2010,cancellation_prefix_and_negative_quantity,10205,1.942104171384746
+Year 2009-2010,Year 2009-2010,negative_quantity_without_cancellation_prefix,2121,0.4036455607552226
+Year 2009-2010,Year 2009-2010,cancellation_prefix_without_negative_quantity,1,0.00019030908097841706
+Year 2010-2011,Year 2010-2011,missing_customer_id,135080,24.92664833643963
+Year 2010-2011,Year 2010-2011,missing_description,1454,0.26831023601705084
+Year 2010-2011,Year 2010-2011,exact_duplicate_row,10147,1.8724511450240815
+Year 2010-2011,Year 2010-2011,cancellation_prefix_invoice,9288,1.7139377387389048
+Year 2010-2011,Year 2010-2011,quantity_less_than_zero,10624,1.9604731412965253
+Year 2010-2011,Year 2010-2011,quantity_equal_to_zero,0,0.0
+Year 2010-2011,Year 2010-2011,price_less_than_zero,2,0.0003690649738886531
+Year 2010-2011,Year 2010-2011,price_equal_to_zero,2515,0.4640992046649812
+Year 2010-2011,Year 2010-2011,invalid_invoice_date,0,0.0
+Year 2010-2011,Year 2010-2011,cancellation_prefix_and_negative_quantity,9288,1.7139377387389048
+Year 2010-2011,Year 2010-2011,negative_quantity_without_cancellation_prefix,1336,0.24653540255762024
+Year 2010-2011,Year 2010-2011,cancellation_prefix_without_negative_quantity,0,0.0
+overall,overall,missing_customer_id,243007,22.766872999172733
+overall,overall,missing_description,4382,0.4105414143723223
+overall,overall,exact_duplicate_row,67242,6.299777678051961
+overall,overall,cancellation_prefix_invoice,19494,1.8263565339511754
+overall,overall,quantity_less_than_zero,22950,2.1501427338760375
+overall,overall,quantity_equal_to_zero,0,0.0
+overall,overall,price_less_than_zero,5,0.0004684406827616639
+overall,overall,price_equal_to_zero,6202,0.5810538228975679
+overall,overall,invalid_invoice_date,0,0.0
+overall,overall,cancellation_prefix_and_negative_quantity,19493,1.8262628458146228
+overall,overall,negative_quantity_without_cancellation_prefix,3457,0.32387988806141443
+overall,overall,cancellation_prefix_without_negative_quantity,1,9.36881365523328e-05

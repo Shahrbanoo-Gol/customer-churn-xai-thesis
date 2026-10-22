@@ -1,0 +1,4 @@
+scope,variable,count,invalid_numeric_count,minimum,maximum,mean,median,standard_deviation,percentile_1,percentile_5,percentile_25,percentile_75,percentile_95,percentile_99,number_less_than_zero,number_equal_to_zero,number_greater_than_zero
+Year 2009-2010,Price,525461,0,-53594.36,25111.09,4.688834478676819,2.1,146.1269139529265,0.21,0.42,1.25,4.21,10.17,19.95,3,3687,521771
+Year 2010-2011,Price,541910,0,-11062.06,38970.0,4.611138332933514,2.08,96.75976549366526,0.19,0.42,1.25,4.13,9.95,18.0,2,2515,539393
+overall,Price,1067371,0,-53594.36,38970.0,4.64938772741624,2.1,123.5530587214632,0.21,0.42,1.25,4.15,9.95,18.0,5,6202,1061164

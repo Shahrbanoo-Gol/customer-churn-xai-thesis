@@ -1,0 +1,4 @@
+scope,sheet_name,customer_id_column,non_null_customer_id_records,missing_customer_id_records,missing_customer_id_percentage,unique_non_null_customers
+Year 2009-2010,Year 2009-2010,Customer ID,417534,107927,20.53948818275762,4383
+Year 2010-2011,Year 2010-2011,Customer ID,406830,135080,24.92664833643963,4372
+overall,overall,Customer ID,824364,243007,22.766872999172733,5942

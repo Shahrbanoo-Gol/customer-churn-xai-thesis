@@ -1,0 +1,4 @@
+scope,sheet_name,total_row_count,exact_duplicated_row_count,exact_duplicated_row_percentage,duplicate_rows_excluding_first_occurrence
+Year 2009-2010,Year 2009-2010,525461,13283,2.5278755226363137,6865
+Year 2010-2011,Year 2010-2011,541910,10147,1.8724511450240815,5268
+overall,overall,1067371,67242,6.299777678051961,34335

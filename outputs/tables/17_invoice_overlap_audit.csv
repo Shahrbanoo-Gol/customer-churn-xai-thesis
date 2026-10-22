@@ -1,0 +1,5 @@
+scope,identifier_type,unique_sheet_1,unique_sheet_2,shared,only_sheet_1,only_sheet_2
+overlap_period,Invoice,1088,1088,1088,0,0
+overlap_period,C-prefix Invoice,136,136,136,0,0
+full_worksheets,Invoice,28816,25900,1088,27728,24812
+full_worksheets,C-prefix Invoice,4592,3836,136,4456,3700

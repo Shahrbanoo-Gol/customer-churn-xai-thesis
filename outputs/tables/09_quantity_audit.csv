@@ -1,0 +1,4 @@
+scope,variable,count,invalid_numeric_count,minimum,maximum,mean,median,standard_deviation,percentile_1,percentile_5,percentile_25,percentile_75,percentile_95,percentile_99,number_less_than_zero,number_equal_to_zero,number_greater_than_zero
+Year 2009-2010,Quantity,525461,0,-9600.0,19152.0,10.337667305470815,3.0,107.42411026879778,-3.0,1.0,1.0,10.0,30.0,120.0,12326,0,513135
+Year 2010-2011,Quantity,541910,0,-80995.0,80995.0,9.552233765754462,3.0,218.08095694392432,-2.0,1.0,1.0,10.0,29.0,100.0,10624,0,531286
+overall,Quantity,1067371,0,-80995.0,80995.0,9.9388984711033,3.0,172.7057940767534,-3.0,1.0,1.0,10.0,30.0,100.0,22950,0,1044421

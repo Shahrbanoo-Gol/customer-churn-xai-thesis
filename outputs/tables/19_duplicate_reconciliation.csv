@@ -1,0 +1,5 @@
+metric,sheet_1,sheet_2,combined,definition
+within_sheet_exact_duplicate_rows_keep_false,13283,10147,23430,Rows belonging to repeated full-row signatures within each worksheet; duplicated(keep=False).
+combined_exact_duplicate_rows_keep_false,,,67242,Rows belonging to repeated full-row signatures after row-wise concatenation; duplicated(keep=False).
+cross_sheet_increment_in_duplicate_rows,,,43812,Combined keep=False count minus the two within-sheet keep=False counts.
+duplicate_rows_keep_first,6865,5268,34335,Rows after the first occurrence of each repeated full-row signature; duplicated(keep='first').

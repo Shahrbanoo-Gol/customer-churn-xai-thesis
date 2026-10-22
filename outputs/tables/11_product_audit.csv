@@ -1,0 +1,4 @@
+scope,sheet_name,product_code_column,unique_product_codes,missing_product_codes,missing_descriptions,unique_descriptions
+Year 2009-2010,Year 2009-2010,StockCode,4632,0,2928,4681
+Year 2010-2011,Year 2010-2011,StockCode,4070,0,1454,4223
+overall,overall,StockCode,5305,0,4382,5698

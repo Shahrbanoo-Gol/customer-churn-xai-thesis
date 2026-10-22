@@ -1,0 +1,7 @@
+metric,sheet_1,sheet_2,overall,definition
+overlap_row_count,22523.0,22523.0,45046,Rows whose InvoiceDate falls within the inclusive intersection.
+unique_full_row_signatures_only,0.0,0.0,0,Signatures present in one overlap subset and absent from the other.
+row_occurrences_only,0.0,0.0,0,Multiplicity-aware occurrences for signatures present in only one overlap subset.
+shared_full_row_signatures,22202.0,22202.0,22202,Full-row signatures present in both overlap subsets.
+matched_row_occurrences,22523.0,22523.0,22523,"Sum of min(sheet-1 multiplicity, sheet-2 multiplicity) by signature."
+exact_match_percentage_within_overlap,100.0,100.0,,Matched row occurrences divided by rows in that sheet's overlap subset.

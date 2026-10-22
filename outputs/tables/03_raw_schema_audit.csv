@@ -1,0 +1,17 @@
+sheet_name,column_name,detected_dtype,non_null_count,null_count,null_percentage,unique_non_null_values
+Year 2009-2010,Invoice,object,525461,0,0.0,28816
+Year 2009-2010,StockCode,object,525461,0,0.0,4632
+Year 2009-2010,Description,object,522533,2928,0.5572249891048051,4681
+Year 2009-2010,Quantity,int64,525461,0,0.0,825
+Year 2009-2010,InvoiceDate,datetime64[us],525461,0,0.0,25296
+Year 2009-2010,Price,float64,525461,0,0.0,1606
+Year 2009-2010,Customer ID,float64,417534,107927,20.53948818275762,4383
+Year 2009-2010,Country,str,525461,0,0.0,40
+Year 2010-2011,Invoice,object,541910,0,0.0,25900
+Year 2010-2011,StockCode,object,541910,0,0.0,4070
+Year 2010-2011,Description,object,540456,1454,0.26831023601705084,4223
+Year 2010-2011,Quantity,int64,541910,0,0.0,722
+Year 2010-2011,InvoiceDate,datetime64[us],541910,0,0.0,23260
+Year 2010-2011,Price,float64,541910,0,0.0,1630
+Year 2010-2011,Customer ID,float64,406830,135080,24.92664833643963,4372
+Year 2010-2011,Country,str,541910,0,0.0,38

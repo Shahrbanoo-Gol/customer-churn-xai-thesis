@@ -1,0 +1,2 @@
+sheet_1,sheet_2,sheet_1_min_datetime,sheet_1_max_datetime,sheet_2_min_datetime,sheet_2_max_datetime,overlap_start_datetime,overlap_end_datetime,duration_days,duration_hours,sheet_1_rows_in_overlap,sheet_2_rows_in_overlap
+Year 2009-2010,Year 2010-2011,2009-12-01T07:45:00,2010-12-09T20:01:00,2010-12-01T08:26:00,2011-12-09T12:50:00,2010-12-01T08:26:00,2010-12-09T20:01:00,8.48263888888889,203.58333333333334,22523,22523
