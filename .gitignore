@@ -1,0 +1,42 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.env
+.env.*
+!.env.example
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Temporary OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Large raw source data files; data/raw must remain read-only in analysis
+/data/raw/**/*.xlsx
+/data/raw/**/*.xls
+/data/raw/**/*.csv
+/data/raw/**/*.parquet
+
+# Generated model binaries
+/outputs/models/**/*.pkl
+/outputs/models/**/*.pickle
+/outputs/models/**/*.joblib
+/outputs/models/**/*.onnx
+
+# Temporary/generated logs
+/outputs/logs/**/*.log
+/outputs/logs/**/*.tmp
+
