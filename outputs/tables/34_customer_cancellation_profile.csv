@@ -1,0 +1,87 @@
+section,metric,value,percentage,notes,category
+summary,identified_customers_with_at_least_one_C_prefix_invoice,2572.0,43.285089195557056,Cancellation-linked customers.,
+summary,identified_customers_without_C_prefix_invoice,3370.0,56.71491080444295,Identified customers with no C-prefix row.,
+summary,unique_C_prefix_invoices,7901.0,17.606292895980033,Rate uses unique identified-customer invoice identifiers as denominator.,
+summary,cancellation_rows,18446.0,2.278518851575113,Share of identified transaction rows.,
+summary,cancellation_rate_at_invoice_level_pct,17.606292895980033,,Unique C-prefix invoices divided by unique identified invoices.,
+summary,cancellation_rate_by_customer_pct,43.285089195557056,,Customers with at least one C-prefix invoice divided by identified customers.,
+customer_count_distribution,customers,696.0,27.060653188180407,Distribution among customers with at least one cancellation row.,1_cancellation_rows
+customer_count_distribution,customers,446.0,17.34059097978227,Distribution among customers with at least one cancellation row.,2_cancellation_rows
+customer_count_distribution,customers,298.0,11.586314152410575,Distribution among customers with at least one cancellation row.,3_cancellation_rows
+customer_count_distribution,customers,207.0,8.048211508553655,Distribution among customers with at least one cancellation row.,4_cancellation_rows
+customer_count_distribution,customers,132.0,5.132192846034215,Distribution among customers with at least one cancellation row.,5_cancellation_rows
+customer_count_distribution,customers,110.0,4.276827371695179,Distribution among customers with at least one cancellation row.,6_cancellation_rows
+customer_count_distribution,customers,95.0,3.693623639191291,Distribution among customers with at least one cancellation row.,7_cancellation_rows
+customer_count_distribution,customers,66.0,2.5660964230171075,Distribution among customers with at least one cancellation row.,8_cancellation_rows
+customer_count_distribution,customers,57.0,2.2161741835147746,Distribution among customers with at least one cancellation row.,9_cancellation_rows
+customer_count_distribution,customers,67.0,2.6049766718506997,Distribution among customers with at least one cancellation row.,10_cancellation_rows
+customer_count_distribution,customers,40.0,1.5552099533437014,Distribution among customers with at least one cancellation row.,11_cancellation_rows
+customer_count_distribution,customers,39.0,1.516329704510109,Distribution among customers with at least one cancellation row.,12_cancellation_rows
+customer_count_distribution,customers,24.0,0.9331259720062209,Distribution among customers with at least one cancellation row.,13_cancellation_rows
+customer_count_distribution,customers,23.0,0.8942457231726283,Distribution among customers with at least one cancellation row.,14_cancellation_rows
+customer_count_distribution,customers,14.0,0.5443234836702955,Distribution among customers with at least one cancellation row.,15_cancellation_rows
+customer_count_distribution,customers,15.0,0.583203732503888,Distribution among customers with at least one cancellation row.,16_cancellation_rows
+customer_count_distribution,customers,15.0,0.583203732503888,Distribution among customers with at least one cancellation row.,17_cancellation_rows
+customer_count_distribution,customers,17.0,0.6609642301710731,Distribution among customers with at least one cancellation row.,18_cancellation_rows
+customer_count_distribution,customers,17.0,0.6609642301710731,Distribution among customers with at least one cancellation row.,19_cancellation_rows
+customer_count_distribution,customers,14.0,0.5443234836702955,Distribution among customers with at least one cancellation row.,20_cancellation_rows
+customer_count_distribution,customers,14.0,0.5443234836702955,Distribution among customers with at least one cancellation row.,21_cancellation_rows
+customer_count_distribution,customers,13.0,0.505443234836703,Distribution among customers with at least one cancellation row.,22_cancellation_rows
+customer_count_distribution,customers,8.0,0.3110419906687403,Distribution among customers with at least one cancellation row.,23_cancellation_rows
+customer_count_distribution,customers,8.0,0.3110419906687403,Distribution among customers with at least one cancellation row.,24_cancellation_rows
+customer_count_distribution,customers,4.0,0.15552099533437014,Distribution among customers with at least one cancellation row.,25_cancellation_rows
+customer_count_distribution,customers,5.0,0.19440124416796267,Distribution among customers with at least one cancellation row.,26_cancellation_rows
+customer_count_distribution,customers,9.0,0.3499222395023328,Distribution among customers with at least one cancellation row.,27_cancellation_rows
+customer_count_distribution,customers,6.0,0.23328149300155523,Distribution among customers with at least one cancellation row.,28_cancellation_rows
+customer_count_distribution,customers,6.0,0.23328149300155523,Distribution among customers with at least one cancellation row.,29_cancellation_rows
+customer_count_distribution,customers,3.0,0.11664074650077762,Distribution among customers with at least one cancellation row.,30_cancellation_rows
+customer_count_distribution,customers,8.0,0.3110419906687403,Distribution among customers with at least one cancellation row.,31_cancellation_rows
+customer_count_distribution,customers,5.0,0.19440124416796267,Distribution among customers with at least one cancellation row.,32_cancellation_rows
+customer_count_distribution,customers,4.0,0.15552099533437014,Distribution among customers with at least one cancellation row.,33_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,34_cancellation_rows
+customer_count_distribution,customers,7.0,0.27216174183514774,Distribution among customers with at least one cancellation row.,35_cancellation_rows
+customer_count_distribution,customers,6.0,0.23328149300155523,Distribution among customers with at least one cancellation row.,36_cancellation_rows
+customer_count_distribution,customers,4.0,0.15552099533437014,Distribution among customers with at least one cancellation row.,37_cancellation_rows
+customer_count_distribution,customers,2.0,0.07776049766718507,Distribution among customers with at least one cancellation row.,38_cancellation_rows
+customer_count_distribution,customers,3.0,0.11664074650077762,Distribution among customers with at least one cancellation row.,39_cancellation_rows
+customer_count_distribution,customers,5.0,0.19440124416796267,Distribution among customers with at least one cancellation row.,40_cancellation_rows
+customer_count_distribution,customers,4.0,0.15552099533437014,Distribution among customers with at least one cancellation row.,42_cancellation_rows
+customer_count_distribution,customers,3.0,0.11664074650077762,Distribution among customers with at least one cancellation row.,43_cancellation_rows
+customer_count_distribution,customers,2.0,0.07776049766718507,Distribution among customers with at least one cancellation row.,44_cancellation_rows
+customer_count_distribution,customers,5.0,0.19440124416796267,Distribution among customers with at least one cancellation row.,45_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,46_cancellation_rows
+customer_count_distribution,customers,5.0,0.19440124416796267,Distribution among customers with at least one cancellation row.,47_cancellation_rows
+customer_count_distribution,customers,2.0,0.07776049766718507,Distribution among customers with at least one cancellation row.,48_cancellation_rows
+customer_count_distribution,customers,3.0,0.11664074650077762,Distribution among customers with at least one cancellation row.,49_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,51_cancellation_rows
+customer_count_distribution,customers,2.0,0.07776049766718507,Distribution among customers with at least one cancellation row.,53_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,54_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,58_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,60_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,61_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,62_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,63_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,64_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,69_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,72_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,75_cancellation_rows
+customer_count_distribution,customers,2.0,0.07776049766718507,Distribution among customers with at least one cancellation row.,76_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,77_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,78_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,80_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,86_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,88_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,93_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,94_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,101_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,102_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,124_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,134_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,141_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,159_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,166_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,192_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,203_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,209_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,273_cancellation_rows
+customer_count_distribution,customers,1.0,0.038880248833592534,Distribution among customers with at least one cancellation row.,366_cancellation_rows

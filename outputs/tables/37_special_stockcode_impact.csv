@@ -1,0 +1,73 @@
+pattern,metric,value,percentage,notes
+Manual,row_count,1403.0,0.1342779045373107,Patterns may overlap; counts are not intended to sum to the dataset total.
+Manual,identified_customers,582.0,,Unique non-null Customer IDs.
+Manual,unique_invoices,1290.0,,Unique invoice identifiers.
+Manual,quantity_positive_rows,869.0,61.93870277975766,Quantity sign.
+Manual,quantity_negative_rows,534.0,38.06129722024234,Quantity sign.
+Manual,price_positive_rows,1396.0,99.50106913756237,Price sign.
+Manual,price_nonpositive_rows,7.0,0.4989308624376337,Price sign.
+Manual,gross_value_signed,-82935.56999999999,,Quantity multiplied by Price where numeric.
+Manual,positive_purchase_gross_value,152166.32,0.8729361973938724,Share of total identified positive-purchase gross value.
+Postage,row_count,4000.0,0.38283080409782094,Patterns may overlap; counts are not intended to sum to the dataset total.
+Postage,identified_customers,666.0,,Unique non-null Customer IDs.
+Postage,unique_invoices,3950.0,,Unique invoice identifiers.
+Postage,quantity_positive_rows,3757.0,93.925,Quantity sign.
+Postage,quantity_negative_rows,243.0,6.075,Quantity sign.
+Postage,price_positive_rows,3986.0,99.65,Price sign.
+Postage,price_nonpositive_rows,14.0,0.35000000000000003,Price sign.
+Postage,gross_value_signed,436396.28,,Quantity multiplied by Price where numeric.
+Postage,positive_purchase_gross_value,151784.42,0.8707453424544567,Share of total identified positive-purchase gross value.
+Discount,row_count,173.0,0.016557432277230756,Patterns may overlap; counts are not intended to sum to the dataset total.
+Discount,identified_customers,55.0,,Unique non-null Customer IDs.
+Discount,unique_invoices,151.0,,Unique invoice identifiers.
+Discount,quantity_positive_rows,5.0,2.8901734104046244,Quantity sign.
+Discount,quantity_negative_rows,168.0,97.10982658959537,Quantity sign.
+Discount,price_positive_rows,173.0,100.0,Price sign.
+Discount,price_nonpositive_rows,0.0,0.0,Price sign.
+Discount,gross_value_signed,-12879.630000000001,,Quantity multiplied by Price where numeric.
+Discount,positive_purchase_gross_value,397.89,0.0022825851580103133,Share of total identified positive-purchase gross value.
+Sample,row_count,106.0,0.010145016308592254,Patterns may overlap; counts are not intended to sum to the dataset total.
+Sample,identified_customers,0.0,,Unique non-null Customer IDs.
+Sample,unique_invoices,41.0,,Unique invoice identifiers.
+Sample,quantity_positive_rows,3.0,2.8301886792452833,Quantity sign.
+Sample,quantity_negative_rows,103.0,97.16981132075472,Quantity sign.
+Sample,price_positive_rows,102.0,96.22641509433963,Price sign.
+Sample,price_nonpositive_rows,4.0,3.7735849056603774,Price sign.
+Sample,gross_value_signed,-6000.85,,Quantity multiplied by Price where numeric.
+Sample,positive_purchase_gross_value,0.0,0.0,Share of total identified positive-purchase gross value.
+dotcom-related,row_count,1576.0,0.15083533681454145,Patterns may overlap; counts are not intended to sum to the dataset total.
+dotcom-related,identified_customers,2.0,,Unique non-null Customer IDs.
+dotcom-related,unique_invoices,1486.0,,Unique invoice identifiers.
+dotcom-related,quantity_positive_rows,1523.0,96.63705583756345,Quantity sign.
+dotcom-related,quantity_negative_rows,53.0,3.362944162436548,Quantity sign.
+dotcom-related,price_positive_rows,1510.0,95.81218274111674,Price sign.
+dotcom-related,price_nonpositive_rows,66.0,4.187817258883249,Price sign.
+dotcom-related,gross_value_signed,311655.67,,Quantity multiplied by Price where numeric.
+dotcom-related,positive_purchase_gross_value,11926.159999999998,0.06841708966814013,Share of total identified positive-purchase gross value.
+adjustments,row_count,463.0,0.04431266557432277,Patterns may overlap; counts are not intended to sum to the dataset total.
+adjustments,identified_customers,53.0,,Unique non-null Customer IDs.
+adjustments,unique_invoices,463.0,,Unique invoice identifiers.
+adjustments,quantity_positive_rows,90.0,19.43844492440605,Quantity sign.
+adjustments,quantity_negative_rows,373.0,80.56155507559394,Quantity sign.
+adjustments,price_positive_rows,71.0,15.334773218142548,Price sign.
+adjustments,price_nonpositive_rows,392.0,84.66522678185746,Price sign.
+adjustments,gross_value_signed,-140047.79,,Quantity multiplied by Price where numeric.
+adjustments,positive_purchase_gross_value,4269.57,0.02449334517853199,Share of total identified positive-purchase gross value.
+gift-related,row_count,10365.0,0.9920103211184784,Patterns may overlap; counts are not intended to sum to the dataset total.
+gift-related,identified_customers,2220.0,,Unique non-null Customer IDs.
+gift-related,unique_invoices,5692.0,,Unique invoice identifiers.
+gift-related,quantity_positive_rows,10240.0,98.79401833092138,Quantity sign.
+gift-related,quantity_negative_rows,125.0,1.20598166907863,Quantity sign.
+gift-related,price_positive_rows,10340.0,99.75880366618426,Price sign.
+gift-related,price_nonpositive_rows,25.0,0.241196333815726,Price sign.
+gift-related,gross_value_signed,179084.56,,Quantity multiplied by Price where numeric.
+gift-related,positive_purchase_gross_value,163532.46,0.9381406068232808,Share of total identified positive-purchase gross value.
+bank/fee-related,row_count,10444.0,0.9995712294994105,Patterns may overlap; counts are not intended to sum to the dataset total.
+bank/fee-related,identified_customers,2020.0,,Unique non-null Customer IDs.
+bank/fee-related,unique_invoices,6238.0,,Unique invoice identifiers.
+bank/fee-related,quantity_positive_rows,10007.0,95.81577939486786,Quantity sign.
+bank/fee-related,quantity_negative_rows,437.0,4.184220605132134,Quantity sign.
+bank/fee-related,price_positive_rows,10431.0,99.87552661815397,Price sign.
+bank/fee-related,price_nonpositive_rows,13.0,0.12447338184603601,Price sign.
+bank/fee-related,gross_value_signed,-50167.86900000002,,Quantity multiplied by Price where numeric.
+bank/fee-related,positive_purchase_gross_value,176166.33099999998,1.0106176392513813,Share of total identified positive-purchase gross value.

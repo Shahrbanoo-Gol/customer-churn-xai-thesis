@@ -1,0 +1,72 @@
+section,category,metric,value,percentage,notes
+summary,all,rows,3393.0,100.0,Required Step 2 exception population.
+summary,identified,rows,0.0,0.0,Customer ID availability.
+summary,without_Customer_ID,rows,3393.0,100.0,Customer ID availability.
+summary,identified,unique_customers,0.0,,Unique identified customers affected.
+summary,all,unique_invoices,3393.0,,Unique invoice identifiers.
+summary,all,quantity_total,-569314.0,,Signed quantity total.
+summary,all,negative_price_rows,0.0,0.0,Negative Price is separate from negative Quantity.
+summary,all,zero_price_rows,3393.0,100.0,Zero Price rows.
+summary,all,positive_price_rows,0.0,0.0,Positive Price rows.
+summary,description_signal,apparently_administrative_or_inventory_adjustment_rows,375.0,11.052166224580018,Transparent keyword screen; uncertain cases are not automatically classified.
+stockcode_pattern,22423,rows,11.0,0.3241968759210138,Top observed values.
+stockcode_pattern,82494L,rows,6.0,0.17683465959328026,Top observed values.
+stockcode_pattern,22719,rows,6.0,0.17683465959328026,Top observed values.
+stockcode_pattern,46000M,rows,5.0,0.14736221632773355,Top observed values.
+stockcode_pattern,84016,rows,5.0,0.14736221632773355,Top observed values.
+stockcode_pattern,85017A,rows,5.0,0.14736221632773355,Top observed values.
+stockcode_pattern,47566B,rows,5.0,0.14736221632773355,Top observed values.
+stockcode_pattern,20852,rows,5.0,0.14736221632773355,Top observed values.
+stockcode_pattern,85175,rows,5.0,0.14736221632773355,Top observed values.
+stockcode_pattern,21830,rows,5.0,0.14736221632773355,Top observed values.
+stockcode_pattern,71477,rows,4.0,0.11788977306218684,Top observed values.
+stockcode_pattern,46000S,rows,4.0,0.11788977306218684,Top observed values.
+stockcode_pattern,21768,rows,4.0,0.11788977306218684,Top observed values.
+stockcode_pattern,84559D,rows,4.0,0.11788977306218684,Top observed values.
+stockcode_pattern,84990,rows,4.0,0.11788977306218684,Top observed values.
+stockcode_pattern,35972,rows,4.0,0.11788977306218684,Top observed values.
+stockcode_pattern,79000,rows,4.0,0.11788977306218684,Top observed values.
+stockcode_pattern,20713,rows,4.0,0.11788977306218684,Top observed values.
+stockcode_pattern,21843,rows,4.0,0.11788977306218684,Top observed values.
+stockcode_pattern,84406B,rows,4.0,0.11788977306218684,Top observed values.
+stockcode_pattern,85172,rows,4.0,0.11788977306218684,Top observed values.
+stockcode_pattern,72802C,rows,4.0,0.11788977306218684,Top observed values.
+stockcode_pattern,79323GR,rows,3.0,0.08841732979664013,Top observed values.
+stockcode_pattern,21098,rows,3.0,0.08841732979664013,Top observed values.
+stockcode_pattern,85064,rows,3.0,0.08841732979664013,Top observed values.
+description_pattern,[missing],rows,2633.0,77.60094311818449,Top observed values.
+description_pattern,check,rows,121.0,3.566165635131152,Top observed values.
+description_pattern,damages,rows,83.0,2.4462127910403773,Top observed values.
+description_pattern,?,rows,81.0,2.3872679045092835,Top observed values.
+description_pattern,damaged,rows,78.0,2.2988505747126435,Top observed values.
+description_pattern,missing,rows,27.0,0.7957559681697612,Top observed values.
+description_pattern,sold as set on dotcom,rows,20.0,0.5894488653109342,Top observed values.
+description_pattern,Damaged,rows,17.0,0.5010315355142941,Top observed values.
+description_pattern,smashed,rows,9.0,0.2652519893899204,Top observed values.
+description_pattern,thrown away,rows,9.0,0.2652519893899204,Top observed values.
+description_pattern,"Unsaleable, destroyed.",rows,9.0,0.2652519893899204,Top observed values.
+description_pattern,dotcom,rows,8.0,0.23577954612437368,Top observed values.
+description_pattern,damages?,rows,7.0,0.20630710285882697,Top observed values.
+description_pattern,??,rows,7.0,0.20630710285882697,Top observed values.
+description_pattern,crushed,rows,6.0,0.17683465959328026,Top observed values.
+description_pattern,given away,rows,6.0,0.17683465959328026,Top observed values.
+description_pattern,MIA,rows,5.0,0.14736221632773355,Top observed values.
+description_pattern,Damages,rows,5.0,0.14736221632773355,Top observed values.
+description_pattern,counted,rows,5.0,0.14736221632773355,Top observed values.
+description_pattern,checked,rows,5.0,0.14736221632773355,Top observed values.
+description_pattern,wet damaged,rows,5.0,0.14736221632773355,Top observed values.
+description_pattern,ebay,rows,5.0,0.14736221632773355,Top observed values.
+description_pattern,ebay sales,rows,4.0,0.11788977306218684,Top observed values.
+description_pattern,No Stock,rows,3.0,0.08841732979664013,Top observed values.
+description_pattern,Dotcom,rows,3.0,0.08841732979664013,Top observed values.
+country_distribution,United Kingdom,rows,3393.0,100.0,Top observed values.
+price_distribution,all,count,3393.0,,Price distribution among non-C negative-Quantity rows.
+price_distribution,all,mean,0.0,,Price distribution among non-C negative-Quantity rows.
+price_distribution,all,std,0.0,,Price distribution among non-C negative-Quantity rows.
+price_distribution,all,min,0.0,,Price distribution among non-C negative-Quantity rows.
+price_distribution,all,1%,0.0,,Price distribution among non-C negative-Quantity rows.
+price_distribution,all,25%,0.0,,Price distribution among non-C negative-Quantity rows.
+price_distribution,all,50%,0.0,,Price distribution among non-C negative-Quantity rows.
+price_distribution,all,75%,0.0,,Price distribution among non-C negative-Quantity rows.
+price_distribution,all,99%,0.0,,Price distribution among non-C negative-Quantity rows.
+price_distribution,all,max,0.0,,Price distribution among non-C negative-Quantity rows.
