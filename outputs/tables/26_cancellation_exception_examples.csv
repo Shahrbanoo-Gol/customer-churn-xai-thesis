@@ -1,0 +1,22 @@
+exception_type,total_exception_rows,Invoice,StockCode,Description,Quantity,InvoiceDate,Price,Customer ID,Country,SourceSheet
+C-prefix AND Quantity >= 0,1,C496350,M,Manual,1,2010-02-01 08:24:00,373.57,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,489464,21733,85123a mixed,-96,2009-12-01 10:52:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,489463,71477,short,-240,2009-12-01 10:52:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,489467,85123A,21733 mixed,-192,2009-12-01 10:53:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,489521,21646,,-50,2009-12-01 11:44:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,489655,20683,,-44,2009-12-01 17:26:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,489660,35956,lost,-1043,2009-12-01 17:43:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,489663,35605A,damages,-117,2009-12-01 18:02:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,489806,18010,,-770,2009-12-02 12:42:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,489820,21133,invcd as 84879?,-720,2009-12-02 13:23:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,489821,85049G,,-240,2009-12-02 13:25:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,489899,79323GR,sold as gold,-954,2009-12-03 09:41:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,489901,21098,,-200,2009-12-03 09:47:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,490007,84347,21494,-720,2009-12-03 12:09:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,490016,21982,,-1012,2009-12-03 12:30:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,490055,20620,,-25,2009-12-03 13:22:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,490084,85064,,-89,2009-12-03 15:37:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,490130,21493,lost?,-600,2009-12-03 18:28:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,490146,21558,,-169,2009-12-04 09:29:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,490165,21493,,-106,2009-12-04 11:32:00,0.0,,United Kingdom,Year 2009-2010
+non-C invoice AND Quantity < 0,3393,490354,21489,,-23,2009-12-04 16:39:00,0.0,,United Kingdom,Year 2009-2010

@@ -30,6 +30,14 @@ Thumbs.db
 /data/raw/**/*.csv
 /data/raw/**/*.parquet
 
+# Generated processed analytical datasets
+/data/processed/**/*.csv
+/data/processed/**/*.parquet
+/data/processed/**/*.pkl
+/data/processed/**/*.pickle
+/data/processed/**/*.joblib
+/data/processed/**/*.feather
+
 # Generated model binaries
 /outputs/models/**/*.pkl
 /outputs/models/**/*.pickle

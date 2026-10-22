@@ -8,4 +8,5 @@ xgboost
 shap
 jupyter
 ipykernel
+pyarrow
 

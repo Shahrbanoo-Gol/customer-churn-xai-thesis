@@ -1,0 +1,10 @@
+metric,value,notes
+raw_sheet_1_rows,525461,All rows retained from Year 2009-2010.
+raw_sheet_2_rows,541910,Rows originally present in Year 2010-2011.
+total_raw_rows_before_source_reconciliation,1067371,Sum of both raw worksheets.
+cross_sheet_repeated_occurrences_removed,22523,Only the second representation of the proven overlap.
+row_count_after_source_reconciliation,1044848,Chronologically sorted source-reconciled rows.
+earliest_InvoiceDate,2009-12-01T07:45:00,Observed in reconciled data.
+latest_InvoiceDate,2011-12-09T12:50:00,Observed in reconciled data.
+unique_Invoice_count,53628,Non-null unique invoice identifiers.
+unique_non_null_Customer_ID_count,5942,Non-null unique customer identifiers.
