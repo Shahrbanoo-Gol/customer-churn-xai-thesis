@@ -1,0 +1,7 @@
+section,metric,value,percentage,notes
+customer_coverage,unique_customers_in_customer_transaction_history,5942,,All identifiable customers in the broad history.
+customer_coverage,unique_customers_with_at_least_one_positive_purchase,5878,98.92292157522719,Not a churn definition.
+customer_coverage,unique_customers_with_at_least_one_cancellation,2572,43.285089195557056,Not a churn definition.
+customer_coverage,customers_with_positive_purchases_and_cancellations,2511,42.25849882194547,Not a churn definition.
+customer_coverage,customers_with_cancellations_but_no_positive_purchase,61,1.0265903736115787,Not a churn definition.
+customer_coverage,identified_history_customers_with_no_qualifying_positive_purchase,64,1.0770784247728038,Not a churn definition.

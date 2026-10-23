@@ -1,11 +1,11 @@
 row_type,role,row_count,identified_customers,unique_invoices,notes
-primary_role,Positive purchase candidate,791045,5878,36969,Precedence: Cancellation > Non-C negative adjustment > Non-positive-price record > Positive purchase candidate > Other/review; missing IDs remain an overlapping diagnostic flag.
-primary_role,Cancellation,19165,2572,8292,Precedence: Cancellation > Non-C negative adjustment > Non-positive-price record > Positive purchase candidate > Other/review; missing IDs remain an overlapping diagnostic flag.
+primary_role,Positive purchase candidate,779425,5878,36969,Precedence: Cancellation > Non-C negative adjustment > Non-positive-price record > Positive purchase candidate > Other/review; missing IDs remain an overlapping diagnostic flag.
+primary_role,Cancellation,19104,2572,8292,Precedence: Cancellation > Non-C negative adjustment > Non-positive-price record > Positive purchase candidate > Other/review; missing IDs remain an overlapping diagnostic flag.
 primary_role,Non-C negative adjustment,3393,0,3393,Precedence: Cancellation > Non-C negative adjustment > Non-positive-price record > Positive purchase candidate > Other/review; missing IDs remain an overlapping diagnostic flag.
-primary_role,Other / requires review,228609,0,3108,Precedence: Cancellation > Non-C negative adjustment > Non-positive-price record > Positive purchase candidate > Other/review; missing IDs remain an overlapping diagnostic flag.
-primary_role,Non-positive-price record,2636,51,1991,Precedence: Cancellation > Non-C negative adjustment > Non-positive-price record > Positive purchase candidate > Other/review; missing IDs remain an overlapping diagnostic flag.
-overlapping_diagnostic_role,Positive purchase candidate,791045,5878,36969,Overlapping diagnostic role; not a predictive feature and not a final cleaning rule.
-overlapping_diagnostic_role,Cancellation,19165,2572,8292,Overlapping diagnostic role; not a predictive feature and not a final cleaning rule.
+primary_role,Other / requires review,228488,0,3108,Precedence: Cancellation > Non-C negative adjustment > Non-positive-price record > Positive purchase candidate > Other/review; missing IDs remain an overlapping diagnostic flag.
+primary_role,Non-positive-price record,2626,51,1991,Precedence: Cancellation > Non-C negative adjustment > Non-positive-price record > Positive purchase candidate > Other/review; missing IDs remain an overlapping diagnostic flag.
+overlapping_diagnostic_role,Positive purchase candidate,779425,5878,36969,Overlapping diagnostic role; not a predictive feature and not a final cleaning rule.
+overlapping_diagnostic_role,Cancellation,19104,2572,8292,Overlapping diagnostic role; not a predictive feature and not a final cleaning rule.
 overlapping_diagnostic_role,Non-C negative adjustment,3393,0,3393,Overlapping diagnostic role; not a predictive feature and not a final cleaning rule.
-overlapping_diagnostic_role,Non-positive-price record,6029,51,5384,Overlapping diagnostic role; not a predictive feature and not a final cleaning rule.
-overlapping_diagnostic_role,Unidentified-customer record,235287,0,8752,Overlapping diagnostic role; not a predictive feature and not a final cleaning rule.
+overlapping_diagnostic_role,Non-positive-price record,6019,51,5384,Overlapping diagnostic role; not a predictive feature and not a final cleaning rule.
+overlapping_diagnostic_role,Unidentified-customer record,235151,0,8752,Overlapping diagnostic role; not a predictive feature and not a final cleaning rule.

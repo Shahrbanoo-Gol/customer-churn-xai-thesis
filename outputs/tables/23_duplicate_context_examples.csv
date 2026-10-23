@@ -1,68 +1,8 @@
-record_type,metric,value,notes,category,percentage,Invoice,StockCode,Description,Quantity,InvoiceDate,Price,Customer ID,Country,duplicate_group_size,extra_occurrences
-summary,duplicate_signature_count,11001,Unique exact eight-field signatures with multiplicity greater than one.,,,,,,,,,,,,
-summary,duplicate_groups_same_Invoice,11001,"All exact duplicate signatures include Invoice, so each group has one Invoice value.",,,,,,,,,,,,
-summary,duplicate_groups_same_StockCode_within_Invoice,11001,All exact duplicate signatures include Invoice and StockCode.,,,,,,,,,,,,
-summary,duplicate_groups_identical_InvoiceDate,11001,All exact duplicate signatures include InvoiceDate.,,,,,,,,,,,,
-summary,distinct_Invoices_with_duplicate_groups,4387,Distinct non-null invoice identifiers associated with duplicate signatures.,,,,,,,,,,,,
-summary,duplicate_participating_rows,22813,Rows counted using duplicated(keep=False).,,,,,,,,,,,,
-summary,extra_duplicate_occurrences,11812,Rows beyond the first occurrence using duplicated(keep='first').,,,,,,,,,,,,
-concentration,calendar_date,257,121 duplicate signatures in this category.,2010-11-14,1.1265506509446368,,,,,,,,,,
-concentration,calendar_date,220,106 duplicate signatures in this category.,2011-11-27,0.964362424933152,,,,,,,,,,
-concentration,calendar_date,220,106 duplicate signatures in this category.,2010-11-28,0.964362424933152,,,,,,,,,,
-concentration,calendar_date,199,94 duplicate signatures in this category.,2010-12-05,0.8723096480077149,,,,,,,,,,
-concentration,calendar_date,196,95 duplicate signatures in this category.,2010-11-07,0.859159251304081,,,,,,,,,,
-concentration,calendar_date,184,91 duplicate signatures in this category.,2011-11-20,0.8065576644895455,,,,,,,,,,
-concentration,calendar_date,178,81 duplicate signatures in this category.,2010-11-21,0.7802568710822777,,,,,,,,,,
-concentration,calendar_date,164,77 duplicate signatures in this category.,2010-11-04,0.7188883531319862,,,,,,,,,,
-concentration,calendar_date,160,77 duplicate signatures in this category.,2011-11-06,0.7013544908604743,,,,,,,,,,
-concentration,calendar_date,159,76 duplicate signatures in this category.,2010-11-10,0.6969710252925964,,,,,,,,,,
-concentration,customer_id,527,253 duplicate signatures in this category.,12748.0,2.310086354271687,,,,,,,,,,
-concentration,customer_id,515,246 duplicate signatures in this category.,17841.0,2.2574847674571514,,,,,,,,,,
-concentration,customer_id,300,143 duplicate signatures in this category.,16549.0,1.3150396703633893,,,,,,,,,,
-concentration,customer_id,291,141 duplicate signatures in this category.,16782.0,1.2755884802524877,,,,,,,,,,
-concentration,customer_id,264,128 duplicate signatures in this category.,<MISSING>,1.1572349099197825,,,,,,,,,,
-concentration,customer_id,169,82 duplicate signatures in this category.,14606.0,0.740805680971376,,,,,,,,,,
-concentration,customer_id,153,75 duplicate signatures in this category.,16686.0,0.6706702318853285,,,,,,,,,,
-concentration,customer_id,141,66 duplicate signatures in this category.,13230.0,0.618068645070793,,,,,,,,,,
-concentration,customer_id,129,61 duplicate signatures in this category.,17920.0,0.5654670582562574,,,,,,,,,,
-concentration,customer_id,127,56 duplicate signatures in this category.,18022.0,0.5567001271205014,,,,,,,,,,
-concentration,stock_code,267,123 duplicate signatures in this category.,21034,1.1703853066234164,,,,,,,,,,
-concentration,stock_code,110,52 duplicate signatures in this category.,85123A,0.482181212466576,,,,,,,,,,
-concentration,stock_code,97,46 duplicate signatures in this category.,21212,0.4251961600841625,,,,,,,,,,
-concentration,stock_code,87,39 duplicate signatures in this category.,20751,0.3813615044053829,,,,,,,,,,
-concentration,stock_code,82,39 duplicate signatures in this category.,20727,0.3594441765659931,,,,,,,,,,
-concentration,stock_code,82,39 duplicate signatures in this category.,21232,0.3594441765659931,,,,,,,,,,
-concentration,stock_code,80,40 duplicate signatures in this category.,84991,0.35067724543023715,,,,,,,,,,
-concentration,stock_code,76,34 duplicate signatures in this category.,21754,0.3331433831587253,,,,,,,,,,
-concentration,stock_code,76,36 duplicate signatures in this category.,21975,0.3331433831587253,,,,,,,,,,
-concentration,stock_code,74,36 duplicate signatures in this category.,20725,0.3243764520229694,,,,,,,,,,
-concentration,country,22519,10857 duplicate signatures in this category.,United Kingdom,98.71126112304388,,,,,,,,,,
-concentration,country,66,32 duplicate signatures in this category.,France,0.2893087274799456,,,,,,,,,,
-concentration,country,48,24 duplicate signatures in this category.,Germany,0.2104063472581423,,,,,,,,,,
-concentration,country,44,22 duplicate signatures in this category.,EIRE,0.19287248498663043,,,,,,,,,,
-concentration,country,36,17 duplicate signatures in this category.,Cyprus,0.15780476044360672,,,,,,,,,,
-concentration,country,23,11 duplicate signatures in this category.,Portugal,0.10081970806119318,,,,,,,,,,
-concentration,country,23,11 duplicate signatures in this category.,Spain,0.10081970806119318,,,,,,,,,,
-concentration,country,16,8 duplicate signatures in this category.,Switzerland,0.07013544908604744,,,,,,,,,,
-concentration,country,8,4 duplicate signatures in this category.,Unspecified,0.03506772454302372,,,,,,,,,,
-concentration,country,8,4 duplicate signatures in this category.,Hong Kong,0.03506772454302372,,,,,,,,,,
-example,largest_duplicate_group,20,Representative largest exact duplicate group.,,,555524.0,22698,PINK REGENCY TEACUP AND SAUCER,1.0,2011-06-05 11:37:00,2.95,,United Kingdom,20.0,19.0
-example,largest_duplicate_group,12,Representative largest exact duplicate group.,,,555524.0,22697,GREEN REGENCY TEACUP AND SAUCER,1.0,2011-06-05 11:37:00,2.95,,United Kingdom,12.0,11.0
-example,largest_duplicate_group,8,Representative largest exact duplicate group.,,,572861.0,22775,PURPLE DRAWERKNOB ACRYLIC EDWARDIAN,12.0,2011-10-26 12:46:00,1.25,,United Kingdom,8.0,7.0
-example,largest_duplicate_group,6,Representative largest exact duplicate group.,,,496431.0,84826,ASSTD DESIGN 3D PAPER STICKERS,1.0,2010-02-01 12:30:00,0.85,,United Kingdom,6.0,5.0
-example,largest_duplicate_group,6,Representative largest exact duplicate group.,,,502660.0,17021,NAMASTE SWAGAT INCENSE,6.0,2010-03-25 17:18:00,0.3,,United Kingdom,6.0,5.0
-example,largest_duplicate_group,6,Representative largest exact duplicate group.,,,525065.0,20894,HANGING BAUBLE T-LIGHT HOLDER LARGE,1.0,2010-10-03 14:28:00,2.95,,United Kingdom,6.0,5.0
-example,largest_duplicate_group,6,Representative largest exact duplicate group.,,,534219.0,35953,FOLKART STAR CHRISTMAS DECORATIONS,1.0,2010-11-21 16:13:00,1.25,,United Kingdom,6.0,5.0
-example,largest_duplicate_group,6,Representative largest exact duplicate group.,,,538514.0,21756,BATH BUILDING BLOCK WORD,1.0,2010-12-12 14:27:00,5.95,,United Kingdom,6.0,5.0
-example,largest_duplicate_group,6,Representative largest exact duplicate group.,,,540524.0,21756,BATH BUILDING BLOCK WORD,1.0,2011-01-09 12:53:00,5.95,,United Kingdom,6.0,5.0
-example,largest_duplicate_group,6,Representative largest exact duplicate group.,,,541266.0,21755,LOVE BUILDING BLOCK WORD,1.0,2011-01-16 16:25:00,5.95,,United Kingdom,6.0,5.0
-example,largest_duplicate_group,6,Representative largest exact duplicate group.,,,541266.0,21754,HOME BUILDING BLOCK WORD,1.0,2011-01-16 16:25:00,5.95,,United Kingdom,6.0,5.0
-example,largest_duplicate_group,6,Representative largest exact duplicate group.,,,572344.0,M,Manual,48.0,2011-10-24 10:43:00,1.5,,United Kingdom,6.0,5.0
-example,largest_duplicate_group,6,Representative largest exact duplicate group.,,,578289.0,23395,BELLE JARDINIERE CUSHION COVER,1.0,2011-11-23 14:07:00,3.75,,United Kingdom,6.0,5.0
-example,largest_duplicate_group,5,Representative largest exact duplicate group.,,,492784.0,22114,HOT WATER BOTTLE TEA AND SYMPATHY,1.0,2009-12-18 17:24:00,3.95,,United Kingdom,5.0,4.0
-example,largest_duplicate_group,5,Representative largest exact duplicate group.,,,501425.0,85040B,SET/4 BLUE FLOWER CANDLES IN BOWL,1.0,2010-03-16 12:00:00,1.65,,United Kingdom,5.0,4.0
-example,largest_duplicate_group,5,Representative largest exact duplicate group.,,,520570.0,21754,HOME BUILDING BLOCK WORD,1.0,2010-08-26 20:07:00,5.95,,United Kingdom,5.0,4.0
-example,largest_duplicate_group,5,Representative largest exact duplicate group.,,,520570.0,21755,LOVE BUILDING BLOCK WORD,1.0,2010-08-26 20:07:00,5.95,,United Kingdom,5.0,4.0
-example,largest_duplicate_group,5,Representative largest exact duplicate group.,,,530953.0,21231,SWEETHEART CERAMIC TRINKET BOX,4.0,2010-11-04 18:42:00,1.25,,United Kingdom,5.0,4.0
-example,largest_duplicate_group,5,Representative largest exact duplicate group.,,,532679.0,22264,FELT FARM ANIMAL WHITE BUNNY ,1.0,2010-11-14 12:17:00,0.85,,United Kingdom,5.0,4.0
-example,largest_duplicate_group,5,Representative largest exact duplicate group.,,,537224.0,70007,HI TEC ALPINE HAND WARMER,1.0,2010-12-05 16:24:00,1.65,,United Kingdom,5.0,4.0
+record_type,metric,value,notes
+summary,duplicate_signature_count,0,Unique exact eight-field signatures with multiplicity greater than one.
+summary,duplicate_groups_same_Invoice,0,"All exact duplicate signatures include Invoice, so each group has one Invoice value."
+summary,duplicate_groups_same_StockCode_within_Invoice,0,All exact duplicate signatures include Invoice and StockCode.
+summary,duplicate_groups_identical_InvoiceDate,0,All exact duplicate signatures include InvoiceDate.
+summary,distinct_Invoices_with_duplicate_groups,0,Distinct non-null invoice identifiers associated with duplicate signatures.
+summary,duplicate_participating_rows,0,Rows counted using duplicated(keep=False).
+summary,extra_duplicate_occurrences,0,Rows beyond the first occurrence using duplicated(keep='first').

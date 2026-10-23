@@ -1,0 +1,13 @@
+section,metric,value,percentage,notes
+positive_purchase_base,total_Quantity,10513952.0,,Positive purchases and cancellations are not netted.
+positive_purchase_base,gross_line_value,17374804.268,,Positive purchases and cancellations are not netted.
+positive_purchase_base,median_line_value,12.48,,Positive purchases and cancellations are not netted.
+positive_purchase_base,unique_products,4631.0,,Positive purchases and cancellations are not netted.
+positive_purchase_base,unique_invoices,36969.0,,Positive purchases and cancellations are not netted.
+positive_purchase_base,unique_customers,5878.0,,Positive purchases and cancellations are not netted.
+customer_cancellation_history,total_Quantity,-472976.0,,Positive purchases and cancellations are not netted.
+customer_cancellation_history,gross_line_value,-1084812.98,,Positive purchases and cancellations are not netted.
+customer_cancellation_history,median_line_value,-8.75,,Positive purchases and cancellations are not netted.
+customer_cancellation_history,unique_products,2850.0,,Positive purchases and cancellations are not netted.
+customer_cancellation_history,unique_invoices,7901.0,,Positive purchases and cancellations are not netted.
+customer_cancellation_history,unique_customers,2572.0,,Positive purchases and cancellations are not netted.

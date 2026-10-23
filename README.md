@@ -8,7 +8,7 @@ The analysis may use only information available in Online Retail II. No clickstr
 
 ## Current Stage
 
-This repository currently contains project scaffolding and configuration only. Dataset analysis, data cleaning, churn-label construction, feature engineering, and model training are intentionally deferred to later analytical stages.
+The current repository contains the reproducible raw audit, worksheet reconciliation, transaction-quality audits, and customer-analysis preparation bases. Churn labeling, feature engineering, encoding, scaling, train/test splitting, modeling, and SHAP analysis remain intentionally deferred to later analytical stages.
 
 Files in data/raw must never be manually edited. All transformations must be performed programmatically and written to data/processed.
 
@@ -18,6 +18,8 @@ Files in data/raw must never be manually edited. All transformations must be per
 - Observation data and future churn outcome must be temporally separated.
 - Test data must not influence preprocessing, feature selection, model tuning, or threshold selection.
 - Raw data must remain unchanged.
+- The primary analysis removes additional exact full-row duplicates within each raw worksheet using the eight original source variables and `keep='first'` logic before worksheet reconciliation. `SourceSheet` is technical lineage only and is never part of duplicate equality.
+- Rows with missing Customer ID remain in the reconciled transaction source but are excluded from customer-linked datasets; missing Description rows remain when transaction information is otherwise valid.
 - All random processes must use recorded random seeds.
 - Every major analytical step must save reproducible outputs.
 - Do not introduce variables not available in the source dataset.

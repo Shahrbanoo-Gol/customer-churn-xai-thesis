@@ -1,0 +1,3 @@
+sheet_name,row_count,column_count,column_names,unique_non_null_customers,unique_non_null_invoices,date_min,date_max,random_seed
+Year 2009-2010,525461,8,Invoice | StockCode | Description | Quantity | InvoiceDate | Price | Customer ID | Country,4383,28816,2009-12-01T07:45:00,2010-12-09T20:01:00,42
+Year 2010-2011,541910,8,Invoice | StockCode | Description | Quantity | InvoiceDate | Price | Customer ID | Country,4372,25900,2010-12-01T08:26:00,2011-12-09T12:50:00,42

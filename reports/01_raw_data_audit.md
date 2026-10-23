@@ -141,6 +141,10 @@ Number of unique country values by scope and the descending transaction-row dist
 | overall | overall | Sweden | 1364 | 0.12779061825738192 | 43 |
 | overall | overall | Cyprus | 1176 | 0.11017724858554336 | 43 |
 
+## Reproducible worksheet profiles before modification
+
+Each raw worksheet was profiled independently before any duplicate removal. The citation-ready outputs are saved as `47_raw_worksheet_profile_summary.csv`, `48_raw_worksheet_head.csv`, `49_raw_worksheet_tail.csv`, `50_raw_worksheet_sample.csv`, `51_raw_worksheet_missing_values.csv`, and `52_raw_worksheet_descriptive_statistics.csv`. Random samples use the fixed seed `42`. These tables include worksheet shape, columns, data types, head, tail, sample, missingness, descriptive statistics, unique customer/invoice counts, and date ranges.
+
 ## Important methodological observations
 
 - The source is transactional data, and the observed variables are limited to the fields documented above.
@@ -165,42 +169,3 @@ This stage did **not** decide:
 - what predictive features will be created.
 
 No causal interpretations are made in this report. SHAP, churn labels, predictive features, train/test splits, and machine-learning models belong to later stages and were not created here.
-
-## Cross-sheet temporal overlap
-
-The two worksheets have overlapping date ranges. Based on the observed worksheet minima and maxima, the exact intersection is **2010-12-01T08:26:00 through 2010-12-09T20:01:00**, lasting **8.482639 days (203.583333 hours)**.
-
-Rows inside this interval:
-
-- Year 2009-2010: 22,523
-- Year 2010-2011: 22,523
-
-The full-row comparison used all eight original variables and accounted for duplicate multiplicities. It found **22,202 shared full-row signatures** and **22,523 matched cross-sheet row occurrences**. Within the temporal intersection, **22,523 (100.0000%)** of Year 2009-2010 rows and **22,523 (100.0000%)** of Year 2010-2011 rows had exact counterparts.
-
-The evidence indicates that the overlap is **complete**, rather than automatically establishing that either worksheet is erroneous. Exact matches outside the temporal intersection were assessed separately: **0 shared signatures** had an exact cross-sheet counterpart involving a row outside the intersection.
-
-## Overlap reconciliation
-
-Within the temporal intersection, multiplicity-aware reconciliation found:
-
-- 0 row occurrences only in Year 2009-2010;
-- 0 row occurrences only in Year 2010-2011;
-- 22,523 matched row occurrences present in both worksheets.
-
-These unmatched records are reported descriptively and are not interpreted as errors.
-
-## Invoice and customer overlap
-
-Within the temporal intersection, shared invoice IDs were **1,088**, shared `C`-prefix invoice IDs were **136**, and shared non-null customers were **622**.
-
-## Duplicate-count reconciliation
-
-Step 1 used `duplicated(keep=False)` for the reported exact duplicated-row count, meaning every row belonging to a repeated full-row signature was counted. The within-sheet counts were 13,283 and 10,147, summing to 23,430. The combined count was 67,242. The increase was 43,812 rows attributable to cross-sheet repetition under the same `keep=False` definition.
-
-For reference, `duplicated(keep='first')` counts were 6,865 and 5,268 within sheets, versus 34,335 after row-wise combination. The earlier report's `exact_duplicated_row_count` corresponds to `keep=False`; it has not been silently replaced.
-
-## Decision required before preprocessing
-
-**Recommendation: A. Deduplicate exact records across worksheets while retaining one occurrence. The overlap is complete: every overlap-period row in both worksheets has an exact full-row counterpart, with multiplicity accounted for, and no exact matches occur outside the overlap. This recommendation applies only to cross-worksheet exact repetition and is not executed in Step 1A.**
-
-No records have been removed or modified, and no preprocessing decision has been executed.

@@ -1,42 +1,35 @@
 scenario,metric,value,notes
-A_duplicates_retained,total_rows,1044848.0,All canonical rows in the temporary scenario.
-A_duplicates_retained,identified_customer_rows,809561.0,Rows with a non-null Customer ID.
-A_duplicates_retained,unique_customers,5942.0,Unique non-null Customer IDs.
-A_duplicates_retained,unique_invoices,53628.0,Unique non-null invoice identifiers; duplicates are not expected to change this.
-A_duplicates_retained,aggregate_positive_purchase_monetary_value,17431551.178000003,Identified rows with Quantity > 0 and Price > 0.
-A_duplicates_retained,aggregate_positive_purchase_quantity,10547799.0,Identified rows with Quantity > 0 and Price > 0.
-A_duplicates_retained,duplicate_extra_occurrences,11812.0,Temporary keep-first removals represented by this scenario.
-B_duplicate_occurrences_removed,total_rows,1033036.0,All canonical rows in the temporary scenario.
-B_duplicate_occurrences_removed,identified_customer_rows,797885.0,Rows with a non-null Customer ID.
-B_duplicate_occurrences_removed,unique_customers,5942.0,Unique non-null Customer IDs.
-B_duplicate_occurrences_removed,unique_invoices,53628.0,Unique non-null invoice identifiers; duplicates are not expected to change this.
-B_duplicate_occurrences_removed,aggregate_positive_purchase_monetary_value,17374804.268,Identified rows with Quantity > 0 and Price > 0.
-B_duplicate_occurrences_removed,aggregate_positive_purchase_quantity,10513952.0,Identified rows with Quantity > 0 and Price > 0.
-B_duplicate_occurrences_removed,duplicate_extra_occurrences,0.0,Temporary keep-first removals represented by this scenario.
-comparison,customers_affected,1594.0,Customers with at least one temporary duplicate occurrence removed.
-comparison,percentage_of_identified_customers_affected,26.825984516997643,Denominator is all identified customers in scenario A.
-comparison,unique_invoice_count_change,0.0,A zero indicates duplicate removal changes row counts but not unique invoice counts.
-affected_customer_distribution,value_relative_change_pct_count,1594.0,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,value_relative_change_pct_mean,-2.157229118174258,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,value_relative_change_pct_std,2.5657468138211628,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,value_relative_change_pct_min,-21.4827927630592,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,value_relative_change_pct_25%,-2.7657071323727687,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,value_relative_change_pct_50%,-1.3597403343107288,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,value_relative_change_pct_75%,-0.5819851792221227,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,value_relative_change_pct_max,0.0,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,quantity_relative_change_pct_count,1594.0,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,quantity_relative_change_pct_mean,-2.1501776208748002,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,quantity_relative_change_pct_std,2.9187802573286645,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,quantity_relative_change_pct_min,-34.13173652694611,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,quantity_relative_change_pct_25%,-2.587938216253373,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,quantity_relative_change_pct_50%,-1.183431952662722,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,quantity_relative_change_pct_75%,-0.526604973973395,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,quantity_relative_change_pct_max,0.0,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,row_count_relative_change_pct_count,1594.0,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,row_count_relative_change_pct_mean,-3.56202566960017,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,row_count_relative_change_pct_std,3.3255745002712866,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,row_count_relative_change_pct_min,-29.213483146067414,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,row_count_relative_change_pct_25%,-4.761904761904762,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,row_count_relative_change_pct_50%,-2.5510204081632653,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,row_count_relative_change_pct_75%,-1.3333333333333335,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
-affected_customer_distribution,row_count_relative_change_pct_max,-0.06443298969072164,Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.
+primary_deduplicated,total_rows,1033036.0,All canonical rows in the temporary scenario.
+primary_deduplicated,identified_customer_rows,797885.0,Rows with a non-null Customer ID.
+primary_deduplicated,unique_customers,5942.0,Unique non-null Customer IDs.
+primary_deduplicated,unique_invoices,53628.0,Unique non-null invoice identifiers; duplicates are not expected to change this.
+primary_deduplicated,aggregate_positive_purchase_monetary_value,17374804.268,Identified rows with Quantity > 0 and Price > 0.
+primary_deduplicated,aggregate_positive_purchase_quantity,10513952.0,Identified rows with Quantity > 0 and Price > 0.
+primary_deduplicated,duplicate_extra_occurrences,0.0,Primary canonical source after keep-first duplicate removal; expected zero.
+primary_check,customers_affected,0.0,Expected zero because duplicate extras were removed before the canonical source was built.
+primary_check,percentage_of_identified_customers_affected,0.0,Expected zero in the deduplicated primary canonical source.
+primary_check,unique_invoice_count_change,0.0,Expected zero because the canonical source contains no duplicate extras.
+affected_customer_distribution,value_relative_change_pct_count,0.0,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,value_relative_change_pct_mean,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,value_relative_change_pct_std,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,value_relative_change_pct_min,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,value_relative_change_pct_25%,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,value_relative_change_pct_50%,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,value_relative_change_pct_75%,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,value_relative_change_pct_max,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,quantity_relative_change_pct_count,0.0,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,quantity_relative_change_pct_mean,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,quantity_relative_change_pct_std,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,quantity_relative_change_pct_min,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,quantity_relative_change_pct_25%,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,quantity_relative_change_pct_50%,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,quantity_relative_change_pct_75%,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,quantity_relative_change_pct_max,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,row_count_relative_change_pct_count,0.0,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,row_count_relative_change_pct_mean,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,row_count_relative_change_pct_std,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,row_count_relative_change_pct_min,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,row_count_relative_change_pct_25%,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,row_count_relative_change_pct_50%,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,row_count_relative_change_pct_75%,,Expected-empty distribution in the deduplicated primary canonical source.
+affected_customer_distribution,row_count_relative_change_pct_max,,Expected-empty distribution in the deduplicated primary canonical source.

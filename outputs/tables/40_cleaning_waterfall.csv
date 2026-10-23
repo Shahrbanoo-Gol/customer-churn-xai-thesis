@@ -1,0 +1,8 @@
+section,metric,value,percentage,notes
+sequential_stage,original_raw_worksheet_rows,1067371,,Sum of both raw worksheets before Step 2 source reconciliation.
+sequential_stage,source_reconciled_rows,1033036,96.78321783147565,Canonical input after within-sheet exact deduplication and verified cross-sheet overlap reconciliation.
+sequential_stage,customer_identifiable_history_rows,797885,77.23690171494508,Rows with non-null Customer ID; cancellations and exceptions retained.
+sequential_stage,rows_excluded_for_missing_Customer_ID,235151,22.763098285054927,Sequential reduction from source-reconciled rows; not an artificial-ID assignment.
+sequential_stage,positive_purchase_base_rows,779425,97.68638337605043,Sequential reduction from customer history using the approved positive-purchase rule.
+sequential_stage,identified_rows_not_qualifying_for_positive_purchase_base,18460,2.313616623949567,"Includes overlapping cancellations, non-positive quantities/prices, and other identified exceptions."
+diagnostic_note,overlapping_conditions,See table 45,,"C-prefix, Quantity <= 0, and Price <= 0 conditions are not added as independent reductions."

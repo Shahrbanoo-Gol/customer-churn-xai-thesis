@@ -1,2 +1,2 @@
 scope,identifier_type,unique_sheet_1,unique_sheet_2,shared,only_sheet_1,only_sheet_2
-overlap_period,Customer ID,622,622,622,0,0
+overlap_period_after_deduplication,Customer ID,622,622,622,0,0

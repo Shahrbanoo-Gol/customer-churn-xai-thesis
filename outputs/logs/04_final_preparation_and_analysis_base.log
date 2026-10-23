@@ -1,0 +1,7 @@
+2026-10-23 17:37:14,279 INFO Step 4 completed with approved rules only.
+2026-10-23 17:37:14,280 INFO Canonical SHA-256: a97e6f7279276417727b76bf7ee326b0653c0cc3b8f83526a24682086a8ace42
+2026-10-23 17:37:14,281 INFO Raw workbook SHA-256: bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980
+2026-10-23 17:37:14,281 INFO Customer history rows: 797885
+2026-10-23 17:37:14,281 INFO Positive purchase rows: 779425
+2026-10-23 17:37:14,281 INFO Cancellation history rows: 18390
+2026-10-23 17:37:14,281 INFO Validation checks: {'customer_history_has_no_missing_customer_id': True, 'source_has_no_exact_duplicate_rows': True, 'customer_history_has_no_exact_duplicate_rows': True, 'positive_base_has_no_exact_duplicate_rows': True, 'positive_base_all_rows_meet_rule': True, 'cancellation_history_all_rows_meet_rule': True, 'customer_history_derives_from_reconciled_source': True, 'positive_base_derives_from_reconciled_source': True, 'cancellation_history_derives_from_reconciled_source': True, 'source_date_range_preserved': True, 'canonical_hash_unchanged': True, 'raw_hash_unchanged': True, 'no_churn_column': True, 'no_inactivity_threshold_defined': True, 'no_observation_or_outcome_window_created': True, 'no_predictive_feature_columns': True, 'no_rfm_feature_table': True, 'no_ml_model_fitted_or_artifact_created': True, 'no_churn_created': True, 'processed_parquet_files_ignored': True}

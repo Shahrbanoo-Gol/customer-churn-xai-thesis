@@ -1,0 +1,14 @@
+section,metric,value,percentage,notes
+customer_transaction_history,unique_invoices,44876,,Unique non-null invoice identifiers.
+customer_transaction_history,date_min,2009-12-01T07:45:00,,
+customer_transaction_history,date_max,2011-12-09T12:50:00,,
+customer_transaction_history,row_count,797885,,
+positive_purchase_base,unique_non_C_positive_purchase_invoices,36969,,Unique non-null invoice identifiers.
+positive_purchase_base,date_min,2009-12-01T07:45:00,,
+positive_purchase_base,date_max,2011-12-09T12:50:00,,
+positive_purchase_base,row_count,779425,,
+customer_cancellation_history,unique_C_prefix_invoices,7901,,Unique non-null invoice identifiers.
+customer_cancellation_history,date_min,2009-12-01T10:33:00,,
+customer_cancellation_history,date_max,2011-12-09T11:58:00,,
+customer_cancellation_history,row_count,18390,,
+customer_transaction_history,invoices_containing_multiple_line_items,37421,,Invoice identifiers with more than one history row.

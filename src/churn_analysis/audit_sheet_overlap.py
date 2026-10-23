@@ -127,8 +127,7 @@ def _write_report_appendix(
             "A. Deduplicate exact records across worksheets while retaining one occurrence. "
             "The overlap is complete: every overlap-period row in both worksheets has an exact "
             "full-row counterpart, with multiplicity accounted for, and no exact matches occur "
-            "outside the overlap. This recommendation applies only to cross-worksheet exact "
-            "repetition and is not executed in Step 1A."
+            "outside the overlap. This confirms the cross-worksheet reconciliation rule."
         )
     else:
         recommendation = (
@@ -136,7 +135,7 @@ def _write_report_appendix(
             "The observed overlap is "
             f"{extent}, with {pct1:.4f}% of overlap-period rows in Year 2009-2010 and "
             f"{pct2:.4f}% in Year 2010-2011 having exact counterparts. The overlap should therefore "
-            "be reconciled explicitly before preprocessing; this audit does not execute deduplication."
+            "be reconciled explicitly before customer-level preprocessing."
         )
 
     appendix = f"""
@@ -156,7 +155,7 @@ The evidence indicates that the overlap is **{extent}**, rather than automatical
 
 ## Overlap reconciliation
 
-Within the temporal intersection, multiplicity-aware reconciliation found:
+Within the temporal intersection, multiplicity-aware reconciliation after within-sheet keep-first deduplication found:
 
 - {reconciliation['row_occurrences_only_sheet_1']:,} row occurrences only in Year 2009-2010;
 - {reconciliation['row_occurrences_only_sheet_2']:,} row occurrences only in Year 2010-2011;
@@ -170,15 +169,15 @@ Within the temporal intersection, shared invoice IDs were **{invoice_overlap.loc
 
 ## Duplicate-count reconciliation
 
-Step 1 used `duplicated(keep=False)` for the reported exact duplicated-row count, meaning every row belonging to a repeated full-row signature was counted. The within-sheet counts were 13,283 and 10,147, summing to {duplicate_reconciliation['within_sheet_duplicate_rows_sum']:,}. The combined count was {duplicate_reconciliation['combined_duplicate_rows_keep_false']:,}. The increase was {duplicate_reconciliation['cross_sheet_increment_in_participating_duplicate_rows']:,} rows attributable to cross-sheet repetition under the same `keep=False` definition.
+After within-sheet keep-first deduplication, the `duplicated(keep=False)` counts were {duplicate_reconciliation['sheet_1_keep_false']:,} and {duplicate_reconciliation['sheet_2_keep_false']:,}. The combined count was {duplicate_reconciliation['combined_duplicate_rows_keep_false']:,}; cross-sheet repetition is handled only through the verified common-interval reconciliation.
 
 For reference, `duplicated(keep='first')` counts were {duplicate_reconciliation['sheet_1_keep_first']:,} and {duplicate_reconciliation['sheet_2_keep_first']:,} within sheets, versus {duplicate_reconciliation['combined_keep_first']:,} after row-wise combination. The earlier report's `exact_duplicated_row_count` corresponds to `keep=False`; it has not been silently replaced.
 
-## Decision required before preprocessing
+## Applied reconciliation decision
 
 **Recommendation: {recommendation}**
 
-No records have been removed or modified, and no preprocessing decision has been executed.
+Within-sheet exact duplicate extras were removed before this cross-sheet comparison. No churn labeling, feature engineering, train/test splitting, encoding, scaling, modeling, or SHAP step was executed.
 """
     report_path.write_text(base + appendix, encoding="utf-8")
 
@@ -197,8 +196,10 @@ def run_sheet_overlap_audit() -> dict[str, Any]:
     source_hash_before = sha256_file(source_path)
     frames = _sheet_frames(source_path)
     sheet1_name, sheet2_name = EXPECTED_SHEETS
-    sheet1 = frames[sheet1_name]
-    sheet2 = frames[sheet2_name]
+    raw_sheet1 = frames[sheet1_name]
+    raw_sheet2 = frames[sheet2_name]
+    sheet1 = raw_sheet1.loc[~raw_sheet1.duplicated(subset=SIGNATURE_COLUMNS, keep="first")].copy()
+    sheet2 = raw_sheet2.loc[~raw_sheet2.duplicated(subset=SIGNATURE_COLUMNS, keep="first")].copy()
     date_column = "InvoiceDate"
 
     min1, max1 = sheet1[date_column].min(), sheet1[date_column].max()
@@ -293,19 +294,19 @@ def run_sheet_overlap_audit() -> dict[str, Any]:
     customer_metrics = _set_metrics(customer_set1, customer_set2, "overlap_period", "Customer ID")
     pd.DataFrame([customer_metrics]).to_csv(TABLES_DIR / "18_customer_overlap_audit.csv", index=False)
 
-    within1_keep_false = int(sheet1.duplicated(keep=False).sum())
-    within2_keep_false = int(sheet2.duplicated(keep=False).sum())
+    within1_keep_false = int(sheet1.duplicated(subset=SIGNATURE_COLUMNS, keep=False).sum())
+    within2_keep_false = int(sheet2.duplicated(subset=SIGNATURE_COLUMNS, keep=False).sum())
     combined = pd.concat([sheet1, sheet2], ignore_index=True)
-    combined_keep_false = int(combined.duplicated(keep=False).sum())
+    combined_keep_false = int(combined.duplicated(subset=SIGNATURE_COLUMNS, keep=False).sum())
     duplicate_reconciliation = {
         "sheet_1_keep_false": within1_keep_false,
         "sheet_2_keep_false": within2_keep_false,
         "within_sheet_duplicate_rows_sum": within1_keep_false + within2_keep_false,
         "combined_duplicate_rows_keep_false": combined_keep_false,
         "cross_sheet_increment_in_participating_duplicate_rows": combined_keep_false - within1_keep_false - within2_keep_false,
-        "sheet_1_keep_first": int(sheet1.duplicated(keep="first").sum()),
-        "sheet_2_keep_first": int(sheet2.duplicated(keep="first").sum()),
-        "combined_keep_first": int(combined.duplicated(keep="first").sum()),
+        "sheet_1_keep_first": int(sheet1.duplicated(subset=SIGNATURE_COLUMNS, keep="first").sum()),
+        "sheet_2_keep_first": int(sheet2.duplicated(subset=SIGNATURE_COLUMNS, keep="first").sum()),
+        "combined_keep_first": int(combined.duplicated(subset=SIGNATURE_COLUMNS, keep="first").sum()),
     }
     duplicate_rows = [
         {"metric": "within_sheet_exact_duplicate_rows_keep_false", "sheet_1": duplicate_reconciliation["sheet_1_keep_false"], "sheet_2": duplicate_reconciliation["sheet_2_keep_false"], "combined": duplicate_reconciliation["within_sheet_duplicate_rows_sum"], "definition": "Rows belonging to repeated full-row signatures within each worksheet; duplicated(keep=False)."},

@@ -1,0 +1,7 @@
+section,metric,value,percentage,notes
+duplicate_treatment,duplicate_participating_rows_in_primary,0,,Should be zero after primary keep-first treatment and cross-sheet reconciliation.
+duplicate_treatment,extra_duplicate_occurrences_in_primary,0,,Should be zero in the canonical primary datasets.
+duplicate_removal,affected_customers,0,,
+duplicate_removal,affected_invoices,0,,
+duplicate_treatment,primary_dataset_treatment,keep_first_removed,,Exact full-row duplicates are removed within each worksheet before reconciliation.
+duplicate_treatment,sensitivity_alternative,duplicate_retained,,A duplicate-retained alternative remains available for later sensitivity comparison.

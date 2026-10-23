@@ -1,0 +1,4 @@
+filename,row_count,column_count,date_min,date_max,unique_non_null_customers,file_size_bytes,sha256
+02_customer_transaction_history.parquet,797885,9,2009-12-01T07:45:00,2011-12-09T12:50:00,5942,5472510,954751322a90be87750ed5426c0528aed615d9b8655dd9cce26b39a702243bc5
+03_positive_purchase_base.parquet,779425,9,2009-12-01T07:45:00,2011-12-09T12:50:00,5878,5130667,825bccc6ebdcbf594001729ad50e5d7a292ef2eb0456459dca2b7d15e30ee503
+04_customer_cancellation_history.parquet,18390,9,2009-12-01T10:33:00,2011-12-09T11:58:00,2572,335227,7a90c3159f0ac7a810f47ec05a51b257d0c4f9359ea6d8eeaa6b3584a0a76023

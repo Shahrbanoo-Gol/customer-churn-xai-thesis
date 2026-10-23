@@ -1,0 +1,9 @@
+column_name,count,unique,top,freq,mean,min,25%,50%,75%,max,std,analytical_or_technical
+Invoice,1033036.0,53628.0,573585.0,1114.0,,,,,,,,analytical
+StockCode,1033036,5305,85123A,5653,,,,,,,,analytical
+Description,1028761,5698,WHITE HANGING HEART T-LIGHT HOLDER,5740,,,,,,,,analytical
+Quantity,1033036.0,,,,10.076879218149223,-80995.0,1.0,3.0,10.0,80995.0,175.19762799701007,analytical
+InvoiceDate,1033036,,,,2011-01-03 14:30:35.429548,2009-12-01 07:45:00,2010-07-05 11:38:00,2010-12-09 13:34:00,2011-07-27 13:17:00,2011-12-09 12:50:00,,analytical
+Price,1033036.0,,,,4.613979656081685,-53594.36,1.25,2.1,4.15,38970.0,122.39752328624594,analytical
+Customer ID,797885.0,,,,15313.062777217268,12346.0,13964.0,15228.0,16788.0,18287.0,1696.4666629629478,analytical
+Country,1033036,43,United Kingdom,948321,,,,,,,,analytical

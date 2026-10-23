@@ -1,0 +1,10 @@
+section,metric,value,percentage,notes
+diagnostic_overlapping_condition,C-prefix cancellation,18390,99.62080173347779,Conditions may overlap; these counts must not be added.
+diagnostic_overlapping_condition,non-C Quantity <= 0,0,0.0,Conditions may overlap; these counts must not be added.
+diagnostic_overlapping_condition,Price <= 0,70,0.37919826652221017,Conditions may overlap; these counts must not be added.
+diagnostic_overlapping_condition,overlapping Quantity/Price conditions,0,0.0,Conditions may overlap; these counts must not be added.
+mutually_exclusive_precedence,C-prefix cancellation,18390,99.62080173347779,Precedence: C-prefix cancellation > non-C Quantity <= 0 > Price <= 0 > other.
+mutually_exclusive_precedence,Price <= 0,70,0.37919826652221017,Precedence: C-prefix cancellation > non-C Quantity <= 0 > Price <= 0 > other.
+control_total,identified_history_rows,797885,,
+control_total,positive_purchase_base_rows,779425,,
+control_total,identified_nonpurchase_rows,18460,2.313616623949567,Mutually exclusive primary categories sum to this count.

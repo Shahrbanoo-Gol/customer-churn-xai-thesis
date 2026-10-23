@@ -1,5 +1,5 @@
 category,count,percentage,invoice_type,quantity_sign
-C-prefix AND Quantity < 0,19164,1.83414238243266,C-prefix,negative
-C-prefix AND Quantity >= 0,1,9.570770102445524e-05,C-prefix,non-negative
-non-C invoice AND Quantity < 0,3393,0.3247362295759766,non-C,negative
-non-C invoice AND Quantity >= 0,1022290,97.84102568029034,non-C,non-negative
+C-prefix AND Quantity < 0,19103,1.84920951447965,C-prefix,negative
+C-prefix AND Quantity >= 0,1,9.68020475569099e-05,C-prefix,non-negative
+non-C invoice AND Quantity < 0,3393,0.3284493473605954,non-C,negative
+non-C invoice AND Quantity >= 0,1010539,97.82224433611219,non-C,non-negative

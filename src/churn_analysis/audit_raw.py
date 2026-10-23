@@ -20,6 +20,7 @@ from .config import (
     PROJECT_ROOT,
     RAW_DATA_DIR,
     TABLES_DIR,
+    RANDOM_STATE,
 )
 
 
@@ -167,6 +168,70 @@ def _write_rows(rows: Iterable[dict[str, Any]], path: Path) -> pd.DataFrame:
     frame = pd.DataFrame(list(rows))
     frame.to_csv(path, index=False)
     return frame
+
+
+def _write_worksheet_profiles(partitions: list[dict[str, Any]]) -> dict[str, pd.DataFrame]:
+    """Write citation-friendly, pre-modification worksheet profile tables."""
+
+    summary_rows: list[dict[str, Any]] = []
+    head_rows: list[dict[str, Any]] = []
+    tail_rows: list[dict[str, Any]] = []
+    sample_rows: list[dict[str, Any]] = []
+    missing_rows: list[dict[str, Any]] = []
+    describe_rows: list[dict[str, Any]] = []
+    for partition in partitions:
+        sheet_name = partition["sheet_name"]
+        frame = partition["frame"]
+        summary_rows.append(
+            {
+                "sheet_name": sheet_name,
+                "row_count": len(frame),
+                "column_count": len(frame.columns),
+                "column_names": " | ".join(map(str, frame.columns)),
+                "unique_non_null_customers": int(frame["Customer ID"].nunique(dropna=True)),
+                "unique_non_null_invoices": int(frame["Invoice"].nunique(dropna=True)),
+                "date_min": _date_value(pd.to_datetime(frame["InvoiceDate"], errors="coerce").min()),
+                "date_max": _date_value(pd.to_datetime(frame["InvoiceDate"], errors="coerce").max()),
+                "random_seed": RANDOM_STATE,
+            }
+        )
+        for position, row in frame.head(5).iterrows():
+            item = {"sheet_name": sheet_name, "source_row_position": int(position)}
+            item.update(row.to_dict())
+            head_rows.append(item)
+        for position, row in frame.tail(5).iterrows():
+            item = {"sheet_name": sheet_name, "source_row_position": int(position)}
+            item.update(row.to_dict())
+            tail_rows.append(item)
+        for position, row in frame.sample(n=min(5, len(frame)), random_state=RANDOM_STATE).iterrows():
+            item = {"sheet_name": sheet_name, "source_row_position": int(position)}
+            item.update(row.to_dict())
+            sample_rows.append(item)
+        for column in frame.columns:
+            missing_count = int(frame[column].isna().sum())
+            missing_rows.append(
+                {
+                    "sheet_name": sheet_name,
+                    "column_name": column,
+                    "missing_count": missing_count,
+                    "missing_percentage": _safe_percentage(missing_count, len(frame)),
+                }
+            )
+        with pd.option_context("display.max_columns", None):
+            described = frame.describe(include="all").transpose().reset_index()
+        described = described.rename(columns={"index": "column_name"})
+        described.insert(0, "sheet_name", sheet_name)
+        describe_rows.extend(described.to_dict("records"))
+
+    outputs = {
+        "profile_summary": _write_rows(summary_rows, TABLES_DIR / "47_raw_worksheet_profile_summary.csv"),
+        "head": _write_rows(head_rows, TABLES_DIR / "48_raw_worksheet_head.csv"),
+        "tail": _write_rows(tail_rows, TABLES_DIR / "49_raw_worksheet_tail.csv"),
+        "sample": _write_rows(sample_rows, TABLES_DIR / "50_raw_worksheet_sample.csv"),
+        "missing": _write_rows(missing_rows, TABLES_DIR / "51_raw_worksheet_missing_values.csv"),
+        "descriptive_statistics": _write_rows(describe_rows, TABLES_DIR / "52_raw_worksheet_descriptive_statistics.csv"),
+    }
+    return outputs
 
 
 def _schema_identical(partitions: list[dict[str, Any]]) -> bool:
@@ -334,6 +399,10 @@ Unusual values are reported descriptively only. No outlier or exclusion decision
 Number of unique country values by scope and the descending transaction-row distribution are saved in `outputs/tables/12_country_distribution.csv`.
 
 {_markdown_table(country_overall, limit=15)}
+
+## Reproducible worksheet profiles before modification
+
+Each raw worksheet was profiled independently before any duplicate removal. The citation-ready outputs are saved as `47_raw_worksheet_profile_summary.csv`, `48_raw_worksheet_head.csv`, `49_raw_worksheet_tail.csv`, `50_raw_worksheet_sample.csv`, `51_raw_worksheet_missing_values.csv`, and `52_raw_worksheet_descriptive_statistics.csv`. Random samples use the fixed seed `{RANDOM_STATE}`. These tables include worksheet shape, columns, data types, head, tail, sample, missingness, descriptive statistics, unique customer/invoice counts, and date ranges.
 
 ## Important methodological observations
 
@@ -587,6 +656,8 @@ def run_audit() -> dict[str, Any]:
     for partition in partitions:
         audit_partition(partition["sheet_name"], partition["frame"], partition["sheet_name"])
 
+    worksheet_profiles = _write_worksheet_profiles(partitions)
+
     if combined is not None:
         audit_partition("overall", combined, "overall")
     else:
@@ -674,6 +745,7 @@ def run_audit() -> dict[str, Any]:
         "products": products,
         "countries": countries,
         "conditions": conditions,
+        "worksheet_profiles": worksheet_profiles,
     }
 
 

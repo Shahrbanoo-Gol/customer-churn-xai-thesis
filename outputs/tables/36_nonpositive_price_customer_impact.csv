@@ -1,67 +1,67 @@
 section,category,metric,value,percentage,notes
-summary,all,nonpositive_price_rows,6029.0,0.5770217294764406,Price <= 0.
-summary,identified,rows,70.0,1.1610549013103333,Rows with non-null Customer ID.
-summary,unidentified,rows,5959.0,98.83894509868966,Rows without Customer ID.
+summary,all,nonpositive_price_rows,6019.0,0.5826515242450409,Price <= 0.
+summary,identified,rows,70.0,1.1629838843661737,Rows with non-null Customer ID.
+summary,unidentified,rows,5949.0,98.83701611563383,Rows without Customer ID.
 summary,identified,unique_customers_affected,51.0,0.858296869740828,Share uses all identifiable customers.
 summary,all,unique_invoices,5384.0,,Unique invoice identifiers.
 summary,identified,unique_invoices,61.0,,Unique invoice identifiers with Customer ID.
-summary,all,price_negative_rows,5.0,0.0829324929507381,Price sign distribution.
-summary,all,price_zero_rows,6024.0,99.91706750704927,Price sign distribution.
-summary,all,quantity_positive_rows,2636.0,43.722010283629125,Quantity sign distribution.
+summary,all,price_negative_rows,5.0,0.0830702774547267,Price sign distribution.
+summary,all,price_zero_rows,6014.0,99.91692972254528,Price sign distribution.
+summary,all,quantity_positive_rows,2626.0,43.628509719222464,Quantity sign distribution.
 summary,all,quantity_zero_rows,0.0,0.0,Quantity sign distribution.
-summary,all,quantity_negative_rows,3393.0,56.27798971637087,Quantity sign distribution.
+summary,all,quantity_negative_rows,3393.0,56.371490280777536,Quantity sign distribution.
 summary,all,C_prefix_rows,0.0,0.0,Cancellation-prefix status.
-summary,all,non_C_rows,6029.0,100.0,Cancellation-prefix status.
+summary,all,non_C_rows,6019.0,100.0,Cancellation-prefix status.
 summary,all,meaningful_positive_purchase_value,0.0,0.0,"None can satisfy Price > 0, so these rows contribute no positive-purchase value."
 summary,identified,customers_with_only_nonpositive_price_records,3.0,5.88235294117647,Estimated customers with no identified positive-purchase candidate row.
 summary,identified,customers_with_positive_purchase_and_nonpositive_price_records,48.0,94.11764705882352,These customers retain other positive-purchase records if Price <= 0 rows are excluded later.
-stockcode_pattern,46000M,rows,17.0,0.2819704760325096,Top observed values.
-stockcode_pattern,79321,rows,17.0,0.2819704760325096,Top observed values.
-stockcode_pattern,22501,rows,17.0,0.2819704760325096,Top observed values.
-stockcode_pattern,23084,rows,16.0,0.2653839774423619,Top observed values.
-stockcode_pattern,21116,rows,15.0,0.2487974788522143,Top observed values.
-stockcode_pattern,22423,rows,15.0,0.2487974788522143,Top observed values.
-stockcode_pattern,46000S,rows,14.0,0.23221098026206666,Top observed values.
-stockcode_pattern,84990,rows,13.0,0.21562448167191905,Top observed values.
-stockcode_pattern,20713,rows,13.0,0.21562448167191905,Top observed values.
-stockcode_pattern,22734,rows,13.0,0.21562448167191905,Top observed values.
-stockcode_pattern,35965,rows,13.0,0.21562448167191905,Top observed values.
-stockcode_pattern,22502,rows,12.0,0.19903798308177145,Top observed values.
-stockcode_pattern,22469,rows,12.0,0.19903798308177145,Top observed values.
-stockcode_pattern,84016,rows,11.0,0.18245148449162382,Top observed values.
-stockcode_pattern,22627,rows,11.0,0.18245148449162382,Top observed values.
-stockcode_pattern,71477,rows,10.0,0.1658649859014762,Top observed values.
-stockcode_pattern,22139,rows,10.0,0.1658649859014762,Top observed values.
-stockcode_pattern,22470,rows,10.0,0.1658649859014762,Top observed values.
-stockcode_pattern,22087,rows,10.0,0.1658649859014762,Top observed values.
-stockcode_pattern,22950,rows,10.0,0.1658649859014762,Top observed values.
-stockcode_pattern,22197,rows,9.0,0.14927848731132856,Top observed values.
-stockcode_pattern,22467,rows,9.0,0.14927848731132856,Top observed values.
-stockcode_pattern,22719,rows,9.0,0.14927848731132856,Top observed values.
-stockcode_pattern,21181,rows,9.0,0.14927848731132856,Top observed values.
-stockcode_pattern,47566B,rows,9.0,0.14927848731132856,Top observed values.
-description_pattern,[missing],rows,4275.0,70.90728147288108,Top observed values.
-description_pattern,check,rows,160.0,2.653839774423619,Top observed values.
-description_pattern,?,rows,90.0,1.4927848731132858,Top observed values.
-description_pattern,damages,rows,83.0,1.3766793829822523,Top observed values.
-description_pattern,damaged,rows,81.0,1.3435063858019574,Top observed values.
-description_pattern,found,rows,28.0,0.4644219605241333,Top observed values.
-description_pattern,missing,rows,27.0,0.44783546193398577,Top observed values.
-description_pattern,sold as set on dotcom,rows,20.0,0.3317299718029524,Top observed values.
-description_pattern,Damaged,rows,17.0,0.2819704760325096,Top observed values.
-description_pattern,adjustment,rows,16.0,0.2653839774423619,Top observed values.
-description_pattern,OWL DOORSTOP,rows,14.0,0.23221098026206666,Top observed values.
-description_pattern,POLYESTER FILLER PAD 45x45cm,rows,12.0,0.19903798308177145,Top observed values.
-description_pattern,dotcom,rows,12.0,0.19903798308177145,Top observed values.
-description_pattern,POLYESTER FILLER PAD 40x40cm,rows,10.0,0.1658649859014762,Top observed values.
-description_pattern,smashed,rows,9.0,0.14927848731132856,Top observed values.
-description_pattern,Found,rows,9.0,0.14927848731132856,Top observed values.
-description_pattern,FRENCH BLUE METAL DOOR SIGN 1,rows,9.0,0.14927848731132856,Top observed values.
-description_pattern,thrown away,rows,9.0,0.14927848731132856,Top observed values.
-description_pattern,"Unsaleable, destroyed.",rows,9.0,0.14927848731132856,Top observed values.
-description_pattern,PICNIC BASKET WICKER LARGE,rows,8.0,0.13269198872118096,Top observed values.
-description_pattern,AIRLINE BAG VINTAGE WORLD CHAMPION ,rows,8.0,0.13269198872118096,Top observed values.
-description_pattern,checked,rows,8.0,0.13269198872118096,Top observed values.
-description_pattern,BOX OF 24 COCKTAIL PARASOLS,rows,8.0,0.13269198872118096,Top observed values.
-description_pattern,MINT KITCHEN SCALES,rows,8.0,0.13269198872118096,Top observed values.
-description_pattern,RED KITCHEN SCALES,rows,8.0,0.13269198872118096,Top observed values.
+stockcode_pattern,46000M,rows,17.0,0.2824389433460708,Top observed values.
+stockcode_pattern,79321,rows,17.0,0.2824389433460708,Top observed values.
+stockcode_pattern,22501,rows,17.0,0.2824389433460708,Top observed values.
+stockcode_pattern,23084,rows,16.0,0.2658248878551255,Top observed values.
+stockcode_pattern,21116,rows,15.0,0.24921083236418012,Top observed values.
+stockcode_pattern,22423,rows,15.0,0.24921083236418012,Top observed values.
+stockcode_pattern,46000S,rows,14.0,0.23259677687323477,Top observed values.
+stockcode_pattern,84990,rows,13.0,0.21598272138228944,Top observed values.
+stockcode_pattern,20713,rows,13.0,0.21598272138228944,Top observed values.
+stockcode_pattern,22734,rows,13.0,0.21598272138228944,Top observed values.
+stockcode_pattern,35965,rows,13.0,0.21598272138228944,Top observed values.
+stockcode_pattern,22502,rows,12.0,0.19936866589134408,Top observed values.
+stockcode_pattern,84016,rows,11.0,0.18275461040039873,Top observed values.
+stockcode_pattern,22469,rows,11.0,0.18275461040039873,Top observed values.
+stockcode_pattern,71477,rows,10.0,0.1661405549094534,Top observed values.
+stockcode_pattern,22139,rows,10.0,0.1661405549094534,Top observed values.
+stockcode_pattern,22470,rows,10.0,0.1661405549094534,Top observed values.
+stockcode_pattern,22627,rows,10.0,0.1661405549094534,Top observed values.
+stockcode_pattern,22087,rows,10.0,0.1661405549094534,Top observed values.
+stockcode_pattern,22950,rows,10.0,0.1661405549094534,Top observed values.
+stockcode_pattern,22197,rows,9.0,0.14952649941850807,Top observed values.
+stockcode_pattern,22467,rows,9.0,0.14952649941850807,Top observed values.
+stockcode_pattern,22719,rows,9.0,0.14952649941850807,Top observed values.
+stockcode_pattern,21181,rows,9.0,0.14952649941850807,Top observed values.
+stockcode_pattern,47566B,rows,9.0,0.14952649941850807,Top observed values.
+description_pattern,[missing],rows,4275.0,71.02508722379133,Top observed values.
+description_pattern,check,rows,160.0,2.6582488785512544,Top observed values.
+description_pattern,?,rows,90.0,1.4952649941850806,Top observed values.
+description_pattern,damages,rows,83.0,1.3789666057484633,Top observed values.
+description_pattern,damaged,rows,81.0,1.3457384947665725,Top observed values.
+description_pattern,found,rows,28.0,0.46519355374646953,Top observed values.
+description_pattern,missing,rows,27.0,0.4485794982555242,Top observed values.
+description_pattern,sold as set on dotcom,rows,20.0,0.3322811098189068,Top observed values.
+description_pattern,Damaged,rows,17.0,0.2824389433460708,Top observed values.
+description_pattern,adjustment,rows,16.0,0.2658248878551255,Top observed values.
+description_pattern,OWL DOORSTOP,rows,14.0,0.23259677687323477,Top observed values.
+description_pattern,POLYESTER FILLER PAD 45x45cm,rows,12.0,0.19936866589134408,Top observed values.
+description_pattern,dotcom,rows,12.0,0.19936866589134408,Top observed values.
+description_pattern,POLYESTER FILLER PAD 40x40cm,rows,10.0,0.1661405549094534,Top observed values.
+description_pattern,smashed,rows,9.0,0.14952649941850807,Top observed values.
+description_pattern,Found,rows,9.0,0.14952649941850807,Top observed values.
+description_pattern,FRENCH BLUE METAL DOOR SIGN 1,rows,9.0,0.14952649941850807,Top observed values.
+description_pattern,thrown away,rows,9.0,0.14952649941850807,Top observed values.
+description_pattern,"Unsaleable, destroyed.",rows,9.0,0.14952649941850807,Top observed values.
+description_pattern,PICNIC BASKET WICKER LARGE,rows,8.0,0.13291244392756274,Top observed values.
+description_pattern,checked,rows,8.0,0.13291244392756274,Top observed values.
+description_pattern,BOX OF 24 COCKTAIL PARASOLS,rows,8.0,0.13291244392756274,Top observed values.
+description_pattern,RED KITCHEN SCALES,rows,8.0,0.13291244392756274,Top observed values.
+description_pattern,IVORY KITCHEN SCALES,rows,8.0,0.13291244392756274,Top observed values.
+description_pattern,RECIPE BOX PANTRY YELLOW DESIGN,rows,8.0,0.13291244392756274,Top observed values.

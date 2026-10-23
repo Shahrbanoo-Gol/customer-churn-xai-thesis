@@ -1,0 +1,3 @@
+sheet_name,row_count_before,duplicate_participating_rows_keep_false,removable_additional_occurrences_keep_first,row_count_after_keep_first,no_exact_duplicates_after_removal
+Year 2009-2010,525461,13283,6865,518596,True
+Year 2010-2011,541910,10147,5268,536642,True

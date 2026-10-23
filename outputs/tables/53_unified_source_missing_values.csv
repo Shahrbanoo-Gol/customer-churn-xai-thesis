@@ -1,0 +1,10 @@
+column_name,analytical_or_technical,dtype,missing_count,missing_percentage
+Invoice,analytical,object,0,0.0
+StockCode,analytical,object,0,0.0
+Description,analytical,object,4275,0.4138287533057899
+Quantity,analytical,int64,0,0.0
+InvoiceDate,analytical,datetime64[us],0,0.0
+Price,analytical,float64,0,0.0
+Customer ID,analytical,float64,235151,22.763098285054927
+Country,analytical,str,0,0.0
+SourceSheet,technical lineage/control field,str,0,0.0

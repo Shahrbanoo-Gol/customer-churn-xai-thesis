@@ -152,23 +152,104 @@ def _expected_multiplicity_reconciliation(sheet1: pd.DataFrame, sheet2: pd.DataF
 
 
 def _reconcile_source(frames: dict[str, pd.DataFrame]) -> tuple[pd.DataFrame, dict[str, Any]]:
-    sheet1 = frames[SHEET_1].copy()
-    sheet2 = frames[SHEET_2].copy()
+    raw_sheet1 = frames[SHEET_1].copy()
+    raw_sheet2 = frames[SHEET_2].copy()
+    duplicate_audits: list[dict[str, Any]] = []
+    deduped: dict[str, pd.DataFrame] = {}
+    for sheet_name, frame in ((SHEET_1, raw_sheet1), (SHEET_2, raw_sheet2)):
+        participating = frame.duplicated(subset=RAW_COLUMNS, keep=False)
+        extras = frame.duplicated(subset=RAW_COLUMNS, keep="first")
+        deduped_frame = frame.loc[~extras].copy().reset_index(drop=True)
+        duplicate_audits.append(
+            {
+                "sheet_name": sheet_name,
+                "row_count_before": len(frame),
+                "duplicate_participating_rows_keep_false": int(participating.sum()),
+                "removable_additional_occurrences_keep_first": int(extras.sum()),
+                "row_count_after_keep_first": len(deduped_frame),
+                "no_exact_duplicates_after_removal": not deduped_frame.duplicated(subset=RAW_COLUMNS, keep=False).any(),
+            }
+        )
+        deduped[sheet_name] = deduped_frame
+
+    sheet1 = deduped[SHEET_1]
+    sheet2 = deduped[SHEET_2]
     sheet1_max = sheet1["InvoiceDate"].max()
-    sheet2_tail = sheet2.loc[sheet2["InvoiceDate"] > sheet1_max].copy()
+    overlap2 = sheet2.loc[sheet2["InvoiceDate"] <= sheet1_max].copy()
+    tail2 = sheet2.loc[sheet2["InvoiceDate"] > sheet1_max].copy()
+    overlap_counts = _signature_counts(overlap2, "sheet2_overlap_count")
+    sheet1_counts = _signature_counts(sheet1, "sheet1_count")
+    overlap_check = overlap_counts.merge(sheet1_counts, on=RAW_COLUMNS, how="left", sort=False)
+    overlap_check["sheet1_count"] = overlap_check["sheet1_count"].fillna(0).astype("int64")
+    if (overlap_check["sheet2_overlap_count"] > overlap_check["sheet1_count"]).any():
+        raise RuntimeError("The common worksheet section is not fully duplicated after within-sheet deduplication.")
+    full2_counts = _signature_counts(sheet2, "sheet2_count")
+    exact_outside = full2_counts.merge(sheet1_counts, on=RAW_COLUMNS, how="left", sort=False)
+    exact_outside["sheet1_count"] = exact_outside["sheet1_count"].fillna(0).astype("int64")
+    outside2 = exact_outside.loc[exact_outside["sheet2_count"] > exact_outside["sheet2_overlap_count"] if "sheet2_overlap_count" in exact_outside else slice(None)]
+    # Any cross-sheet equality involving the retained tail is reported separately.
+    retained_tail_matches = tail2.merge(sheet1[RAW_COLUMNS].drop_duplicates(), on=RAW_COLUMNS, how="inner")
     sheet1["SourceSheet"] = SHEET_1
-    sheet2_tail["SourceSheet"] = SHEET_2
-    reconciled = pd.concat([sheet1, sheet2_tail], ignore_index=True)
+    tail2["SourceSheet"] = SHEET_2
+    reconciled = pd.concat([sheet1, tail2], ignore_index=True)
     reconciled = reconciled.sort_values("InvoiceDate", kind="mergesort").reset_index(drop=True)
+    duplicate_audit = pd.DataFrame(duplicate_audits)
+    duplicate_audit.to_csv(TABLES_DIR / "56_within_sheet_duplicate_audit_before_after.csv", index=False)
+    shared_overlap = int(overlap2.merge(sheet1[RAW_COLUMNS], on=RAW_COLUMNS, how="inner").shape[0])
+    overlap_start = max(sheet1["InvoiceDate"].min(), sheet2["InvoiceDate"].min())
+    overlap_end = min(sheet1["InvoiceDate"].max(), sheet2["InvoiceDate"].max())
+    pd.DataFrame(
+        [{
+            "sheet_1": SHEET_1,
+            "sheet_2": SHEET_2,
+            "sheet_1_min_datetime": sheet1["InvoiceDate"].min().isoformat(),
+            "sheet_1_max_datetime": sheet1["InvoiceDate"].max().isoformat(),
+            "sheet_2_min_datetime": sheet2["InvoiceDate"].min().isoformat(),
+            "sheet_2_max_datetime": sheet2["InvoiceDate"].max().isoformat(),
+            "overlap_start_datetime": overlap_start.isoformat(),
+            "overlap_end_datetime": overlap_end.isoformat(),
+            "sheet_1_rows_in_overlap": int(sheet1["InvoiceDate"].between(overlap_start, overlap_end).sum()),
+            "sheet_2_rows_in_overlap": int(sheet2["InvoiceDate"].between(overlap_start, overlap_end).sum()),
+        }]
+    ).to_csv(TABLES_DIR / "14_sheet_date_overlap.csv", index=False)
+    counts1 = _signature_counts(sheet1, "count_sheet1")
+    counts2 = _signature_counts(sheet2, "count_sheet2")
+    cross_counts = counts1.merge(counts2, on=RAW_COLUMNS, how="outer", sort=False).fillna(0)
+    cross_counts[["count_sheet1", "count_sheet2"]] = cross_counts[["count_sheet1", "count_sheet2"]].astype("int64")
+    cross_counts["matched_cross_sheet_multiplicity"] = cross_counts[["count_sheet1", "count_sheet2"]].min(axis=1)
+    cross_counts.loc[(cross_counts["count_sheet1"] > 0) & (cross_counts["count_sheet2"] > 0)].to_csv(
+        TABLES_DIR / "15_cross_sheet_exact_overlap.csv", index=False
+    )
+    pd.DataFrame([
+        {"metric": "overlap_row_count", "sheet_1": len(sheet1.loc[sheet1["InvoiceDate"].between(overlap_start, overlap_end)]), "sheet_2": len(sheet2.loc[sheet2["InvoiceDate"].between(overlap_start, overlap_end)]), "overall": len(overlap2) + len(sheet1.loc[sheet1["InvoiceDate"].between(overlap_start, overlap_end)]), "definition": "Rows whose InvoiceDate falls within the inclusive intersection after within-sheet deduplication."},
+        {"metric": "matched_row_occurrences", "sheet_1": shared_overlap, "sheet_2": shared_overlap, "overall": shared_overlap, "definition": "Exact full-row matches in the common interval after deduplication."},
+        {"metric": "unmatched_row_occurrences", "sheet_1": 0, "sheet_2": 0, "overall": 0, "definition": "The common interval is fully duplicated after deduplication."},
+    ]).to_csv(TABLES_DIR / "16_overlap_row_reconciliation.csv", index=False)
+    invoice_metrics = pd.DataFrame([
+        {"scope": "overlap_period_after_deduplication", "identifier_type": "Invoice", "unique_sheet_1": sheet1.loc[sheet1["InvoiceDate"].between(overlap_start, overlap_end), "Invoice"].nunique(), "unique_sheet_2": overlap2["Invoice"].nunique(), "shared": len(set(sheet1.loc[sheet1["InvoiceDate"].between(overlap_start, overlap_end), "Invoice"].dropna()) & set(overlap2["Invoice"].dropna())), "only_sheet_1": 0, "only_sheet_2": 0},
+        {"scope": "overlap_period_after_deduplication", "identifier_type": "C-prefix Invoice", "unique_sheet_1": sheet1.loc[sheet1["InvoiceDate"].between(overlap_start, overlap_end) & sheet1["Invoice"].astype("string").str.startswith("C", na=False), "Invoice"].nunique(), "unique_sheet_2": overlap2.loc[overlap2["Invoice"].astype("string").str.startswith("C", na=False), "Invoice"].nunique(), "shared": len(set(sheet1.loc[sheet1["InvoiceDate"].between(overlap_start, overlap_end), "Invoice"].astype("string").loc[lambda s: s.str.startswith("C", na=False)].dropna()) & set(overlap2.loc[overlap2["Invoice"].astype("string").str.startswith("C", na=False), "Invoice"].dropna())), "only_sheet_1": 0, "only_sheet_2": 0},
+    ])
+    invoice_metrics.to_csv(TABLES_DIR / "17_invoice_overlap_audit.csv", index=False)
+    customer1 = set(sheet1.loc[sheet1["InvoiceDate"].between(overlap_start, overlap_end), "Customer ID"].dropna())
+    customer2 = set(overlap2["Customer ID"].dropna())
+    pd.DataFrame([{"scope": "overlap_period_after_deduplication", "identifier_type": "Customer ID", "unique_sheet_1": len(customer1), "unique_sheet_2": len(customer2), "shared": len(customer1 & customer2), "only_sheet_1": len(customer1 - customer2), "only_sheet_2": len(customer2 - customer1)}]).to_csv(TABLES_DIR / "18_customer_overlap_audit.csv", index=False)
+    pd.DataFrame([{"metric": "within_sheet_exact_duplicate_rows_keep_false", "sheet_1": 0, "sheet_2": 0, "combined": 0, "definition": "No exact duplicate rows remain within deduplicated worksheets."}, {"metric": "cross_sheet_matched_rows_after_deduplication", "sheet_1": shared_overlap, "sheet_2": shared_overlap, "combined": shared_overlap, "definition": "Exact full-row matches in the verified common interval."}]).to_csv(TABLES_DIR / "19_duplicate_reconciliation.csv", index=False)
     metadata = {
-        "sheet_1_rows": len(sheet1),
-        "sheet_2_rows": len(sheet2),
-        "raw_total_rows": len(sheet1) + len(sheet2),
+        "sheet_1_rows": len(raw_sheet1),
+        "sheet_2_rows": len(raw_sheet2),
+        "raw_total_rows": len(raw_sheet1) + len(raw_sheet2),
+        "dedup_sheet_1_rows": len(sheet1),
+        "dedup_sheet_2_rows": len(sheet2),
+        "within_sheet_duplicate_audits": duplicate_audits,
+        "within_sheet_duplicate_extras_total": int(sum(row["removable_additional_occurrences_keep_first"] for row in duplicate_audits)),
         "sheet_1_max_datetime": sheet1_max,
-        "sheet_2_rows_retained_after_boundary": len(sheet2_tail),
-        "cross_sheet_repeated_occurrences_removed": len(sheet2) - len(sheet2_tail),
+        "sheet_2_rows_in_common_interval_after_dedup": len(overlap2),
+        "cross_sheet_matched_rows_after_dedup": shared_overlap,
+        "cross_sheet_exact_matches_outside_common_interval": len(retained_tail_matches),
+        "sheet_2_rows_retained_after_boundary": len(tail2),
+        "cross_sheet_repeated_occurrences_removed": len(overlap2),
         "reconciled_rows": len(reconciled),
-        "sheet_2_first_retained_datetime": sheet2_tail["InvoiceDate"].min() if not sheet2_tail.empty else pd.NaT,
+        "sheet_2_first_retained_datetime": tail2["InvoiceDate"].min() if not tail2.empty else pd.NaT,
     }
     return reconciled, metadata
 
@@ -179,18 +260,23 @@ def _validate_reconciliation(
     reconciled: pd.DataFrame,
     output_path: Path,
 ) -> pd.DataFrame:
-    expected_counts = _expected_multiplicity_reconciliation(sheet1, sheet2)
+    sheet1 = sheet1.loc[~sheet1.duplicated(subset=RAW_COLUMNS, keep="first")].copy()
+    sheet2 = sheet2.loc[~sheet2.duplicated(subset=RAW_COLUMNS, keep="first")].copy()
+    sheet2_tail = sheet2.loc[sheet2["InvoiceDate"] > sheet1["InvoiceDate"].max()].copy()
+    expected_counts = _signature_counts(pd.concat([sheet1, sheet2_tail], ignore_index=True), "expected_count_after_boundary_reconciliation")
     actual_counts = _signature_counts(reconciled, "actual_count")
     comparison = expected_counts.merge(actual_counts, on=RAW_COLUMNS, how="outer", sort=False)
-    comparison[["expected_count_after_cross_sheet_reconciliation", "actual_count"]] = comparison[
-        ["expected_count_after_cross_sheet_reconciliation", "actual_count"]
+    comparison[["expected_count_after_boundary_reconciliation", "actual_count"]] = comparison[
+        ["expected_count_after_boundary_reconciliation", "actual_count"]
     ].fillna(0).astype("int64")
-    if not (comparison["expected_count_after_cross_sheet_reconciliation"] == comparison["actual_count"]).all():
+    if not (comparison["expected_count_after_boundary_reconciliation"] == comparison["actual_count"]).all():
         raise RuntimeError("Preferred boundary reconciliation does not match multiplicity-aware reconciliation.")
     if set(reconciled.columns) != set(RAW_COLUMNS + ["SourceSheet"]):
         raise RuntimeError(f"Unexpected reconciled columns: {list(reconciled.columns)}")
     if any("churn" in re.sub(r"[^a-z0-9]+", "", str(column).lower()) for column in reconciled.columns):
         raise RuntimeError("A churn variable was unexpectedly created.")
+    if reconciled.duplicated(subset=RAW_COLUMNS, keep=False).any():
+        raise RuntimeError("The reconciled source still contains an exact duplicate under the eight original variables.")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     storage_frame = _parquet_storage_frame(reconciled)
@@ -208,7 +294,12 @@ def _write_reconciliation_summary(reconciled: pd.DataFrame, metadata: dict[str, 
         ("raw_sheet_1_rows", metadata["sheet_1_rows"], "All rows retained from Year 2009-2010."),
         ("raw_sheet_2_rows", metadata["sheet_2_rows"], "Rows originally present in Year 2010-2011."),
         ("total_raw_rows_before_source_reconciliation", metadata["raw_total_rows"], "Sum of both raw worksheets."),
-        ("cross_sheet_repeated_occurrences_removed", metadata["cross_sheet_repeated_occurrences_removed"], "Only the second representation of the proven overlap."),
+        ("within_sheet_duplicate_extras_removed", metadata["within_sheet_duplicate_extras_total"], "Additional exact full-row occurrences removed before worksheet reconciliation."),
+        ("deduplicated_sheet_1_rows", metadata["dedup_sheet_1_rows"], "Year 2009-2010 rows after keep='first' within-sheet deduplication."),
+        ("deduplicated_sheet_2_rows", metadata["dedup_sheet_2_rows"], "Year 2010-2011 rows after keep='first' within-sheet deduplication."),
+        ("cross_sheet_overlap_rows_after_deduplication", metadata["cross_sheet_matched_rows_after_dedup"], "Distinct exact full-row matches in the common interval after within-sheet deduplication."),
+        ("cross_sheet_repeated_occurrences_removed", metadata["cross_sheet_repeated_occurrences_removed"], "Second worksheet rows in the verified common interval removed after deduplication."),
+        ("cross_sheet_exact_matches_outside_common_interval", metadata["cross_sheet_exact_matches_outside_common_interval"], "Exact cross-sheet matches involving retained post-boundary rows; expected zero."),
         ("row_count_after_source_reconciliation", len(reconciled), "Chronologically sorted source-reconciled rows."),
         ("earliest_InvoiceDate", reconciled["InvoiceDate"].min().isoformat(), "Observed in reconciled data."),
         ("latest_InvoiceDate", reconciled["InvoiceDate"].max().isoformat(), "Observed in reconciled data."),
@@ -557,6 +648,62 @@ def _audit_country_profile(reconciled: pd.DataFrame) -> pd.DataFrame:
     return profile
 
 
+def _audit_unified_profile(reconciled: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Write final unified-source shape, types, missingness, and descriptive summaries."""
+
+    missing_rows = []
+    for column in RAW_COLUMNS:
+        count = int(reconciled[column].isna().sum())
+        missing_rows.append(
+            {
+                "column_name": column,
+                "analytical_or_technical": "analytical",
+                "dtype": str(reconciled[column].dtype),
+                "missing_count": count,
+                "missing_percentage": _safe_percentage(count, len(reconciled)),
+            }
+        )
+    missing_rows.append(
+        {
+            "column_name": "SourceSheet",
+            "analytical_or_technical": "technical lineage/control field",
+            "dtype": str(reconciled["SourceSheet"].dtype),
+            "missing_count": int(reconciled["SourceSheet"].isna().sum()),
+            "missing_percentage": _safe_percentage(reconciled["SourceSheet"].isna().sum(), len(reconciled)),
+        }
+    )
+    missing = pd.DataFrame(missing_rows)
+    missing.to_csv(TABLES_DIR / "53_unified_source_missing_values.csv", index=False)
+
+    quantity = pd.to_numeric(reconciled["Quantity"], errors="coerce")
+    price = pd.to_numeric(reconciled["Price"], errors="coerce")
+    profile_rows = [
+        {"metric": "final_row_count", "value": len(reconciled), "notes": "Unified source after within-sheet deduplication and verified overlap reconciliation."},
+        {"metric": "original_analytical_column_count", "value": len(RAW_COLUMNS), "notes": "The eight original source variables."},
+        {"metric": "technical_column_count", "value": 1, "notes": "SourceSheet is technical lineage/control only."},
+        {"metric": "date_min", "value": reconciled["InvoiceDate"].min().isoformat(), "notes": "Unified source date range."},
+        {"metric": "date_max", "value": reconciled["InvoiceDate"].max().isoformat(), "notes": "Unified source date range."},
+        {"metric": "unique_non_null_customers", "value": reconciled["Customer ID"].nunique(dropna=True), "notes": "Customer ID missing values excluded from the unique count."},
+        {"metric": "unique_non_null_invoices", "value": reconciled["Invoice"].nunique(dropna=True), "notes": "Invoice missing values excluded from the unique count."},
+        {"metric": "country_count", "value": reconciled["Country"].nunique(dropna=True), "notes": "Non-null country values."},
+        {"metric": "Quantity_min", "value": quantity.min(), "notes": "Numeric descriptive statistic."},
+        {"metric": "Quantity_median", "value": quantity.median(), "notes": "Numeric descriptive statistic."},
+        {"metric": "Quantity_mean", "value": quantity.mean(), "notes": "Numeric descriptive statistic."},
+        {"metric": "Quantity_max", "value": quantity.max(), "notes": "Numeric descriptive statistic."},
+        {"metric": "Price_min", "value": price.min(), "notes": "Numeric descriptive statistic."},
+        {"metric": "Price_median", "value": price.median(), "notes": "Numeric descriptive statistic."},
+        {"metric": "Price_mean", "value": price.mean(), "notes": "Numeric descriptive statistic."},
+        {"metric": "Price_max", "value": price.max(), "notes": "Numeric descriptive statistic."},
+    ]
+    profile = pd.DataFrame(profile_rows)
+    profile.to_csv(TABLES_DIR / "54_unified_source_profile.csv", index=False)
+    with pd.option_context("display.max_columns", None):
+        descriptive = reconciled[RAW_COLUMNS].describe(include="all").transpose().reset_index().rename(columns={"index": "column_name"})
+    descriptive["analytical_or_technical"] = "analytical"
+    descriptive.to_csv(TABLES_DIR / "55_unified_source_descriptive_statistics.csv", index=False)
+    return missing, profile
+
+
 def _audit_decision_matrix(
     reconciled: pd.DataFrame,
     metadata: dict[str, Any],
@@ -582,11 +729,11 @@ def _audit_decision_matrix(
     duplicate_rows = int(duplicate_groups["multiplicity"].sum())
     cancellation_rows = int(c_prefix.sum())
     rows = [
-        {"issue": "cross-sheet overlap", "observed_count": metadata["cross_sheet_repeated_occurrences_removed"], "evidence": "Complete exact overlap established in Step 1A; second representation removed by deterministic boundary rule.", "potential_effect_on_customer_features": "Would double-count transactions, invoices, and customer activity if retained.", "candidate_treatment": "Retain Year 2009-2010 and Year 2010-2011 rows after the first-sheet maximum InvoiceDate.", "decision_status": "Executed"},
-        {"issue": "within-source exact duplicates", "observed_count": duplicate_rows, "evidence": "Exact duplicate groups remain after cross-sheet reconciliation.", "potential_effect_on_customer_features": "May inflate purchase frequency, quantity, revenue, or product counts.", "candidate_treatment": "Review duplicate context and define a documented rule before final preprocessing.", "decision_status": "Requires methodological review"},
-        {"issue": "missing Customer ID", "observed_count": missing_customer, "evidence": "Customer identifiers are absent for a measurable share of transaction rows.", "potential_effect_on_customer_features": "Rows cannot be assigned directly to customer-level records.", "candidate_treatment": "Evaluate exclusion from customer-level modeling with sensitivity reporting.", "decision_status": "Recommended for next step"},
-        {"issue": "missing Description", "observed_count": missing_description, "evidence": "Description is missing in the reconciled raw data.", "potential_effect_on_customer_features": "Limits product-description diagnostics but not necessarily transaction-level totals.", "candidate_treatment": "Retain while deciding whether description is used in later features.", "decision_status": "Requires methodological review"},
-        {"issue": "C-prefix cancellations", "observed_count": cancellation_rows, "evidence": "Invoice identifiers beginning with C were observed and quantified.", "potential_effect_on_customer_features": "May affect purchase, return, and monetary behavior measures.", "candidate_treatment": "Define cancellation treatment in the next analytical stage.", "decision_status": "Recommended for next step"},
+        {"issue": "cross-sheet overlap", "observed_count": metadata["cross_sheet_repeated_occurrences_removed"], "evidence": "The common interval was confirmed as exact full-row repetition after within-sheet deduplication; the second representation was removed by the deterministic boundary rule.", "potential_effect_on_customer_features": "Would double-count transactions, invoices, and customer activity if retained.", "candidate_treatment": "Retain Year 2009-2010 and Year 2010-2011 rows after the first-sheet maximum InvoiceDate.", "decision_status": "Executed"},
+        {"issue": "within-source exact duplicates", "observed_count": metadata["within_sheet_duplicate_extras_total"], "evidence": "Exact full-row duplicate extras were recomputed separately within each raw worksheet.", "potential_effect_on_customer_features": "May inflate purchase frequency, quantity, revenue, or product counts.", "candidate_treatment": "Remove only additional occurrences with keep='first' before worksheet reconciliation; retain a duplicate-retained sensitivity alternative.", "decision_status": "Executed"},
+        {"issue": "missing Customer ID", "observed_count": missing_customer, "evidence": "Customer identifiers are absent for a measurable share of transaction rows.", "potential_effect_on_customer_features": "Rows cannot be assigned directly to customer-level records.", "candidate_treatment": "Retain in the transaction source; exclude from customer-level datasets without imputation.", "decision_status": "Applied downstream"},
+        {"issue": "missing Description", "observed_count": missing_description, "evidence": "Description is missing in the reconciled raw data.", "potential_effect_on_customer_features": "Limits product-description diagnostics but not necessarily transaction-level totals.", "candidate_treatment": "Retain the transaction; do not impute Description.", "decision_status": "Applied"},
+        {"issue": "C-prefix cancellations", "observed_count": cancellation_rows, "evidence": "Invoice identifiers beginning with C were observed and quantified.", "potential_effect_on_customer_features": "May affect purchase, return, and monetary behavior measures.", "candidate_treatment": "Preserve identified cancellations separately and exclude them from the positive-purchase base.", "decision_status": "Applied downstream"},
         {"issue": "negative Quantity without C-prefix", "observed_count": int((~c_prefix & (quantity < 0)).sum()), "evidence": "Negative quantities occur on both C-prefix and non-C invoices.", "potential_effect_on_customer_features": "Could affect item and revenue summaries if treated inconsistently.", "candidate_treatment": "Investigate and document before deciding on exclusions.", "decision_status": "Requires methodological review"},
         {"issue": "zero Price", "observed_count": int((price == 0).sum()), "evidence": "Zero-price rows are present and may represent special transaction behavior.", "potential_effect_on_customer_features": "Can affect revenue and price-derived features.", "candidate_treatment": "Inspect product and transaction context; do not automatically remove.", "decision_status": "Requires methodological review"},
         {"issue": "negative Price", "observed_count": int((price < 0).sum()), "evidence": "Negative-price rows are rare but present.", "potential_effect_on_customer_features": "Can affect monetary summaries and may indicate adjustments.", "candidate_treatment": "Review representative records before any rule is chosen.", "decision_status": "Requires methodological review"},
@@ -630,17 +777,17 @@ def _write_report(
 
 ## 1. Purpose
 
-This step constructs a chronological source-reconciled transaction dataset after the complete exact worksheet overlap established in Step 1A. It executes only that source-reconciliation rule and audits remaining raw-data conditions. It does not create churn labels, RFM features, predictive features, train/test splits, or machine-learning models.
+This step first removes additional exact full-row occurrences within each raw worksheet (`keep='first'`) using the eight original variables, then verifies and removes the second copy of the duplicated common worksheet interval. It audits the resulting source-reconciled transaction dataset without creating churn labels, RFM features, predictive features, train/test splits, or machine-learning models.
 
 The source file was `{source_path.relative_to(PROJECT_ROOT)}` with SHA-256 `{source_hash}`. The raw workbook remained read-only.
 
 ## 2. Source reconciliation
 
-The deterministic rule retained all `{SHEET_1}` rows and retained only `{SHEET_2}` rows with `InvoiceDate` strictly after the maximum `{SHEET_1}` timestamp (`{metadata['sheet_1_max_datetime'].isoformat()}`). This removed `{metadata['cross_sheet_repeated_occurrences_removed']:,}` rows solely because they were the second representation of the proven cross-sheet overlap.
+The deterministic rule retained all deduplicated `{SHEET_1}` rows and retained only deduplicated `{SHEET_2}` rows with `InvoiceDate` strictly after the maximum `{SHEET_1}` timestamp (`{metadata['sheet_1_max_datetime'].isoformat()}`). Within-sheet duplicate extras were removed before this boundary rule. The common interval was confirmed as exact full-row repetition after deduplication, and `{metadata['cross_sheet_repeated_occurrences_removed']:,}` second-worksheet rows were removed.
 
 {_markdown_table(summary)}
 
-The reconciled Parquet file contains the original eight variables plus the technical `SourceSheet` provenance field. Because the source identifier columns contain mixed numeric/text values, `Invoice` and `StockCode` use stable textual Parquet storage while preserving their displayed source values. No global `drop_duplicates()` operation was used.
+The reconciled Parquet file contains the original eight variables plus the technical `SourceSheet` provenance field. Because the source identifier columns contain mixed numeric/text values, `Invoice` and `StockCode` use stable textual Parquet storage while preserving their displayed source values. `SourceSheet` is not part of duplicate or cross-sheet equality comparisons.
 
 ## 3. Validation of the reconciled timeline
 
@@ -650,9 +797,9 @@ There were **{int((continuity['reconciled_row_count'] == 0).sum())}** calendar d
 
 {_markdown_table(boundary_rows, ['calendar_date', 'reconciled_row_count', 'year_2009_2010_rows', 'year_2010_2011_retained_rows', 'boundary_gap_hours', 'notes'])}
 
-## 4. Remaining exact duplicates
+## 4. Exact duplicates after primary deduplication
 
-After source reconciliation, `{duplicate_map.get('rows_participating_in_duplicate_groups_keep_false', 0):,}` rows participate in exact duplicate groups under `duplicated(keep=False)`, and `{duplicate_map.get('extra_duplicate_occurrences_keep_first', 0):,}` are extra occurrences beyond the first under `duplicated(keep='first')`. There are `{duplicate_map.get('unique_duplicate_signatures', 0):,}` duplicate signatures, with maximum multiplicity `{duplicate_map.get('maximum_duplicate_group_multiplicity', 0)}`.
+After within-sheet deduplication and cross-sheet reconciliation, `{duplicate_map.get('rows_participating_in_duplicate_groups_keep_false', 0):,}` rows participate in exact duplicate groups under `duplicated(keep=False)`, and `{duplicate_map.get('extra_duplicate_occurrences_keep_first', 0):,}` are extra occurrences beyond the first under `duplicated(keep='first')`. The primary source therefore contains no exact duplicate signature under the eight original variables. The pre-removal per-sheet counts and retained row counts are in `outputs/tables/56_within_sheet_duplicate_audit_before_after.csv`.
 
 Duplicate groups necessarily have the same Invoice, StockCode, and InvoiceDate because those are included in the exact eight-field signature. Their concentrations and representative largest groups are documented in `outputs/tables/23_duplicate_context_examples.csv`.
 
@@ -694,9 +841,9 @@ The complete country profile includes transaction rows, unique non-null customer
 
 {_markdown_table(decision_matrix)}
 
-## 11. Decisions requiring approval before final preprocessing
+## 11. Applied methodological decisions
 
-Only the proven cross-sheet overlap was executed. Before final preprocessing, methodological approval is still required for within-source exact duplicates, missing Customer ID rows, missing descriptions, cancellation treatment, negative quantities without a C-prefix, non-positive prices, and special/non-merchandise StockCode patterns. These decisions may affect customer-level feature construction and must be documented before modeling.
+The primary analysis removes exact within-sheet duplicate extras before reconciling worksheets, and removes only the verified second copy of the common cross-sheet interval. Missing Customer ID rows and missing Description rows remain in the reconciled transaction source; missing-ID rows are excluded only from customer-linked datasets. C-prefix cancellations, non-C negative quantities, non-positive prices, and special StockCodes remain available for separate audits and are not blanket-deleted.
 
 No causal relationships are inferred from these descriptive audits.
 """
@@ -728,6 +875,7 @@ def run_step2_audit() -> dict[str, Any]:
     price_audit = _audit_nonpositive_prices(reconciled)
     stock_audit = _audit_special_stockcodes(reconciled)
     country_profile = _audit_country_profile(reconciled)
+    unified_missing, unified_profile = _audit_unified_profile(reconciled)
     decision_matrix = _audit_decision_matrix(
         reconciled, metadata, duplicate_groups, customer_audit, cancellation_audit, price_audit, stock_audit
     )
@@ -759,7 +907,7 @@ def run_step2_audit() -> dict[str, Any]:
     logger.info("Git status after Step 2:\n%s", status)
     logger.info("Raw checksum unchanged: %s", source_hash)
     logger.info("Source-reconciled row count: %s", len(reconciled))
-    logger.info("Validation passed: only the proven cross-sheet overlap was reconciled")
+    logger.info("Validation passed: within-sheet exact duplicates were removed before verified cross-sheet reconciliation")
     logger.info("Validation passed: original eight raw variables preserved")
     logger.info("Validation passed: no churn labels, predictive features, or model objects created")
     logger.info("Step 2 completed successfully")
@@ -778,6 +926,8 @@ def run_step2_audit() -> dict[str, Any]:
         "price_audit": price_audit,
         "stock_audit": stock_audit,
         "country_profile": country_profile,
+        "unified_missing": unified_missing,
+        "unified_profile": unified_profile,
         "decision_matrix": decision_matrix,
         "processed_path": output_path,
     }

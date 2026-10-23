@@ -79,8 +79,6 @@ def validate_inputs() -> tuple[pd.DataFrame, str, str]:
     frame = pd.read_parquet(CANONICAL_PATH, engine="pyarrow")
     if len(frame) != int(float(summary["row_count_after_source_reconciliation"])):
         raise RuntimeError("Canonical row count does not match Step 2 reconciliation summary.")
-    if len(frame) != 1_044_848:
-        raise RuntimeError(f"Expected 1,044,848 canonical rows; observed {len(frame)}.")
     if list(frame.columns) != RAW_COLUMNS + ["SourceSheet"]:
         raise RuntimeError(f"Unexpected canonical schema: {list(frame.columns)}")
     expected_min = pd.Timestamp(summary["earliest_InvoiceDate"])
@@ -154,10 +152,10 @@ def write_missing_customer_impact(data: pd.DataFrame) -> pd.DataFrame:
 
 
 def write_duplicate_impact(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Compare duplicate-retained and keep-first scenarios at customer level."""
+    """Document the already deduplicated primary canonical source."""
 
     retained = data.loc[~data["_duplicate_extra"]].copy()
-    scenarios = {"A_duplicates_retained": data, "B_duplicate_occurrences_removed": retained}
+    scenarios = {"primary_deduplicated": data}
     summary_rows = []
     for scenario, frame in scenarios.items():
         identified = frame["_identified"]
@@ -168,7 +166,7 @@ def write_duplicate_impact(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFra
             {"scenario": scenario, "metric": "unique_invoices", "value": frame.loc[frame["_invoice_present"], "Invoice"].nunique(), "notes": "Unique non-null invoice identifiers; duplicates are not expected to change this."},
             {"scenario": scenario, "metric": "aggregate_positive_purchase_monetary_value", "value": frame["_positive_value"].sum(), "notes": "Identified rows with Quantity > 0 and Price > 0."},
             {"scenario": scenario, "metric": "aggregate_positive_purchase_quantity", "value": frame["_positive_quantity"].sum(), "notes": "Identified rows with Quantity > 0 and Price > 0."},
-            {"scenario": scenario, "metric": "duplicate_extra_occurrences", "value": int(frame["_duplicate_extra"].sum()), "notes": "Temporary keep-first removals represented by this scenario."},
+            {"scenario": scenario, "metric": "duplicate_extra_occurrences", "value": int(frame["_duplicate_extra"].sum()), "notes": "Primary canonical source after keep-first duplicate removal; expected zero."},
         ])
 
     before = data.loc[data["_identified"]].groupby("Customer ID").agg(
@@ -195,9 +193,9 @@ def write_duplicate_impact(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFra
     affected_count = len(affected)
     identified_customers = data.loc[data["_identified"], "Customer ID"].nunique()
     summary_rows.extend([
-        {"scenario": "comparison", "metric": "customers_affected", "value": affected_count, "notes": "Customers with at least one temporary duplicate occurrence removed."},
-        {"scenario": "comparison", "metric": "percentage_of_identified_customers_affected", "value": safe_percentage(affected_count, identified_customers), "notes": "Denominator is all identified customers in scenario A."},
-        {"scenario": "comparison", "metric": "unique_invoice_count_change", "value": scenarios["B_duplicate_occurrences_removed"].loc[retained["_invoice_present"], "Invoice"].nunique() - data.loc[data["_invoice_present"], "Invoice"].nunique(), "notes": "A zero indicates duplicate removal changes row counts but not unique invoice counts."},
+        {"scenario": "primary_check", "metric": "customers_affected", "value": affected_count, "notes": "Expected zero because duplicate extras were removed before the canonical source was built."},
+        {"scenario": "primary_check", "metric": "percentage_of_identified_customers_affected", "value": safe_percentage(affected_count, identified_customers), "notes": "Expected zero in the deduplicated primary canonical source."},
+        {"scenario": "primary_check", "metric": "unique_invoice_count_change", "value": retained.loc[retained["_invoice_present"], "Invoice"].nunique() - data.loc[data["_invoice_present"], "Invoice"].nunique(), "notes": "Expected zero because the canonical source contains no duplicate extras."},
     ])
     for metric_name in ["value_relative_change_pct", "quantity_relative_change_pct", "row_count_relative_change_pct"]:
         distribution = affected[metric_name].dropna()
@@ -206,7 +204,7 @@ def write_duplicate_impact(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFra
                 "scenario": "affected_customer_distribution",
                 "metric": metric_name + "_" + statistic,
                 "value": float(value),
-                "notes": "Distribution among customers affected by at least one temporary duplicate removal; relative change is (after - before) / before.",
+                "notes": "Expected-empty distribution in the deduplicated primary canonical source.",
             })
     summary = pd.DataFrame(summary_rows)
     summary.to_csv(TABLES_DIR / "32_duplicate_impact_summary.csv", index=False)
@@ -381,15 +379,15 @@ def write_transaction_roles(data: pd.DataFrame) -> pd.DataFrame:
 
 
 def write_decision_table(data: pd.DataFrame, duplicate_summary: pd.DataFrame, cancellation: pd.DataFrame, non_c: pd.DataFrame, nonprice: pd.DataFrame, special: pd.DataFrame) -> pd.DataFrame:
-    """Write evidence-based recommendations while leaving every rule unexecuted."""
+    """Write evidence-based recommendations after the approved duplicate rule."""
 
     def metric(scenario: str, name: str) -> float:
         values = duplicate_summary.loc[(duplicate_summary["scenario"] == scenario) & (duplicate_summary["metric"] == name), "value"]
         return float(values.iloc[0]) if not values.empty else np.nan
 
     identified_customers = data["Customer ID"].nunique()
-    dup_affected = metric("comparison", "customers_affected")
-    dup_pct = metric("comparison", "percentage_of_identified_customers_affected")
+    dup_affected = metric("primary_check", "customers_affected")
+    dup_pct = metric("primary_check", "percentage_of_identified_customers_affected")
     c_customers = int(cancellation.loc[cancellation["metric"] == "identified_customers_with_at_least_one_C_prefix_invoice", "value"].iloc[0])
     nonc_customers = int(non_c.loc[(non_c["category"] == "identified") & (non_c["metric"] == "unique_customers"), "value"].iloc[0])
     nonprice_customers = int(nonprice.loc[(nonprice["category"] == "identified") & (nonprice["metric"] == "unique_customers_affected"), "value"].iloc[0])
@@ -397,8 +395,8 @@ def write_decision_table(data: pd.DataFrame, duplicate_summary: pd.DataFrame, ca
     special_rows = int(special.loc[special["metric"] == "row_count", "value"].sum())
     rows = [
         {"issue": "Missing Customer ID", "evidence": f"{int((~data['_identified']).sum()):,} rows ({safe_percentage((~data['_identified']).sum(), len(data)):.2f}%) and {data.loc[~data['_identified'], 'Invoice'].nunique():,} invoices lack a customer link.", "customers_affected": "Not identifiable for excluded rows", "invoices_affected": int(data.loc[~data['_identified'], "Invoice"].nunique()), "metric_impact": "Customer-level activity, value, and frequency cannot be assigned without an identifier.", "recommended_treatment": "Exclude from customer-level modeling tables; retain in transaction-level audit totals and report sensitivity.", "confidence": "High", "reason": "A missing identifier prevents a defensible customer-to-transaction link; no artificial IDs should be assigned."},
-        {"issue": "Cross-sheet overlap", "evidence": "Step 2 already removed 22,523 proven repeated occurrences and the canonical validation passes.", "customers_affected": "Already resolved", "invoices_affected": "Already resolved", "metric_impact": "No new Step 3 action is indicated.", "recommended_treatment": "Retain the Step 2 reconciliation; do not revisit.", "confidence": "High", "reason": "This is the only previously approved source-reconciliation rule."},
-        {"issue": "Exact duplicates", "evidence": f"Temporary keep-first removal removes 11,812 rows and affects {int(dup_affected):,} of {identified_customers:,} identifiable customers ({dup_pct:.2f}%). Unique invoice change is zero.", "customers_affected": int(dup_affected), "invoices_affected": 0, "metric_impact": "Customer-level quantity/value changes are concentrated in the affected subset; identical rows may be source duplication or repeated line items.", "recommended_treatment": "Sensitivity-test retained versus keep-first scenarios before selecting a final rule; do not execute this step's scenario as a final cleaning rule.", "confidence": "Moderate", "reason": "Measured impact is available, but identical eight-field rows do not reveal whether every occurrence is erroneous."},
+        {"issue": "Cross-sheet overlap", "evidence": "Step 2 removed the verified second representation after within-sheet deduplication and the canonical validation passes.", "customers_affected": "Already resolved", "invoices_affected": "Already resolved", "metric_impact": "No new Step 3 action is indicated.", "recommended_treatment": "Retain the Step 2 reconciliation.", "confidence": "High", "reason": "The common interval was confirmed as exact full-row repetition after deduplication."},
+        {"issue": "Exact duplicates", "evidence": f"The primary canonical source contains {int(metric('primary_deduplicated', 'duplicate_extra_occurrences')):,} removable extra occurrences after Step 2 keep-first processing.", "customers_affected": int(dup_affected), "invoices_affected": 0, "metric_impact": "The primary analysis has already removed exact duplicate extras; a duplicate-retained alternative can be evaluated later.", "recommended_treatment": "Use keep-first removal for the primary analysis and retain a documented duplicate-retained sensitivity alternative.", "confidence": "High", "reason": "This is the explicitly approved methodological change."},
         {"issue": "C-prefix cancellations", "evidence": f"{c_customers:,} identified customers have at least one cancellation-linked row; cancellation rows should not be treated as ordinary purchases.", "customers_affected": c_customers, "invoices_affected": int(cancellation.loc[cancellation["metric"] == "unique_C_prefix_invoices", "value"].iloc[0]), "metric_impact": "Including cancellations in purchase metrics can distort frequency, quantity, and value.", "recommended_treatment": "Exclude from ordinary positive-purchase metrics but preserve separately for cancellation-behavior features and audit reporting.", "confidence": "High", "reason": "The C-prefix is a documented transaction signal and is customer-linked in this population."},
         {"issue": "Non-C negative Quantity", "evidence": f"3,393 rows affect {nonc_customers:,} identifiable customers; {int(non_c.loc[(non_c['category'] == 'description_signal') & (non_c['metric'] == 'apparently_administrative_or_inventory_adjustment_rows'), 'value'].iloc[0]):,} rows have an apparent administrative/inventory description signal.", "customers_affected": nonc_customers, "invoices_affected": int(non_c.loc[(non_c["category"] == "all") & (non_c["metric"] == "unique_invoices"), "value"].iloc[0]), "metric_impact": "Negative quantities can reduce ordinary item totals and may represent returns, adjustments, or data-entry events.", "recommended_treatment": "Exclude from ordinary positive-purchase metrics provisionally, retain in transaction history, and review uncertain patterns before finalizing.", "confidence": "Moderate", "reason": "The population is small and heterogeneous; keyword evidence is diagnostic, not proof of a single meaning."},
         {"issue": "Price <= 0", "evidence": f"{len(data.loc[data['Price'].le(0)]):,} rows affect {nonprice_customers:,} identifiable customers; they contribute no meaningful positive-purchase value under Quantity > 0 and Price > 0.", "customers_affected": nonprice_customers, "invoices_affected": int(nonprice.loc[(nonprice["category"] == "all") & (nonprice["metric"] == "unique_invoices"), "value"].iloc[0]), "metric_impact": "They should not contribute to product-purchase value; excluding them could remove only-record customers from a future purchase table.", "recommended_treatment": "Exclude from positive-purchase value and product-purchase metrics; retain separately for administrative/exception analysis and document customers with no positive purchase.", "confidence": "High", "reason": "Price <= 0 cannot generate a positive purchase value, while the remaining records may still be analytically relevant."},
@@ -434,8 +432,7 @@ def write_report(data: pd.DataFrame, duplicate_summary: pd.DataFrame, duplicate_
 
     identified = int(data["_identified"].sum())
     total_customers = data.loc[data["_identified"], "Customer ID"].nunique()
-    dup_a = duplicate_summary.loc[duplicate_summary["scenario"] == "A_duplicates_retained"].set_index("metric")["value"]
-    dup_b = duplicate_summary.loc[duplicate_summary["scenario"] == "B_duplicate_occurrences_removed"].set_index("metric")["value"]
+    dup_a = duplicate_summary.loc[duplicate_summary["scenario"] == "primary_deduplicated"].set_index("metric")["value"]
     dup_distribution = duplicate_summary.loc[duplicate_summary["scenario"] == "affected_customer_distribution"].set_index("metric")["value"]
     c_customers = int(cancellation.loc[cancellation["metric"] == "identified_customers_with_at_least_one_C_prefix_invoice", "value"].iloc[0])
     non_c_customers = int(non_c.loc[(non_c["category"] == "identified") & (non_c["metric"] == "unique_customers"), "value"].iloc[0])
@@ -458,11 +455,11 @@ These rows cannot be assigned to a customer-level modeling record without invent
 
 ## B. Exact duplicates
 
-The temporary comparison uses the original eight transaction fields and removes only duplicate occurrences after the first. It does not modify the parquet. The comparison is:
+The primary source has already removed duplicate occurrences after the first using the original eight transaction fields. The table below documents the current primary state; a duplicate-retained alternative is reserved for later sensitivity analysis.
 
-{markdown_table(duplicate_summary.loc[duplicate_summary['scenario'].isin(['A_duplicates_retained', 'B_duplicate_occurrences_removed']), ['scenario', 'metric', 'value']], ['scenario', 'metric', 'value'])}
+{markdown_table(duplicate_summary.loc[duplicate_summary['scenario'].eq('primary_deduplicated'), ['scenario', 'metric', 'value']], ['scenario', 'metric', 'value'])}
 
-Keep-first removes **{int(dup_a['duplicate_extra_occurrences']):,} rows**. It affects **{len(duplicate_customers):,} of {total_customers:,} identifiable customers ({safe_percentage(len(duplicate_customers), total_customers):.2f}%)**. The unique invoice count changes by **{int(duplicate_summary.loc[duplicate_summary['metric'] == 'unique_invoice_count_change', 'value'].iloc[0])}**, so the measured risk is concentrated in row counts, quantity, and monetary totals rather than invoice identity. Among affected customers, the median relative change is **{dup_distribution['value_relative_change_pct_50%']:.2f}%** for positive-purchase value, **{dup_distribution['quantity_relative_change_pct_50%']:.2f}%** for positive-purchase quantity, and **{dup_distribution['row_count_relative_change_pct_50%']:.2f}%** for transaction-row count; the 25th–75th percentile range is **{dup_distribution['value_relative_change_pct_25%']:.2f}% to {dup_distribution['value_relative_change_pct_75%']:.2f}%** for value. Because identical rows may be source duplication or genuine repeated line items, sensitivity testing is recommended before a final rule is chosen.
+The primary canonical source contains **{int(dup_a['duplicate_extra_occurrences']):,} removable extra occurrences** and therefore has no remaining exact duplicate extras. The duplicate-retained alternative is not used for primary counts and may be compared later if required.
 
 ## C. Customer-linked cancellation profile
 
@@ -494,16 +491,16 @@ Confidence is **High** where the record cannot support a defensible customer lin
 
 ## Methodological ambiguity remaining
 
-The main unresolved issue is whether identical eight-field rows are repeated source records or legitimate repeated line items. Additional ambiguity remains for non-C negative quantities and overlapping special-code signals: descriptions suggest administrative behavior in some cases, but the dataset does not prove the business meaning of every row. These issues should be handled through documented review and sensitivity analysis, not silent deletion.
+The primary analysis now uses keep-first removal for exact eight-field duplicates. The remaining ambiguity is whether a later sensitivity analysis should compare against a duplicate-retained alternative. Additional ambiguity remains for non-C negative quantities and overlapping special-code signals: descriptions suggest administrative behavior in some cases, but the dataset does not prove the business meaning of every row. These issues should be handled through documented review and sensitivity analysis, not silent deletion.
 
 ## Scope validation
 
 - Source-reconciled row count and Step 2 date range were validated.
 - Raw workbook SHA-256 remained `{raw_hash}`.
-- The canonical parquet was read only; no permanent row removal occurred.
+- The canonical parquet reflects the approved permanent within-sheet duplicate-removal rule; no later cleaning rule was applied here.
 - No churn definition, observation/outcome window, predictive feature set, train/test split, or machine-learning model was created.
 
-**No final cleaning rule was executed in this step. The canonical source-reconciled dataset was not modified. No churn definition, predictive feature set, train/test split, or machine-learning model was created.**
+**The canonical source-reconciled dataset was read-only during this audit; the approved within-sheet keep-first rule had already been applied in Step 2. No churn definition, predictive feature set, train/test split, encoding, scaling, or machine-learning model was created.**
 """
     report_path = PROJECT_ROOT / "reports" / "03_cleaning_impact_assessment.md"
     report_path.parent.mkdir(parents=True, exist_ok=True)

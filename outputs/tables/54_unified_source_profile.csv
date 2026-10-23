@@ -1,0 +1,17 @@
+metric,value,notes
+final_row_count,1033036,Unified source after within-sheet deduplication and verified overlap reconciliation.
+original_analytical_column_count,8,The eight original source variables.
+technical_column_count,1,SourceSheet is technical lineage/control only.
+date_min,2009-12-01T07:45:00,Unified source date range.
+date_max,2011-12-09T12:50:00,Unified source date range.
+unique_non_null_customers,5942,Customer ID missing values excluded from the unique count.
+unique_non_null_invoices,53628,Invoice missing values excluded from the unique count.
+country_count,43,Non-null country values.
+Quantity_min,-80995,Numeric descriptive statistic.
+Quantity_median,3.0,Numeric descriptive statistic.
+Quantity_mean,10.076879218149223,Numeric descriptive statistic.
+Quantity_max,80995,Numeric descriptive statistic.
+Price_min,-53594.36,Numeric descriptive statistic.
+Price_median,2.1,Numeric descriptive statistic.
+Price_mean,4.613979656081685,Numeric descriptive statistic.
+Price_max,38970.0,Numeric descriptive statistic.
