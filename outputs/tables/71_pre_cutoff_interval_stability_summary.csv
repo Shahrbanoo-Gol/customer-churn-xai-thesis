@@ -1,0 +1,2 @@
+population,cutoff_date,eligible_purchase_events,customers,repeat_customers,total_interpurchase_intervals,mean_days,median_days,p75_days,p80_days,p85_days,p90_days,p95_days,p97_5_days,p99_days,maximum_days,zero_day_intervals
+pre_cutoff_only,2011-07-27,28389,5126,3570,23263,46.36823195035512,23.915277777777778,58.10173611111111,72.07666666666668,91.99187500000001,123.00416666666663,176.82312499999847,229.97569444444446,305.98033333333336,595.8993055555555,113

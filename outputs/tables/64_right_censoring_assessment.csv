@@ -1,0 +1,4 @@
+threshold_days,dataset_end_date,latest_supported_cutoff_date,future_outcome_start_date,available_future_days,customers_with_final_observed_purchase_after_latest_supported_cutoff,percentage_of_positive_purchase_customers_affected,interpretation
+100,2011-12-09,2011-08-31,2011-09-01,100,2973,50.57842803674719,These customers are too close to the dataset end for a full threshold-length future observation; they are not labeled churn in Step 5.
+135,2011-12-09,2011-07-27,2011-07-28,135,3217,54.72949982987411,These customers are too close to the dataset end for a full threshold-length future observation; they are not labeled churn in Step 5.
+205,2011-12-09,2011-05-18,2011-05-19,205,3617,61.534535556311674,These customers are too close to the dataset end for a full threshold-length future observation; they are not labeled churn in Step 5.

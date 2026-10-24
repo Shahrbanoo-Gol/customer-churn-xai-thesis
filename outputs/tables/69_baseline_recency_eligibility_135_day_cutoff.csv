@@ -1,0 +1,4 @@
+population,recency_condition,customers,percentage_of_365_day_eligible,threshold_days
+all_365_day_observation_eligible_customers,all customers with at least one positive purchase in the 365-day observation window,4327,100.0,135
+baseline_recency_leq_135_days,latest purchase on or after 2011-03-14; recency <= 135 days,2463,56.92165472613821,135
+baseline_recency_gt_135_days,latest purchase before 2011-03-14; recency > 135 days,1864,43.07834527386179,135

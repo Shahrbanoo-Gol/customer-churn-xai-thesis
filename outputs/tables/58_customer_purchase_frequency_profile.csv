@@ -1,0 +1,4 @@
+total_customers_with_positive_purchase,group,customers,percentage_of_customers
+5878,exactly_1_purchase_event,1623,27.611432460020414
+5878,exactly_2_purchase_events,944,16.05988431439265
+5878,3_or_more_purchase_events,3311,56.32868322558694

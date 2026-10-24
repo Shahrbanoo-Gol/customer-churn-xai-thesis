@@ -1,0 +1,3 @@
+historical_portion,portion_start,portion_end,interval_count,repeat_customers,median_days,p90_days,p95_days,coverage_leq_135_days_pct,interpretation
+earlier_pre_cutoff,2009-12-01,2010-09-28,10013,2207,20.9,90.90805555555556,124.86388888888888,96.17497253570359,Diagnostic split by the later event date; no threshold was optimized from this comparison.
+later_pre_cutoff,2010-09-29,2011-07-27,13250,3132,27.80173611111111,151.39125000000016,213.46618055555498,88.0377358490566,Diagnostic split by the later event date; no threshold was optimized from this comparison.

@@ -1,0 +1,10 @@
+metric,value
+positive_purchase_rows,779425
+unique_positive_purchase_invoices,36969
+purchase_event_timestamp_min,2009-12-01T07:45:00
+purchase_event_timestamp_max,2011-12-09T12:50:00
+invoices_with_multiple_line_items,33918
+invoices_with_inconsistent_timestamps,64
+inconsistent_invoices_same_calendar_day,64
+timestamp_selection,earliest InvoiceDate within each Invoice; all inconsistent cases remain within one calendar day
+invoice_customer_consistency,every positive-purchase Invoice maps to exactly one Customer ID
