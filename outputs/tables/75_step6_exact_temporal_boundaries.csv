@@ -1,0 +1,5 @@
+boundary,timestamp,rule
+observation_start_timestamp,2010-07-27 12:50:00,purchase_timestamp >= observation_start and <= cutoff
+cutoff_timestamp,2011-07-27 12:50:00,purchase_timestamp <= cutoff belongs to pre-cutoff data; outcome requires > cutoff
+outcome_start_condition,2011-07-27 12:50:00,purchase_timestamp strictly greater than cutoff
+dataset_end_outcome_end_timestamp,2011-12-09 12:50:00,purchase_timestamp <= outcome_end

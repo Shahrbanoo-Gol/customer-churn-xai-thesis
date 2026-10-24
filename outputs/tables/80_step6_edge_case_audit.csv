@@ -1,0 +1,8 @@
+edge_case,events,customers,eligible_customers,handling
+positive events exactly at cutoff timestamp,1.0,1,1,Included in observation/pre-cutoff data; excluded from outcome because outcome starts strictly after cutoff.
+customers with positive purchases on both sides of cutoff,,2464,1724,Eligibility uses pre-cutoff events; future purchases determine outcome only.
+eligible customers with multiple positive outcome purchases,5403.0,1163,1163,Retained as an outcome-count audit; Churn remains 0 for any positive outcome purchase.
+eligible customers with cancellation activity but no positive outcome purchase,2968.0,12,12,Cancellations do not count as positive outcomes and do not reverse Churn=1.
+eligible customers with positive purchase at final observed timestamp,1.0,1,0,Included because outcome end is closed.
+eligible customers with positive purchase on final observed date,41.0,35,28,Included because the final observed date is within the supported outcome horizon.
+duplicate Customer ID rows in final outcome table,0.0,2457,2457,Must be zero duplicates; exactly one row per eligible customer.

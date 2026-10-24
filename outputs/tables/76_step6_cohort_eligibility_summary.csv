@@ -1,0 +1,7 @@
+metric,value
+customers_with_at_least_one_positive_purchase_in_observation_window,4325
+customers_excluded_baseline_recency_gt_135_days,1868
+final_primary_population_B_customers,2457
+exact_timestamp_observation_start,2010-07-27 12:50:00
+exact_timestamp_cutoff,2011-07-27 12:50:00
+exact_timestamp_outcome_end,2011-12-09 12:50:00

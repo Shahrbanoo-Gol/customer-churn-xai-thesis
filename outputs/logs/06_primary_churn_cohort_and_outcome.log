@@ -1,0 +1,4 @@
+2026-10-24 17:34:01,055 INFO Step 6 created the locked primary Population B outcome table only.
+2026-10-24 17:34:01,055 INFO Exact observation start: 2010-07-27 12:50:00; cutoff: 2011-07-27 12:50:00; outcome end: 2011-12-09 12:50:00
+2026-10-24 17:34:01,055 INFO Eligible customers: 2457; Churn=1: 733; Churn=0: 1724
+2026-10-24 17:34:01,472 INFO Validation checks: {'positive_base_unchanged': True, 'step5_events_unchanged': True, 'canonical_source_unchanged': True, 'raw_workbook_unchanged': True, 'one_row_per_eligible_customer': True, 'churn_values_only_zero_or_one': True, 'churn_has_no_missing_values': True, 'eligibility_has_no_post_cutoff_data': True, 'outcome_counts_are_nonnegative': True, 'minimal_schema_only': True, 'no_train_test_encoding_scaling_model_or_shap': True, 'processed_outcome_git_ignored': True, 'all_declared_outputs_exist': True}

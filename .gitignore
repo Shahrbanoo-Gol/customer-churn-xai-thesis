@@ -51,4 +51,5 @@ Thumbs.db
 # Step 4 reproducibility log is part of the controlled analysis record
 !/outputs/logs/04_final_preparation_and_analysis_base.log
 !/outputs/logs/05_interpurchase_time_analysis.log
+!/outputs/logs/06_primary_churn_cohort_and_outcome.log
 

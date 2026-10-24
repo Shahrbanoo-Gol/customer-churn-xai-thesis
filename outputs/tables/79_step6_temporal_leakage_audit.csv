@@ -1,0 +1,7 @@
+audit,passed,evidence
+observation eligibility uses only events within exact observation window,True,"Observation filter is [observation_start, cutoff]."
+baseline recency uses no post-cutoff transaction,True,Every stored last-before-cutoff timestamp is <= cutoff.
+outcome uses only strictly post-cutoff positive purchases,True,Outcome filter is purchase_timestamp > cutoff and <= outcome_end.
+outcome is inside supported future horizon,True,No outcome event exceeds dataset_end_timestamp.
+no outcome information used for eligibility,True,Eligible customers are selected before outcome aggregation.
+no predictive features created,True,"Outcome table contains only cohort, boundary, recency, outcome-count, and Churn fields."

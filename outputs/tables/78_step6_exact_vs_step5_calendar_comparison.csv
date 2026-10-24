@@ -1,0 +1,5 @@
+metric,exact_timestamp_design,step5_calendar_design,difference_exact_minus_calendar,note
+observation_customers,4325.0,4327,-2.0,Exact timestamp design uses cutoff 2011-07-27 12:50:00 and strict post-cutoff outcome entry.
+primary_population_customers,2457.0,2463,-6.0,Exact timestamp design uses cutoff 2011-07-27 12:50:00 and strict post-cutoff outcome entry.
+future_purchasers,1724.0,1727,-3.0,Exact timestamp design uses cutoff 2011-07-27 12:50:00 and strict post-cutoff outcome entry.
+future_non_purchasers,733.0,736,-3.0,Exact timestamp design uses cutoff 2011-07-27 12:50:00 and strict post-cutoff outcome entry.

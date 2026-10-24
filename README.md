@@ -8,7 +8,7 @@ The analysis may use only information available in Online Retail II. No clickstr
 
 ## Current Stage
 
-The current repository contains the reproducible raw audit, worksheet reconciliation, transaction-quality audits, customer-analysis preparation bases, and Step 5 interpurchase-time analysis. Step 5 is an analytical threshold-discovery stage: it creates invoice-level events, interval evidence, candidate inactivity thresholds, and temporal-design options, but no churn label. Final feature engineering, encoding, scaling, train/test splitting, modeling, and SHAP analysis remain intentionally deferred to later analytical stages.
+The current repository contains the reproducible raw audit, worksheet reconciliation, transaction-quality audits, customer-analysis preparation bases, Step 5 interpurchase-time analysis, and Step 6 primary retention cohort/outcome table. Step 5 discovered and audited candidate inactivity thresholds; Step 6 now implements the locked primary 135-day retention cohort and minimal outcome target. Final predictive feature engineering, encoding, scaling, train/test splitting, modeling, and SHAP analysis remain intentionally deferred to later analytical stages.
 
 Files in data/raw must never be manually edited. All transformations must be performed programmatically and written to data/processed.
 
