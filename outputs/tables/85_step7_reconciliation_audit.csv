@@ -1,0 +1,22 @@
+check,passed,observed,expected,evidence
+final_rows_exactly_2457,True,2457,2457,One output row is required for each locked Step 6 customer.
+Customer_ID_unique,True,2457,2457,Customer ID is preserved only as the row key.
+Churn_exactly_matches_Step6,True,equal,equal,Churn is copied from Step 6 and never recalculated.
+positive_observation_has_no_post_cutoff_rows,True,2011-07-27 12:50:00,2011-07-27 12:50:00,Positive feature rows are restricted to the closed observation interval.
+positive_observation_respects_observation_start,True,2010-07-27 13:14:00,2010-07-27 12:50:00,Positive feature rows are restricted to the closed observation interval.
+event_observation_has_no_post_cutoff_rows,True,2011-07-27 12:50:00,2011-07-27 12:50:00,Interpurchase features use only Step 5 events through cutoff.
+cancellation_observation_has_no_post_cutoff_rows,True,2011-07-27 12:40:00,2011-07-27 12:50:00,Cancellation features use only customer-linked observation-period cancellations.
+RecencyDays_reconciles_with_Step6,True,0.0,0.0,Latest positive purchase and elapsed-day calculation reconcile to Step 6 baseline recency.
+RecencyDays_at_most_135,True,134.95625,135,Primary Population B eligibility requires baseline recency <=135 days.
+Frequency_at_least_1,True,1,1,Every primary-cohort customer has observation-period positive purchase activity.
+Monetary_positive,True,2.9,> 0,Positive quantities and prices make every purchase value positive.
+TotalQuantity_positive,True,1,> 0,Positive-purchase base contains Quantity > 0.
+AverageOrderValue_positive,True,2.9,> 0,Monetary and Frequency are positive.
+cancellation_features_observation_only,True,1144,1144,Cancellation source is customer-linked and limited to the cohort; expected count is customers with observed cancellations.
+no_future_outcome_columns_in_feature_table,True,[],[],Only Churn is carried from the Step 6 outcome table.
+step6_outcome_table_hash_unchanged,True,166e9cec31785968a3304c7a0442e34b05de990cca92ccf516481d6f2d2f7b99,166e9cec31785968a3304c7a0442e34b05de990cca92ccf516481d6f2d2f7b99,Source/processed input hash remained unchanged during Step 7.
+positive_purchase_base_hash_unchanged,True,825bccc6ebdcbf594001729ad50e5d7a292ef2eb0456459dca2b7d15e30ee503,825bccc6ebdcbf594001729ad50e5d7a292ef2eb0456459dca2b7d15e30ee503,Source/processed input hash remained unchanged during Step 7.
+cancellation_history_hash_unchanged,True,7a90c3159f0ac7a810f47ec05a51b257d0c4f9359ea6d8eeaa6b3584a0a76023,7a90c3159f0ac7a810f47ec05a51b257d0c4f9359ea6d8eeaa6b3584a0a76023,Source/processed input hash remained unchanged during Step 7.
+purchase_events_hash_unchanged,True,4c6fee4faaa9214eff99e446fe7b2956473b7d250cd8852997799f3b4c8dc5b8,4c6fee4faaa9214eff99e446fe7b2956473b7d250cd8852997799f3b4c8dc5b8,Source/processed input hash remained unchanged during Step 7.
+canonical_source_hash_unchanged,True,a97e6f7279276417727b76bf7ee326b0653c0cc3b8f83526a24682086a8ace42,a97e6f7279276417727b76bf7ee326b0653c0cc3b8f83526a24682086a8ace42,Source/processed input hash remained unchanged during Step 7.
+raw_workbook_hash_unchanged,True,bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980,bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980,Source/processed input hash remained unchanged during Step 7.

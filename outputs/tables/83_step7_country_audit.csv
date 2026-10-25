@@ -1,0 +1,38 @@
+section,metric,country,customers,percentage,notes
+summary,primary_cohort_customers,,2457,100.0,Locked Step 6 cohort.
+summary,customers_with_exactly_one_observed_country,,2449,99.67439967439967,Country associations counted from observation-period positive purchases.
+summary,customers_with_more_than_one_observed_country,,8,0.3256003256003256,These customers have multiple observed country values.
+summary,customers_with_no_observed_country,,0,0.0,No non-null Country in observation-period positive purchases.
+summary,customers_with_unique_dominant_country_candidate,,2457,100.0,Raw candidate included because the observed dominant country is unique for each customer in this cohort.
+dominant_country_frequency,dominant_country,United Kingdom,2229,90.72039072039072,Rank 1; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Germany,54,2.197802197802198,Rank 2; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,France,49,1.9943019943019942,Rank 3; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Spain,17,0.6919006919006919,Rank 4; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Belgium,17,0.6919006919006919,Rank 5; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Switzerland,9,0.3663003663003663,Rank 6; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Portugal,8,0.3256003256003256,Rank 7; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Netherlands,7,0.2849002849002849,Rank 8; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Finland,6,0.2442002442002442,Rank 9; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Australia,6,0.2442002442002442,Rank 10; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Denmark,5,0.20350020350020348,Rank 11; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Sweden,5,0.20350020350020348,Rank 12; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Japan,5,0.20350020350020348,Rank 13; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Norway,4,0.1628001628001628,Rank 14; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Austria,4,0.1628001628001628,Rank 15; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Italy,4,0.1628001628001628,Rank 16; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Poland,4,0.1628001628001628,Rank 17; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Unspecified,3,0.1221001221001221,Rank 18; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,EIRE,3,0.1221001221001221,Rank 19; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Channel Islands,3,0.1221001221001221,Rank 20; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Canada,3,0.1221001221001221,Rank 21; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Bahrain,2,0.0814000814000814,Rank 22; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Cyprus,2,0.0814000814000814,Rank 23; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Iceland,1,0.0407000407000407,Rank 24; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Israel,1,0.0407000407000407,Rank 25; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Greece,1,0.0407000407000407,Rank 26; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,USA,1,0.0407000407000407,Rank 27; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Singapore,1,0.0407000407000407,Rank 28; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Brazil,1,0.0407000407000407,Rank 29; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,European Community,1,0.0407000407000407,Rank 30; CountryCandidate is the unique modal observed country.
+dominant_country_frequency,dominant_country,Malta,1,0.0407000407000407,Rank 31; CountryCandidate is the unique modal observed country.
+summary,largest_country_category,United Kingdom,2229,90.72039072039072,Concentration of the largest raw country candidate category.
