@@ -1,0 +1,17 @@
+rank,business_feature,business_meaning,mean_absolute_shap,mean_shap,relative_share_pct_of_business_aggregate,transformed_column_count,aggregation_method
+1,Monetary,Total positive purchase value attributed to the customer,0.4660389979438084,-0.08727713637962574,26.03448275692607,1,direct transformed feature value
+2,Frequency,Count of positive purchase invoices/events in the observation period,0.44123710264504806,-0.09212879923444878,24.64896669851991,1,direct transformed feature value
+3,RecencyDays,Days since the customer's last positive purchase at the cutoff,0.25189001049952414,-0.005198088591933493,14.07141068435325,1,direct transformed feature value
+4,TotalQuantity,Total quantity purchased in positive purchase events,0.21271531700442461,-0.04370666712539543,11.88298249099205,1,direct transformed feature value
+5,AverageOrderValue,Average positive purchase invoice value,0.09293147521491003,-0.0017718721788785442,5.191460156194898,1,direct transformed feature value
+6,CancellationValue,Absolute value of cancellation quantities multiplied by price,0.06952272095467622,0.017973697672378483,3.8837695727071666,1,direct transformed feature value
+7,MedianInterpurchaseDays,Median gap between positive purchase events,0.05562037302037262,-0.000555952331117483,3.107138348338999,1,direct transformed feature value
+8,UniqueProducts,Number of distinct products purchased,0.05368357918685921,-0.02629158910174856,2.998942626768923,1,direct transformed feature value
+9,CustomerAgeDays,Days from the customer's first positive purchase to the cutoff,0.04293882141880714,0.010940364786524067,2.398704852518478,1,direct transformed feature value
+10,AverageQuantityPerOrder,Average quantity purchased per positive invoice,0.042505897008018885,0.005198171254383718,2.374520260333173,1,direct transformed feature value
+11,ProductsPerOrder,Average number of distinct products per positive invoice,0.030369972036176595,0.0011037660242584572,1.6965672761134452,1,direct transformed feature value
+12,CountryCandidate,Country recorded for the customer's linked transactions,0.013898866758890056,0.00091756168020344,0.7764367543738588,30,mean(abs(per-customer sum of signed SHAP across all 30 CountryCandidate one-hot columns))
+13,CancellationInvoiceRate,Cancellation invoice count relative to positive purchase invoice count,0.007366240108328894,-0.004757430962366392,0.41150258225125785,1,direct transformed feature value
+14,HasRepeatPurchaseHistory,Indicator that the customer has more than one positive purchase event,0.0054395074683536845,-0.0007151472950127067,0.3038689122923989,1,direct transformed feature value
+15,CancellationInvoiceCount,Count of cancellation/return invoices linked to the customer,0.00392468710930647,-0.001027767962683371,0.21924602731612838,1,direct transformed feature value
+16,HasCancellation,Indicator that the customer has at least one cancellation/return invoice,0.0,0.0,0.0,1,direct transformed feature value

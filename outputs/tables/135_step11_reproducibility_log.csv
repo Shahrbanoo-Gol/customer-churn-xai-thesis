@@ -1,0 +1,31 @@
+item,value
+step8_split_path,data/processed/08_customer_train_test_split.parquet
+step8_split_sha256_before,32d5a2f7b0ba67b018e68c935cd0c8ed9977c3cfe2be4399be82d165ee4c29b9
+train_customers_fit,1965
+test_customers_explained,492
+positive_class,Churn=1
+locked_feature_set,"[""RecencyDays"", ""Frequency"", ""Monetary"", ""TotalQuantity"", ""AverageOrderValue"", ""AverageQuantityPerOrder"", ""UniqueProducts"", ""ProductsPerOrder"", ""CustomerAgeDays"", ""MedianInterpurchaseDays"", ""HasRepeatPurchaseHistory"", ""CancellationInvoiceCount"", ""CancellationValue"", ""HasCancellation"", ""CancellationInvoiceRate"", ""CountryCandidate""]"
+locked_xgboost_parameters,"{""colsample_bytree"": 0.8, ""learning_rate"": 0.05, ""max_depth"": 2, ""n_estimators"": 150, ""reg_lambda"": 1.0, ""subsample"": 0.8}"
+locked_classification_threshold,0.35
+xgboost_preprocessing,Step 9 tree path: Train-fitted median/binary imputation and one-hot CountryCandidate; no scaling
+shap_explainer,shap.TreeExplainer on fitted XGBoost model
+shap_output_scale,raw XGBoost margin / log-odds scale
+positive_shap_interpretation,pushes model toward higher predicted churn risk
+negative_shap_interpretation,pushes model toward lower predicted churn risk
+expected_base_value_raw_margin,-0.860823929309845
+reconstruction_tolerance,1e-05
+country_aggregation,mean(abs(per-customer sum of signed SHAP across all 30 CountryCandidate one-hot columns))
+local_case_selection,"highest probability within TP, FP, FN; lowest probability within TN"
+test_based_model_change,No
+retuning,None
+resampling,None
+causal_interpretation,Not permitted; SHAP explains fitted-model behavior and association
+random_state,42
+python_version,3.11.0
+pandas_version,3.1.0
+numpy_version,2.4.6
+scipy_version,1.17.1
+scikit_learn_version,1.9.1
+shap_version,0.51.0
+source_module,src/churn_analysis/explain_step11_shap.py
+executed_at_utc,2026-10-25T19:08:33.319074+00:00

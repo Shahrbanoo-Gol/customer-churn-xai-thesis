@@ -1,0 +1,46 @@
+rank,transformed_feature,original_feature,mean_absolute_shap,mean_shap,relative_share_pct_of_transformed,test_customer_count
+1,Monetary,Monetary,0.4660389979438084,-0.08727713637962574,26.02384699519086,492
+2,Frequency,Frequency,0.44123710264504806,-0.09212879923444878,24.638896956045198,492
+3,RecencyDays,RecencyDays,0.25189001049952414,-0.005198088591933493,14.065662147971162,492
+4,TotalQuantity,TotalQuantity,0.21271531700442461,-0.04370666712539543,11.878127984311128,492
+5,AverageOrderValue,AverageOrderValue,0.09293147521491003,-0.0017718721788785442,5.189339310015828,492
+6,CancellationValue,CancellationValue,0.06952272095467622,0.017973697672378483,3.8821829520627142,492
+7,MedianInterpurchaseDays,MedianInterpurchaseDays,0.05562037302037262,-0.000555952331117483,3.105869001701318,492
+8,UniqueProducts,UniqueProducts,0.05368357918685921,-0.02629158910174856,2.9977174808909086,492
+9,CustomerAgeDays,CustomerAgeDays,0.04293882141880714,0.010940364786524067,2.397724919345898,492
+10,AverageQuantityPerOrder,AverageQuantityPerOrder,0.042505897008018885,0.005198171254383718,2.3735502071940298,492
+11,ProductsPerOrder,ProductsPerOrder,0.030369972036176595,0.0011037660242584572,1.6958741843595213,492
+12,CountryCandidate_France,CountryCandidate,0.00888568813566164,0.00027363253161084,0.49618119837542524,492
+13,CancellationInvoiceRate,CancellationInvoiceRate,0.007366240108328894,-0.004757430962366392,0.4113344727689566,492
+14,HasRepeatPurchaseHistory,HasRepeatPurchaseHistory,0.0054395074683536845,-0.0007151472950127067,0.30374477395709737,492
+15,CountryCandidate_United Kingdom,CountryCandidate,0.005094679063034615,0.0006003450068486173,0.2844893861049823,492
+16,CancellationInvoiceCount,CancellationInvoiceCount,0.00392468710930647,-0.001027767962683371,0.21915645962508964,492
+17,CountryCandidate_Belgium,CountryCandidate,0.0006500940213388786,4.358414174398271e-05,0.036301570079873786,492
+18,CountryCandidate_Austria,CountryCandidate,0.0,0.0,0.0,492
+19,CountryCandidate_Bahrain,CountryCandidate,0.0,0.0,0.0,492
+20,CountryCandidate_Brazil,CountryCandidate,0.0,0.0,0.0,492
+21,CountryCandidate_Australia,CountryCandidate,0.0,0.0,0.0,492
+22,CountryCandidate_Canada,CountryCandidate,0.0,0.0,0.0,492
+23,CountryCandidate_Channel Islands,CountryCandidate,0.0,0.0,0.0,492
+24,CountryCandidate_Denmark,CountryCandidate,0.0,0.0,0.0,492
+25,CountryCandidate_Cyprus,CountryCandidate,0.0,0.0,0.0,492
+26,CountryCandidate_EIRE,CountryCandidate,0.0,0.0,0.0,492
+27,CountryCandidate_European Community,CountryCandidate,0.0,0.0,0.0,492
+28,CountryCandidate_Finland,CountryCandidate,0.0,0.0,0.0,492
+29,HasCancellation,HasCancellation,0.0,0.0,0.0,492
+30,CountryCandidate_Germany,CountryCandidate,0.0,0.0,0.0,492
+31,CountryCandidate_Greece,CountryCandidate,0.0,0.0,0.0,492
+32,CountryCandidate_Israel,CountryCandidate,0.0,0.0,0.0,492
+33,CountryCandidate_Iceland,CountryCandidate,0.0,0.0,0.0,492
+34,CountryCandidate_Japan,CountryCandidate,0.0,0.0,0.0,492
+35,CountryCandidate_Malta,CountryCandidate,0.0,0.0,0.0,492
+36,CountryCandidate_Netherlands,CountryCandidate,0.0,0.0,0.0,492
+37,CountryCandidate_Italy,CountryCandidate,0.0,0.0,0.0,492
+38,CountryCandidate_Norway,CountryCandidate,0.0,0.0,0.0,492
+39,CountryCandidate_Poland,CountryCandidate,0.0,0.0,0.0,492
+40,CountryCandidate_Singapore,CountryCandidate,0.0,0.0,0.0,492
+41,CountryCandidate_Portugal,CountryCandidate,0.0,0.0,0.0,492
+42,CountryCandidate_Spain,CountryCandidate,0.0,0.0,0.0,492
+43,CountryCandidate_Sweden,CountryCandidate,0.0,0.0,0.0,492
+44,CountryCandidate_Switzerland,CountryCandidate,0.0,0.0,0.0,492
+45,CountryCandidate_Unspecified,CountryCandidate,0.0,0.0,0.0,492

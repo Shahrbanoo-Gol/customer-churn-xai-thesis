@@ -1,0 +1,27 @@
+check,passed,observed,expected
+exact_locked_xgboost_configuration,True,"{'colsample_bytree': 0.8, 'learning_rate': 0.05, 'max_depth': 2, 'n_estimators': 150, 'reg_lambda': 1.0, 'subsample': 0.8}","{'colsample_bytree': 0.8, 'learning_rate': 0.05, 'max_depth': 2, 'n_estimators': 150, 'reg_lambda': 1.0, 'subsample': 0.8}"
+exact_locked_parsimonious_feature_set,True,"['RecencyDays', 'Frequency', 'Monetary', 'TotalQuantity', 'AverageOrderValue', 'AverageQuantityPerOrder', 'UniqueProducts', 'ProductsPerOrder', 'CustomerAgeDays', 'MedianInterpurchaseDays', 'HasRepeatPurchaseHistory', 'CancellationInvoiceCount', 'CancellationValue', 'HasCancellation', 'CancellationInvoiceRate', 'CountryCandidate']","['RecencyDays', 'Frequency', 'Monetary', 'TotalQuantity', 'AverageOrderValue', 'AverageQuantityPerOrder', 'UniqueProducts', 'ProductsPerOrder', 'CustomerAgeDays', 'MedianInterpurchaseDays', 'HasRepeatPurchaseHistory', 'CancellationInvoiceCount', 'CancellationValue', 'HasCancellation', 'CancellationInvoiceRate', 'CountryCandidate']"
+train_customer_count,True,1965,1965
+test_customer_count,True,492,492
+preprocessing_fitted_on_train_only,True,fit(train[features]); transform(test[features]),True
+one_shap_explanation_per_test_customer,True,492,492
+shap_feature_columns_align_with_transformed_inputs,True,45 SHAP columns aligned to 45 transformed inputs,45 aligned inputs
+customer_id_absent_from_model_features,True,False,False
+churn_absent_from_model_features,True,False,False
+future_information_absent,True,[],[]
+no_anonymous_feature_names,True,"['RecencyDays', 'Frequency', 'Monetary', 'TotalQuantity', 'AverageOrderValue', 'AverageQuantityPerOrder', 'UniqueProducts', 'ProductsPerOrder', 'CustomerAgeDays', 'MedianInterpurchaseDays', 'CancellationInvoiceCount', 'CancellationValue', 'CancellationInvoiceRate', 'HasCancellation', 'HasRepeatPurchaseHistory', 'CountryCandidate_Australia', 'CountryCandidate_Austria', 'CountryCandidate_Bahrain', 'CountryCandidate_Belgium', 'CountryCandidate_Brazil', 'CountryCandidate_Canada', 'CountryCandidate_Channel Islands', 'CountryCandidate_Cyprus', 'CountryCandidate_Denmark', 'CountryCandidate_EIRE', 'CountryCandidate_European Community', 'CountryCandidate_Finland', 'CountryCandidate_France', 'CountryCandidate_Germany', 'CountryCandidate_Greece', 'CountryCandidate_Iceland', 'CountryCandidate_Israel', 'CountryCandidate_Italy', 'CountryCandidate_Japan', 'CountryCandidate_Malta', 'CountryCandidate_Netherlands', 'CountryCandidate_Norway', 'CountryCandidate_Poland', 'CountryCandidate_Portugal', 'CountryCandidate_Singapore', 'CountryCandidate_Spain', 'CountryCandidate_Sweden', 'CountryCandidate_Switzerland', 'CountryCandidate_United Kingdom', 'CountryCandidate_Unspecified']",no x0-style names
+shap_values_finite,True,all finite,True
+shap_additive_reconstruction_within_tolerance,True,2.6173656806349754e-06,1e-05
+country_one_hot_aggregated_to_business_feature,True,CountryCandidate present,True
+country_grouped_shap_uses_exactly_30_country_columns,True,30,30
+country_grouped_shap_excludes_non_country_columns,True,only CountryCandidate columns,True
+country_aggregation_is_per_customer_signed_sum_then_abs_mean,True,mean(abs(per-customer sum of signed SHAP across all 30 CountryCandidate one-hot columns)),signed per-customer sum then abs/mean
+business_feature_names_unique,True,16,16
+business_relative_shares_sum_to_100,True,100.0,100.0
+selected_local_cases_present,True,4,4
+locked_threshold_unchanged,True,0.35,0.35
+no_test_based_model_change,True,Test used for explanation and audit only,True
+no_new_feature_selection,True,Step 9 Parsimonious set reused unchanged,True
+no_model_tuning,True,No search or parameter update,True
+no_resampling,True,No SMOTE/oversampling/undersampling,True
+no_managerial_intervention_design,True,Technical explanation only,True
