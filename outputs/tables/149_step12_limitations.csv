@@ -1,0 +1,9 @@
+limitation,relevance
+Single public retailer,"The data come from one UK online retailer, so external generalization is uncertain."
+Operational churn definition,Non-contractual churn is constructed from inactivity rather than directly observed cancellation of a relationship.
+Limited covariates,"No clickstream, support, satisfaction, demographic, or competitor information is available."
+Single temporal cutoff,"Held-out evaluation is customer-level at one cutoff, not external or multi-period validation."
+SHAP interpretation,"SHAP explains fitted-model behavior and association, not causality."
+Untested interventions,Intervention options are conceptual and require controlled measurement or experimentation.
+Imperfect calibration,Predicted probabilities should support ranking and prioritization with calibration caution.
+Alternative horizons,"120- and 150-day analyses are sensitivity checks, not replacements for the 135-day primary design."

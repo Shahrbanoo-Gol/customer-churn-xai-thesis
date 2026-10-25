@@ -1,0 +1,17 @@
+business_feature,managerial_category,business_meaning,category_meaning
+Monetary,Customer economic value,Total positive purchase value attributed to the customer,Observed customer value and order-value intensity.
+AverageOrderValue,Customer economic value,Average positive purchase invoice value,Observed customer value and order-value intensity.
+Frequency,Purchase activity and intensity,Count of positive purchase invoices/events in the observation period,How often and how much the customer purchases.
+TotalQuantity,Purchase activity and intensity,Total quantity purchased in positive purchase events,How often and how much the customer purchases.
+AverageQuantityPerOrder,Purchase activity and intensity,Average quantity purchased per positive invoice,How often and how much the customer purchases.
+RecencyDays,Purchase recency and cadence,Days since the customer's last positive purchase at the cutoff,How recently and regularly purchase events occur.
+MedianInterpurchaseDays,Purchase recency and cadence,Median gap between positive purchase events,How recently and regularly purchase events occur.
+UniqueProducts,Product breadth and basket behavior,Number of distinct products purchased,Breadth of products and typical basket composition.
+ProductsPerOrder,Product breadth and basket behavior,Average number of distinct products per positive invoice,Breadth of products and typical basket composition.
+CustomerAgeDays,Relationship history,Days from the customer's first positive purchase to the cutoff,Observable history length and repeat-purchase status in the window.
+HasRepeatPurchaseHistory,Relationship history,Indicator that the customer has more than one positive purchase event,Observable history length and repeat-purchase status in the window.
+CancellationValue,Cancellation behavior,Absolute value of cancellation quantities multiplied by price,Observed cancellation frequency and value signals.
+CancellationInvoiceRate,Cancellation behavior,Cancellation invoice count relative to positive purchase invoice count,Observed cancellation frequency and value signals.
+CancellationInvoiceCount,Cancellation behavior,Count of cancellation/return invoices linked to the customer,Observed cancellation frequency and value signals.
+HasCancellation,Cancellation behavior,Indicator that the customer has at least one cancellation/return invoice,Observed cancellation frequency and value signals.
+CountryCandidate,Geographic context,Country recorded for the customer's linked transactions,"Recorded country context, used primarily as descriptive context because its SHAP importance is low."

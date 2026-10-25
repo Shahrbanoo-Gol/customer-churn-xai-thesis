@@ -1,0 +1,8 @@
+rank,managerial_category,underlying_features,category_meaning,mean_absolute_shap,mean_shap,relative_share_pct
+1,Purchase activity and intensity,"Frequency, TotalQuantity, AverageQuantityPerOrder",How often and how much the customer purchases.,0.6192596508336738,-0.1306372951054605,41.13799052407842
+2,Customer economic value,"Monetary, AverageOrderValue",Observed customer value and order-value intensity.,0.4329914437934408,-0.08904900855850428,28.764021501807502
+3,Purchase recency and cadence,"RecencyDays, MedianInterpurchaseDays",How recently and regularly purchase events occur.,0.2584513582694306,-0.005754040923050976,17.16916242340277
+4,Product breadth and basket behavior,"UniqueProducts, ProductsPerOrder",Breadth of products and typical basket composition.,0.070449190276329,-0.025187823077490103,4.680004773627706
+5,Cancellation behavior,"CancellationValue, CancellationInvoiceRate, CancellationInvoiceCount, HasCancellation",Observed cancellation frequency and value signals.,0.0657822624226555,0.01218849874732872,4.369976446152283
+6,Relationship history,"CustomerAgeDays, HasRepeatPurchaseHistory",Observable history length and repeat-purchase status in the window.,0.04449027076120322,0.010225217491511361,2.9555297757961676
+7,Geographic context,CountryCandidate,"Recorded country context, used primarily as descriptive context because its SHAP importance is low.",0.013898866758890056,0.00091756168020344,0.9233145551351595

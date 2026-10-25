@@ -1,0 +1,49 @@
+horizon_days,scenario_role,business_feature,rank,mean_absolute_shap,relative_share_pct,direction_or_pattern,spearman_rho
+120,secondary_shorter,Frequency,1,0.5586992047026069,31.77835103155333,higher values generally push away from Churn,-0.9692123629028409
+120,secondary_shorter,Monetary,2,0.3499867350914611,19.90695750147686,higher values generally push away from Churn,-0.9600181276863372
+120,secondary_shorter,RecencyDays,3,0.22459784746287223,12.774940750820655,higher values generally push toward Churn,0.8919106798556731
+120,secondary_shorter,TotalQuantity,4,0.20287895049386265,11.539587762862293,higher values generally push away from Churn,-0.8903530489036481
+120,secondary_shorter,MedianInterpurchaseDays,5,0.10329893107691075,5.875558198966211,nonlinear/mixed,
+120,secondary_shorter,UniqueProducts,6,0.058850125591291005,3.3473467181442,higher values generally push away from Churn,-0.8806347179192067
+120,secondary_shorter,AverageQuantityPerOrder,7,0.05881545467863136,3.34537466516147,nonlinear/mixed,-0.20997885860417093
+120,secondary_shorter,AverageOrderValue,8,0.03802116284848963,2.1626124566801623,higher values generally push toward Churn,0.6306617182457527
+120,secondary_shorter,CustomerAgeDays,9,0.03726353474622144,2.119519193645962,nonlinear/mixed,-0.12885553328155988
+120,secondary_shorter,ProductsPerOrder,10,0.036993140900911076,2.104139414221328,nonlinear/mixed,0.18295100028177458
+120,secondary_shorter,CancellationValue,11,0.0243427684118959,1.3845966365475775,higher values generally push toward Churn,0.7427813241139335
+120,secondary_shorter,CountryCandidate,12,0.023312251036935763,1.3259816562326692,country-specific/mixed,
+120,secondary_shorter,CancellationInvoiceRate,13,0.021030364151666026,1.1961898078748419,higher values generally push away from Churn,-0.8285414704032844
+120,secondary_shorter,CancellationInvoiceCount,14,0.02002216387614995,1.1388442058124355,higher values generally push away from Churn,-0.40770180404111706
+120,secondary_shorter,HasRepeatPurchaseHistory,15,0.0,0.0,value 1 generally pushes away from Churn,
+120,secondary_shorter,HasCancellation,16,0.0,0.0,value 1 generally pushes away from Churn,
+135,primary,Monetary,1,0.4660389979438084,26.034482756926064,higher values generally push away from Churn,-0.9389758573446528
+135,primary,Frequency,2,0.44123710264504806,24.648966698519907,higher values generally push away from Churn,-0.9369710145637831
+135,primary,RecencyDays,3,0.25189001049952414,14.071410684353246,higher values generally push toward Churn,0.9624700522224465
+135,primary,TotalQuantity,4,0.21271531700442461,11.882982490992049,higher values generally push away from Churn,-0.9743977070948998
+135,primary,AverageOrderValue,5,0.09293147521491003,5.191460156194898,higher values generally push toward Churn,0.7283594808922709
+135,primary,CancellationValue,6,0.06952272095467622,3.8837695727071657,higher values generally push toward Churn,0.7505340490888319
+135,primary,MedianInterpurchaseDays,7,0.05562037302037262,3.1071383483389985,nonlinear/mixed,
+135,primary,UniqueProducts,8,0.05368357918685921,2.9989426267689225,higher values generally push away from Churn,-0.9116080906690702
+135,primary,CustomerAgeDays,9,0.04293882141880714,2.398704852518478,nonlinear/mixed,0.09733851803408188
+135,primary,AverageQuantityPerOrder,10,0.042505897008018885,2.3745202603331728,nonlinear/mixed,-0.23657736011745947
+135,primary,ProductsPerOrder,11,0.030369972036176595,1.696567276113445,nonlinear/mixed,-0.05128928829309916
+135,primary,CountryCandidate,12,0.013898866758890056,0.7764367543738587,country-specific/mixed,
+135,primary,CancellationInvoiceRate,13,0.007366240108328894,0.41150258225125785,higher values generally push away from Churn,-0.45436327313564123
+135,primary,HasRepeatPurchaseHistory,14,0.0054395074683536845,0.3038689122923989,value 1 generally pushes away from Churn,
+135,primary,CancellationInvoiceCount,15,0.00392468710930647,0.21924602731612833,higher values generally push away from Churn,-0.4264785911821115
+135,primary,HasCancellation,16,0.0,0.0,value 1 generally pushes away from Churn,
+150,secondary_longer,TotalQuantity,1,0.4511142111658583,23.6119393244585,higher values generally push away from Churn,-0.9647917524511137
+150,secondary_longer,Frequency,2,0.36462616817588295,19.085035997487868,higher values generally push away from Churn,-0.9272638267859418
+150,secondary_longer,Monetary,3,0.3404013837428869,17.81707740513555,higher values generally push away from Churn,-0.9697545423395688
+150,secondary_longer,RecencyDays,4,0.20479400893659633,10.719200577890142,higher values generally push toward Churn,0.8860409587100826
+150,secondary_longer,MedianInterpurchaseDays,5,0.11400649244846947,5.967256884527361,nonlinear/mixed,
+150,secondary_longer,UniqueProducts,6,0.11285591717816729,5.9070341897016165,higher values generally push away from Churn,-0.9430758425922212
+150,secondary_longer,AverageOrderValue,7,0.09409213597920893,4.924912030388114,higher values generally push toward Churn,0.5939789338279895
+150,secondary_longer,CustomerAgeDays,8,0.06934076220475123,3.62939102640756,nonlinear/mixed,-0.0986463462343033
+150,secondary_longer,CancellationValue,9,0.05331744136172119,2.7907083377284083,higher values generally push toward Churn,0.7655843269496809
+150,secondary_longer,CancellationInvoiceRate,10,0.04039241450177159,2.1141946247256476,nonlinear/mixed,0.0478238163432361
+150,secondary_longer,AverageQuantityPerOrder,11,0.028333153399782814,1.4829962842830497,nonlinear/mixed,-0.1548986722675823
+150,secondary_longer,ProductsPerOrder,12,0.011980640782711303,0.6270832446143119,nonlinear/mixed,-0.10453331856957601
+150,secondary_longer,CountryCandidate,13,0.010967807744838362,0.574070168005049,country-specific/mixed,
+150,secondary_longer,HasRepeatPurchaseHistory,14,0.010697345288539644,0.5599137904190602,value 1 generally pushes away from Churn,
+150,secondary_longer,CancellationInvoiceCount,15,0.0036144656951151016,0.18918611422777015,higher values generally push away from Churn,-0.6428072199906417
+150,secondary_longer,HasCancellation,16,0.0,0.0,value 1 generally pushes away from Churn,

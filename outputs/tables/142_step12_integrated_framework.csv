@@ -1,0 +1,7 @@
+stage,stage_name,input_or_action,output,decision_guardrail
+1,Risk prediction,Transaction-derived customer features,Locked XGBoost churn probability,Primary model and threshold remain locked.
+2,Customer prioritization,Rank by predicted risk,"Resource-sized Top 10%, Top 20%, or Top 30% groups",No universally optimal group size; budget and intervention cost are external.
+3,Explanation,Customer-level SHAP values,Positive and negative model contributors,"SHAP explains model behavior, not causality."
+4,Managerial driver translation,Group features into seven categories,Dominant managerial signal,"Categories are interpretive, not new model variables."
+5,Intervention-option matching,Dominant category plus business context,Candidate action family for review/testing,Options are not proven treatments.
+6,Future measurement / experimentation,Selected action and comparison group,Measured intervention effectiveness,Requires future controlled testing or A/B experimentation.

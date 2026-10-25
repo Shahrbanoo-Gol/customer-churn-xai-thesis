@@ -1,0 +1,19 @@
+check,passed,observed,expected
+primary_xgboost_configuration_unchanged,True,"{'colsample_bytree': 0.8, 'learning_rate': 0.05, 'max_depth': 2, 'n_estimators': 150, 'reg_lambda': 1.0, 'subsample': 0.8}","{'colsample_bytree': 0.8, 'learning_rate': 0.05, 'max_depth': 2, 'n_estimators': 150, 'reg_lambda': 1.0, 'subsample': 0.8}"
+primary_feature_set_unchanged,True,"['RecencyDays', 'Frequency', 'Monetary', 'TotalQuantity', 'AverageOrderValue', 'AverageQuantityPerOrder', 'UniqueProducts', 'ProductsPerOrder', 'CustomerAgeDays', 'MedianInterpurchaseDays', 'HasRepeatPurchaseHistory', 'CancellationInvoiceCount', 'CancellationValue', 'HasCancellation', 'CancellationInvoiceRate', 'CountryCandidate']","['RecencyDays', 'Frequency', 'Monetary', 'TotalQuantity', 'AverageOrderValue', 'AverageQuantityPerOrder', 'UniqueProducts', 'ProductsPerOrder', 'CustomerAgeDays', 'MedianInterpurchaseDays', 'HasRepeatPurchaseHistory', 'CancellationInvoiceCount', 'CancellationValue', 'HasCancellation', 'CancellationInvoiceRate', 'CountryCandidate']"
+primary_threshold_unchanged,True,0.35,0.35
+primary_train_test_sizes_unchanged,True,1965/492,1965/492
+no_primary_resampling_or_smote,True,None,None
+all_16_features_assigned_exactly_once,True,16,16
+category_signed_aggregation_per_customer,True,7 categories from per-customer signed sums,7
+category_shares_sum_to_100,True,100.0,100.0
+no_causal_language_in_category_outputs,True,Interpretations use association/prediction guardrails,True
+no_invented_data_fields,True,All categories/options use existing features and cautious options,True
+sensitivity_contains_120_135_150,True,"[np.int64(120), np.int64(135), np.int64(150)]","[120, 135, 150]"
+sensitivity_train_test_split_rule_fixed,True,80/20 stratified random_state=42,True
+sensitivity_fixed_hyperparameters,True,same locked XGBoost parameters,"{'colsample_bytree': 0.8, 'learning_rate': 0.05, 'max_depth': 2, 'n_estimators': 150, 'reg_lambda': 1.0, 'subsample': 0.8}"
+no_alternative_threshold_tuning,True,ROC-AUC/PR-AUC only for sensitivity comparison,True
+primary_step11_business_importance_reconciles,True,primary recomputation matches Step 11 ranking,True
+rank_stability_calculated,True,3,3
+primary_sensitivity_role_preserved,True,primary,primary
+alternative_scenarios_not_used_to_change_primary,True,secondary robustness checks only,True

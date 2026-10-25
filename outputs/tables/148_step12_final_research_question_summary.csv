@@ -1,0 +1,4 @@
+research_question,evidence_generated,main_answer,relevant_outputs
+RQ1,Step 11 corrected business-level SHAP ranking,"Monetary, Frequency, RecencyDays, and TotalQuantity are the leading model contributors; SHAP is associative.",Step 11 tables 129 and 133; Step 11 report
+RQ2,Step 12 category mapping and category-level signed SHAP aggregation,Six behavioral/value categories plus geographic context translate technical predictors into a manager-readable monitoring structure.,Step 12 tables 137–139 and 146
+RQ3,Step 12 integrated framework and intervention-option mapping,"Prediction identifies risk, SHAP explains model drivers, categories translate them, and options guide testing; effectiveness requires future measurement.",Step 12 tables 140–147 and framework figure

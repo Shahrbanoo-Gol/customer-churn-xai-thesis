@@ -1,0 +1,6 @@
+element,evidence,answer
+Prediction,Locked XGBoost probabilities and Step 10 ranking/lift evidence.,Identifies which customers receive higher modeled churn risk.
+Explanation,Step 11 signed SHAP values on held-out Test customers.,Explains why the fitted model moved a customer toward or away from churn risk.
+Managerial interpretation,Step 12 category mapping and category-level SHAP aggregation.,Translates technical contributors into seven business-meaningful categories.
+Intervention options,Category-to-option mapping.,"Guides managerial attention and hypothesis formation, not causal treatment selection."
+Effectiveness,Not observed in Online Retail II.,"Requires future measurement, controlled testing, or A/B experimentation."

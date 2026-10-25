@@ -1,0 +1,24 @@
+item,value
+primary_horizon_days,135
+sensitivity_horizons_days,"120, 135, 150"
+primary_step8_split_sha256,32d5a2f7b0ba67b018e68c935cd0c8ed9977c3cfe2be4399be82d165ee4c29b9
+split_rule,"train_test_split(test_size=0.20, stratify=Churn, random_state=42)"
+locked_feature_set,"[""RecencyDays"", ""Frequency"", ""Monetary"", ""TotalQuantity"", ""AverageOrderValue"", ""AverageQuantityPerOrder"", ""UniqueProducts"", ""ProductsPerOrder"", ""CustomerAgeDays"", ""MedianInterpurchaseDays"", ""HasRepeatPurchaseHistory"", ""CancellationInvoiceCount"", ""CancellationValue"", ""HasCancellation"", ""CancellationInvoiceRate"", ""CountryCandidate""]"
+locked_xgboost_parameters,"{""colsample_bytree"": 0.8, ""learning_rate"": 0.05, ""max_depth"": 2, ""n_estimators"": 150, ""reg_lambda"": 1.0, ""subsample"": 0.8}"
+locked_threshold,0.35
+alternative_threshold_tuning,None
+resampling,None
+primary_model_change,None
+category_aggregation,"per-customer signed feature SHAP sums, then mean absolute contribution"
+country_aggregation,corrected Step 11 per-customer signed sum across all CountryCandidate dummies
+primary_train_test,1965/492
+sensitivity_train_test,"{""120"": [1824, 457], ""135"": [1965, 492], ""150"": [2043, 511]}"
+pandas_version,3.1.0
+numpy_version,2.4.6
+scipy_version,1.17.1
+scikit_learn_version,1.9.1
+shap_version,0.51.0
+xgboost_version,3.2.0
+python_version,3.11.0
+source_module,src/churn_analysis/managerial_step12.py
+executed_at_utc,2026-10-25T19:20:20.483475+00:00
