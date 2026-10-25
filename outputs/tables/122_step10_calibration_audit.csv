@@ -1,0 +1,5 @@
+model_family,brier_score,calibration_bins,calibration_interpretation
+Logistic Regression,0.17551100167737582,8,Lower Brier is better; calibration is separate from ranking discrimination.
+Decision Tree,0.1787870412931688,7,Lower Brier is better; calibration is separate from ranking discrimination.
+Random Forest,0.17009175906398824,8,Lower Brier is better; calibration is separate from ranking discrimination.
+XGBoost,0.1689707487821579,9,Lower Brier is better; calibration is separate from ranking discrimination.

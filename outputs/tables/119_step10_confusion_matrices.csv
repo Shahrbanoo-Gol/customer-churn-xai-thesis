@@ -1,0 +1,9 @@
+model_family,evaluation,threshold,true_positive,false_negative,false_positive,true_negative,actual_test_churn_identified,actual_test_churn_missed,unnecessary_retention_alerts_false_positive
+Logistic Regression,default_0.50,0.5,66,81,50,295,66,81,50
+Logistic Regression,locked_step9b,0.35,103,44,110,235,103,44,110
+Decision Tree,default_0.50,0.5,70,77,66,279,70,77,66
+Decision Tree,locked_step9b,0.4,73,74,72,273,73,74,72
+Random Forest,default_0.50,0.5,61,86,43,302,61,86,43
+Random Forest,locked_step9b,0.35,106,41,113,232,106,41,113
+XGBoost,default_0.50,0.5,67,80,47,298,67,80,47
+XGBoost,locked_step9b,0.35,105,42,111,234,105,42,111

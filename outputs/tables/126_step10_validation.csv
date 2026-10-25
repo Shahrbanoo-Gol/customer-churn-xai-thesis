@@ -1,0 +1,17 @@
+check,passed,observed,expected
+exact_train_customers_used_for_fitting,True,1965,1965
+exact_test_customers_used_for_final_evaluation,True,492,492
+test_churn_count,True,147,147
+locked_step8_split_disjoint_and_complete,True,disjoint and complete,disjoint and complete
+locked_parsimonious_feature_set,True,Parsimonious for all four,Parsimonious for all four
+locked_thresholds_unchanged,True,"{'Logistic Regression': 0.35, 'Decision Tree': 0.4, 'Random Forest': 0.35, 'XGBoost': 0.35}","{'Logistic Regression': 0.35, 'Decision Tree': 0.4, 'Random Forest': 0.35, 'XGBoost': 0.35}"
+preprocessing_fit_on_train_only,True,four fit calls received Train rows only,True
+test_transform_predict_only_after_train_fit,True,Test used only after Train fit,True
+no_customer_id_predictor,True,False,False
+no_future_outcome_predictor,True,[],[]
+no_test_based_tuning,True,No search or post-Test modification,True
+no_resampling,True,No resampling code path,True
+no_smote,True,No SMOTE import/use,True
+no_shap,True,No SHAP import/use,True
+original_step9_and_step9b_evidence_preserved,True,Step 9/9B outputs exist,True
+four_locked_models_evaluated,True,4,4

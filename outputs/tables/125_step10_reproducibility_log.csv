@@ -1,0 +1,19 @@
+item,value
+step8_split_path,data/processed/08_customer_train_test_split.parquet
+step8_split_sha256_before,32d5a2f7b0ba67b018e68c935cd0c8ed9977c3cfe2be4399be82d165ee4c29b9
+train_customers_fit,1965
+test_customers_evaluated,492
+positive_class,Churn=1
+locked_feature_set,Parsimonious
+locked_thresholds,"{""Decision Tree"": 0.4, ""Logistic Regression"": 0.35, ""Random Forest"": 0.35, ""XGBoost"": 0.35}"
+fit_rule,Each pipeline fit once on complete Train; Test transform/predict only
+test_tuning,No
+resampling,None
+shap,Not run
+random_state,42
+pandas_version,3.1.0
+numpy_version,2.4.6
+scikit_learn_version,1.9.1
+python_version,3.11.0
+source_module,src/churn_analysis/evaluate_step10_test.py
+executed_at_utc,2026-10-25T18:37:40.684483+00:00

@@ -1,0 +1,5 @@
+model_family,train_cv_roc_auc,test_roc_auc,roc_auc_difference_test_minus_train_cv,train_cv_pr_auc,test_pr_auc,pr_auc_difference_test_minus_train_cv,generalization_note
+Logistic Regression,0.7847511946553951,0.757685103026718,-0.027066091628677125,0.6000832163657749,0.5270568703692188,-0.07302634599655611,More noticeable PR-AUC degradation; ROC-AUC degradation remains modest.
+Decision Tree,0.765865278066457,0.7468204673173618,-0.019044810749095142,0.5236602036858702,0.4866981626735869,-0.03696204101228329,"Modest degradation, with a larger PR-AUC drop than ROC-AUC drop."
+Random Forest,0.7808164852424249,0.7728877058069604,-0.00792877943546444,0.5757696025570158,0.558860738287538,-0.016908864269477797,Close ranking generalization; both ROC-AUC and PR-AUC drops are small.
+XGBoost,0.7888732154605405,0.7767228630582668,-0.01215035240227369,0.5952345194571517,0.5782729926781867,-0.016961526778965008,Close ranking generalization; both ROC-AUC and PR-AUC drops are small.
