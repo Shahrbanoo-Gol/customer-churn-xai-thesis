@@ -1,0 +1,23 @@
+check,passed,observed,expected
+exact_train_customers_preserved,True,1965,1965
+exact_held_out_test_customers_preserved,True,492,492
+train_churn_1_count,True,586,586
+test_churn_1_count_not_used_for_selection,True,147,147
+train_test_customer_ids_disjoint,True,0,0
+churn_1_positive_class,True,Churn=1,Churn=1
+customer_id_absent_from_predictors,True,False,False
+target_absent_from_predictors,True,False,False
+future_outcome_fields_absent,True,[],[]
+logistic_has_train_only_scaling_path,True,StandardScaler in fold pipeline,True
+tree_paths_have_no_scaling,True,No StandardScaler for tree families,True
+stratified_5_fold_cv_random_state_42,True,"StratifiedKFold(5, shuffle=True, random_state=42)",True
+threshold_dependent_metrics_use_0_5,True,Estimator default predict threshold,0.5
+no_class_weighting_or_resampling,True,All class_weight=None; no resampling,True
+no_smote,True,No SMOTE import/use,True
+no_shap,True,No SHAP import/use,True
+no_test_performance_used,True,Test rows not passed to estimator/scorer,True
+no_test_hyperparameter_tuning,True,Search fit on Train rows only,True
+no_test_feature_selection,True,Feature comparison fit on Train rows only,True
+no_test_threshold_selection,True,Default threshold retained,True
+four_model_families_only,True,"['Decision Tree', 'Logistic Regression', 'Random Forest', 'XGBoost']","['Decision Tree', 'Logistic Regression', 'Random Forest', 'XGBoost']"
+all_four_have_overfitting_audit,True,"['Decision Tree', 'Logistic Regression', 'Random Forest', 'XGBoost']","['Decision Tree', 'Logistic Regression', 'Random Forest', 'XGBoost']"

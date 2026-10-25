@@ -1,0 +1,24 @@
+item,value
+step8_split_path,data\processed\08_customer_train_test_split.parquet
+step8_split_sha256_before,32d5a2f7b0ba67b018e68c935cd0c8ed9977c3cfe2be4399be82d165ee4c29b9
+random_state,42
+cv_configuration,"StratifiedKFold(n_splits=5, shuffle=True, random_state=42)"
+threshold_grid,"0.25, 0.30, 0.35, 0.40, 0.45, 0.50"
+threshold_probability_source,out-of-fold Train probabilities; never in-sample probabilities
+xgboost_scale_pos_weight,2.3532423208191124
+xgboost_scale_pos_weight_formula,Train Non-Churn / Train Churn = 1379 / 586
+weighting_usefulness_rule,"Recall gain >= 0.05, Precision change >= -0.10, PR-AUC change >= -0.03"
+threshold_candidate_rule,"max F2 subject to Recall improvement, Precision >= 0.50, and F2 not below default; documented fallback"
+log1p_features,"Frequency, Monetary, TotalQuantity, AverageOrderValue, AverageQuantityPerOrder, UniqueProducts, ProductsPerOrder, CancellationInvoiceCount, CancellationValue"
+log1p_usefulness_rule,Adopt only if ROC-AUC or PR-AUC improves >= 0.01 without degrading the other primary ranking metric; otherwise retain current path
+train_customers,1965
+test_customers_held_out,492
+pandas_version,3.1.0
+numpy_version,2.4.6
+scikit_learn_version,1.9.1
+python_version,3.11.0
+source_module,src/churn_analysis/audit_step9b_recall_improvement.py
+resampling,None
+shap,Not run
+test_model_selection,No
+executed_at_utc,2026-10-25T18:30:30.080119+00:00

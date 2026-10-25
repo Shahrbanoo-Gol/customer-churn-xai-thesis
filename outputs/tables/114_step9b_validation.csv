@@ -1,0 +1,18 @@
+check,passed,observed,expected
+train_customers_preserved,True,1965,1965
+held_out_test_customers_preserved_without_scoring,True,492,492
+train_test_split_unchanged,True,disjoint and complete,disjoint and complete
+positive_class_is_churn_1,True,Churn=1,Churn=1
+same_stratified_5_fold_cv,True,"StratifiedKFold(5, shuffle=True, random_state=42)",True
+weighting_values_train_only,True,[586],586
+xgboost_scale_pos_weight_train_only,True,1379/586,1379/586
+thresholds_from_oof_train_probabilities,True,['out-of-fold Train probabilities'],['out-of-fold Train probabilities']
+log_transform_inside_cv_pipeline,True,FunctionTransformer inside fold-fitted Pipeline,True
+no_customer_id_predictor,True,False,False
+no_future_outcome_predictor,True,[],[]
+no_resampling,True,No resampling code path,True
+no_smote,True,No SMOTE import/use,True
+no_shap,True,No SHAP import/use,True
+no_test_predictions_or_metrics,True,Test not passed to estimator or scorer,True
+original_step9_outputs_preserved,True,Step 9 baseline/search/comparison tables exist,True
+all_four_models_audited,True,"['Decision Tree', 'Logistic Regression', 'Random Forest', 'XGBoost']","['Logistic Regression', 'Decision Tree', 'Random Forest', 'XGBoost']"

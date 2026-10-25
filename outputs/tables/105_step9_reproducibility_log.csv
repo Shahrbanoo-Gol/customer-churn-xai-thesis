@@ -1,0 +1,22 @@
+item,value
+step8_split_sha256_before,32d5a2f7b0ba67b018e68c935cd0c8ed9977c3cfe2be4399be82d165ee4c29b9
+random_state,42
+cv_configuration,"StratifiedKFold(n_splits=5, shuffle=True, random_state=42)"
+scoring_rules,"ROC-AUC; Average Precision/PR-AUC; Recall; Precision; F1; Accuracy; selection=mean(ROC-AUC, PR-AUC)"
+threshold_rule,Default probability threshold 0.5 for Recall/Precision/F1/Accuracy
+full_feature_count,19
+parsimonious_feature_count,16
+parsimonious_removed,"ActivePurchaseDays, MeanInterpurchaseDays, PurchaseSpanDays"
+train_customers,1965
+test_customers_held_out,492
+pandas_version,3.1.0
+numpy_version,2.4.6
+scikit_learn_version,1.9.1
+xgboost_version,3.2.0
+python_version,3.11.0
+source_module,src/churn_analysis/train_step9_models.py
+search_spaces,"{""Decision Tree"": {""model__max_depth"": [3, 5, 8, null], ""model__min_samples_leaf"": [1, 5], ""model__min_samples_split"": [2, 10]}, ""Logistic Regression"": {""model__C"": [0.1, 1.0, 10.0]}, ""Random Forest"": {""model__max_depth"": [null, 8], ""model__max_features"": [""sqrt""], ""model__min_samples_leaf"": [1, 3], ""model__n_estimators"": [200, 400]}, ""XGBoost"": {""model__colsample_bytree"": [0.8], ""model__learning_rate"": [0.05, 0.1], ""model__max_depth"": [2, 4], ""model__n_estimators"": [150, 300], ""model__reg_lambda"": [1.0], ""model__subsample"": [0.8]}}"
+resampling,None
+test_model_selection,No
+shap,Not run
+executed_at_utc,2026-10-25T18:20:52.341547+00:00

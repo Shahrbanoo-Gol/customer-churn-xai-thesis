@@ -1,0 +1,25 @@
+model_family,selected_feature_set,metric,train_fold_fit_mean,cv_validation_mean,fit_minus_cv_gap,clear_overfit_flag,interpretation
+Logistic Regression,Parsimonious,ROC-AUC,0.8011431906503284,0.7847511946553951,0.01639199599493324,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Logistic Regression,Parsimonious,PR-AUC,0.6205306970450263,0.6000832163657749,0.020447480679251395,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Logistic Regression,Parsimonious,Recall,0.4470987553077106,0.4232507605388961,0.023847994768814496,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Logistic Regression,Parsimonious,Precision,0.625983077729089,0.5937541252353442,0.0322289524937448,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Logistic Regression,Parsimonious,F1,0.5215141674995862,0.4923449474614478,0.029169220038138433,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Logistic Regression,Parsimonious,Accuracy,0.755470737913486,0.7414758269720101,0.013994910941475869,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Decision Tree,Parsimonious,ROC-AUC,0.7953709834184853,0.765865278066457,0.029505705352028344,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Decision Tree,Parsimonious,PR-AUC,0.5699611949451351,0.5236602036858702,0.0463009912592649,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Decision Tree,Parsimonious,Recall,0.4364067938694804,0.426785455599015,0.009621338270465407,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Decision Tree,Parsimonious,Precision,0.6445300998319459,0.5952522190453224,0.04927788078662343,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Decision Tree,Parsimonious,F1,0.5160317827175687,0.49318730888654605,0.022844473831022616,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Decision Tree,Parsimonious,Accuracy,0.7585241730279899,0.7414758269720101,0.017048346055979824,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Random Forest,Parsimonious,ROC-AUC,0.9186979061239748,0.7808164852424249,0.13788142088154998,True,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Random Forest,Parsimonious,PR-AUC,0.834535402105773,0.5757696025570158,0.2587657995487572,True,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Random Forest,Parsimonious,Recall,0.5878993311829132,0.3788497754599449,0.20904955572296824,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Random Forest,Parsimonious,Precision,0.844409351157356,0.6019085631349782,0.24250078802237784,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Random Forest,Parsimonious,F1,0.6924429904792901,0.46016025310498454,0.2322827373743056,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+Random Forest,Parsimonious,Accuracy,0.8447837150127226,0.7394402035623411,0.10534351145038157,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+XGBoost,Parsimonious,ROC-AUC,0.8477837635830696,0.7888732154605405,0.05891054812252916,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+XGBoost,Parsimonious,PR-AUC,0.7023299651287221,0.5952345194571517,0.10709544567157048,True,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+XGBoost,Parsimonious,Recall,0.49231133708745656,0.4284224250325945,0.06388891205486208,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+XGBoost,Parsimonious,Precision,0.7089469569545528,0.5888658554034943,0.12008110155105844,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+XGBoost,Parsimonious,F1,0.5806854565237364,0.4929133461923912,0.08777211033134519,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
+XGBoost,Parsimonious,Accuracy,0.7881679389312977,0.740966921119593,0.047201017811704715,False,Train-fold fit versus held-in CV-fold validation; no Test performance used.
