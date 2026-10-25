@@ -8,7 +8,7 @@ The analysis may use only information available in Online Retail II. No clickstr
 
 ## Current Stage
 
-The current repository contains the reproducible raw audit, worksheet reconciliation, transaction-quality audits, customer-analysis preparation bases, Step 5 interpurchase-time analysis, Step 6 primary retention cohort/outcome table, and Step 7 observation-period customer feature engineering and audit. Step 7 builds the locked 2,457-customer feature table, audits feature quality, country concentration, correlations, and temporal leakage, and stops before preprocessing or modeling. Encoding, scaling, train/test splitting, resampling, modeling, and SHAP analysis remain intentionally deferred to later analytical stages.
+The current repository contains the reproducible raw audit, worksheet reconciliation, transaction-quality audits, customer-analysis preparation bases, Step 5 interpurchase-time analysis, Step 6 primary retention cohort/outcome table, Step 7 observation-period customer feature engineering and audit, and Step 8 leakage-safe split/preprocessing design. Step 8 creates the locked 2,457-customer stratified Train/Test split, audits Train-only redundancy, defines Train-fitted imputation, country one-hot encoding, and model-specific scaling paths, and stops before predictive modeling. Resampling, modeling, and SHAP analysis remain intentionally deferred to later analytical stages.
 
 Files in data/raw must never be manually edited. All transformations must be performed programmatically and written to data/processed.
 

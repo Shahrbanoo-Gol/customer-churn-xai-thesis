@@ -1,0 +1,28 @@
+check,passed,observed,expected
+exact_2457_customers_before_split,True,2457,2457
+one_row_per_customer_before_split,True,2457,2457 unique IDs
+step7_churn_1_count,True,733,733
+step7_churn_0_count,True,1724,1724
+train_test_disjoint,True,0,0 overlapping Customer ID values
+train_test_cover_all_customers_exactly_once,True,2457,2457-customer union; train + test = 2457
+customer_id_absent_from_predictors,True,False,False
+churn_absent_from_predictors,True,False,False
+future_outcome_fields_absent,True,[],[]
+correlation_target_unused,True,False,False
+correlation_test_unused,True,False,False
+logistic_train_test_columns_align,True,48,same Train/Test transformed feature count
+tree_train_test_columns_align,True,48,same Train/Test transformed feature count
+logistic_no_missing_or_infinite,True,finite arrays,True
+tree_no_missing_or_infinite,True,finite arrays,True
+preprocessing_fit_rows_equal_train,True,1965,1965
+test_transform_only,True,Test passed to transform after Train fit,True
+train_only_imputation,True,SimpleImputer statistics are Train-derived,True
+train_only_country_categories,True,OneHotEncoder categories are Train-derived,True
+train_only_scaler_statistics,True,StandardScaler is inside Train-fitted Logistic preprocessor,True
+tree_preprocessing_not_standardized,True,Tree path has no StandardScaler,True
+no_automatic_outlier_removal,True,Original skewed/extreme values retained,True
+no_automatic_skewness_transform,True,No log/winsorize/clip transform,True
+no_resampling_or_class_weighting,True,No resampling or class weighting code path,True
+no_model_training,True,No predictive estimator fit or score invoked,True
+no_shap,True,No SHAP import/use or explanation run,True
+step7_feature_table_unchanged,True,d1781ea30db17701c0d243ea2371bac5f59ce85c6fe148ce8dc5c02f85c72768,d1781ea30db17701c0d243ea2371bac5f59ce85c6fe148ce8dc5c02f85c72768

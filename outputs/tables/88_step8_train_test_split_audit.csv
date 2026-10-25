@@ -1,0 +1,6 @@
+split,customer_count,unique_customer_ids,churn_1_count,churn_0_count,churn_1_pct,churn_0_pct,snapshot_design
+full,2457,2457.0,733.0,1724.0,29.833129833129835,70.16687016687017,customer-level cross-sectional split within one locked prediction snapshot/cutoff
+train,1965,1965.0,586.0,1379.0,29.821882951653944,70.17811704834605,customer-level cross-sectional split within one locked prediction snapshot/cutoff
+test,492,492.0,147.0,345.0,29.878048780487802,70.1219512195122,customer-level cross-sectional split within one locked prediction snapshot/cutoff
+validation_disjoint,0,,,,,,expected zero overlapping Customer ID values
+validation_coverage,2457,,,,,,"expected union equals all 2,457 Step 7 customers"

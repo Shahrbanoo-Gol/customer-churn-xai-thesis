@@ -1,0 +1,97 @@
+preprocessing_path,original_feature,transformed_feature,transformation,anonymous_name
+logistic,RecencyDays,RecencyDays,median imputation + StandardScaler,False
+logistic,Frequency,Frequency,median imputation + StandardScaler,False
+logistic,Monetary,Monetary,median imputation + StandardScaler,False
+logistic,TotalQuantity,TotalQuantity,median imputation + StandardScaler,False
+logistic,AverageOrderValue,AverageOrderValue,median imputation + StandardScaler,False
+logistic,AverageQuantityPerOrder,AverageQuantityPerOrder,median imputation + StandardScaler,False
+logistic,ActivePurchaseDays,ActivePurchaseDays,median imputation + StandardScaler,False
+logistic,UniqueProducts,UniqueProducts,median imputation + StandardScaler,False
+logistic,ProductsPerOrder,ProductsPerOrder,median imputation + StandardScaler,False
+logistic,CustomerAgeDays,CustomerAgeDays,median imputation + StandardScaler,False
+logistic,PurchaseSpanDays,PurchaseSpanDays,median imputation + StandardScaler,False
+logistic,MeanInterpurchaseDays,MeanInterpurchaseDays,median imputation + StandardScaler,False
+logistic,MedianInterpurchaseDays,MedianInterpurchaseDays,median imputation + StandardScaler,False
+logistic,CancellationInvoiceCount,CancellationInvoiceCount,median imputation + StandardScaler,False
+logistic,CancellationValue,CancellationValue,median imputation + StandardScaler,False
+logistic,CancellationInvoiceRate,CancellationInvoiceRate,median imputation + StandardScaler,False
+logistic,HasCancellation,HasCancellation,median/most-frequent imputation; no scaling,False
+logistic,HasRepeatPurchaseHistory,HasRepeatPurchaseHistory,median/most-frequent imputation; no scaling,False
+logistic,CountryCandidate,CountryCandidate_Australia,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Austria,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Bahrain,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Belgium,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Brazil,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Canada,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Channel Islands,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Cyprus,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Denmark,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_EIRE,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_European Community,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Finland,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_France,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Germany,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Greece,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Iceland,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Israel,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Italy,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Japan,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Malta,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Netherlands,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Norway,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Poland,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Portugal,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Singapore,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Spain,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Sweden,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Switzerland,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_United Kingdom,one-hot encoding,False
+logistic,CountryCandidate,CountryCandidate_Unspecified,one-hot encoding,False
+tree,RecencyDays,RecencyDays,median/most-frequent imputation; no scaling,False
+tree,Frequency,Frequency,median/most-frequent imputation; no scaling,False
+tree,Monetary,Monetary,median/most-frequent imputation; no scaling,False
+tree,TotalQuantity,TotalQuantity,median/most-frequent imputation; no scaling,False
+tree,AverageOrderValue,AverageOrderValue,median/most-frequent imputation; no scaling,False
+tree,AverageQuantityPerOrder,AverageQuantityPerOrder,median/most-frequent imputation; no scaling,False
+tree,ActivePurchaseDays,ActivePurchaseDays,median/most-frequent imputation; no scaling,False
+tree,UniqueProducts,UniqueProducts,median/most-frequent imputation; no scaling,False
+tree,ProductsPerOrder,ProductsPerOrder,median/most-frequent imputation; no scaling,False
+tree,CustomerAgeDays,CustomerAgeDays,median/most-frequent imputation; no scaling,False
+tree,PurchaseSpanDays,PurchaseSpanDays,median/most-frequent imputation; no scaling,False
+tree,MeanInterpurchaseDays,MeanInterpurchaseDays,median/most-frequent imputation; no scaling,False
+tree,MedianInterpurchaseDays,MedianInterpurchaseDays,median/most-frequent imputation; no scaling,False
+tree,CancellationInvoiceCount,CancellationInvoiceCount,median/most-frequent imputation; no scaling,False
+tree,CancellationValue,CancellationValue,median/most-frequent imputation; no scaling,False
+tree,CancellationInvoiceRate,CancellationInvoiceRate,median/most-frequent imputation; no scaling,False
+tree,HasCancellation,HasCancellation,median/most-frequent imputation; no scaling,False
+tree,HasRepeatPurchaseHistory,HasRepeatPurchaseHistory,median/most-frequent imputation; no scaling,False
+tree,CountryCandidate,CountryCandidate_Australia,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Austria,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Bahrain,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Belgium,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Brazil,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Canada,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Channel Islands,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Cyprus,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Denmark,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_EIRE,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_European Community,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Finland,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_France,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Germany,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Greece,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Iceland,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Israel,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Italy,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Japan,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Malta,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Netherlands,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Norway,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Poland,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Portugal,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Singapore,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Spain,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Sweden,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Switzerland,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_United Kingdom,one-hot encoding,False
+tree,CountryCandidate,CountryCandidate_Unspecified,one-hot encoding,False

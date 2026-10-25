@@ -1,0 +1,9 @@
+preprocessing_path,component,configuration,fit_rows,output_columns,standard_scaling,purpose
+logistic,numeric missing handling,SimpleImputer(strategy='median') for continuous numeric features; fitted on Train only,1965,48,True,Logistic Regression candidate
+logistic,binary variables,HasCancellation and HasRepeatPurchaseHistory retained as 0/1 with most-frequent imputer; no scaling,1965,48,False,Logistic Regression candidate
+logistic,CountryCandidate,OneHotEncoder(handle_unknown='ignore') fitted on Train only,1965,48,False,Logistic Regression candidate
+logistic,skewed variables/outliers,"Original values retained; no log transform, winsorization, clipping, or automatic removal",1965,48,True,Logistic Regression candidate
+tree,numeric missing handling,SimpleImputer(strategy='median') for continuous numeric features; fitted on Train only,1965,48,False,Decision Tree / Random Forest / XGBoost candidates
+tree,binary variables,HasCancellation and HasRepeatPurchaseHistory retained as 0/1 with most-frequent imputer; no scaling,1965,48,False,Decision Tree / Random Forest / XGBoost candidates
+tree,CountryCandidate,OneHotEncoder(handle_unknown='ignore') fitted on Train only,1965,48,False,Decision Tree / Random Forest / XGBoost candidates
+tree,skewed variables/outliers,"Original values retained; no log transform, winsorization, clipping, or automatic removal",1965,48,False,Decision Tree / Random Forest / XGBoost candidates

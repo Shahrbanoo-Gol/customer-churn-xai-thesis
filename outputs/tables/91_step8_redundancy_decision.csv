@@ -1,0 +1,5 @@
+feature_a,feature_b,train_only_absolute_correlation,complete_feature_set_decision,proposed_parsimonious_removal,proposed_retained_feature,business_statistical_reason,target_used,test_used
+MeanInterpurchaseDays,MedianInterpurchaseDays,0.9813259738326594,Retain both in complete Step 8 design; no automatic deletion.,MeanInterpurchaseDays,MedianInterpurchaseDays,Proposed removal; retain MedianInterpurchaseDays as the more robust typical interval summary.,False,False
+Frequency,ActivePurchaseDays,0.9716789343085176,Retain both in complete Step 8 design; no automatic deletion.,ActivePurchaseDays,Frequency,Proposed removal; retain Frequency as the standard order-count measure for the parsimonious design.,False,False
+CustomerAgeDays,PurchaseSpanDays,0.9497695653082904,Retain both in complete Step 8 design; no automatic deletion.,PurchaseSpanDays,CustomerAgeDays,Proposed removal; retain CustomerAgeDays as the clearer customer-history/tenure measure.,False,False
+Monetary,TotalQuantity,0.9197681555774321,Retain both in complete Step 8 design; no automatic deletion.,,"Monetary, TotalQuantity",No removal proposed; preserve distinct business meaning.,False,False

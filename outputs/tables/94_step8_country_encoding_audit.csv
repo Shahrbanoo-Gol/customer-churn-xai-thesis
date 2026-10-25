@@ -1,0 +1,37 @@
+record_type,metric,value,category
+summary,train_categories_learned,30,Australia | Austria | Bahrain | Belgium | Brazil | Canada | Channel Islands | Cyprus | Denmark | EIRE | European Community | Finland | France | Germany | Greece | Iceland | Israel | Italy | Japan | Malta | Netherlands | Norway | Poland | Portugal | Singapore | Spain | Sweden | Switzerland | United Kingdom | Unspecified
+summary,test_unique_categories,18,Australia | Austria | Belgium | Denmark | EIRE | Finland | France | Germany | Italy | Netherlands | Poland | Portugal | Spain | Sweden | Switzerland | USA | United Kingdom | Unspecified
+summary,test_only_category_count,1,USA
+summary,one_hot_columns_created,30,CountryCandidate one-hot columns
+summary,handle_unknown,ignore,unknown Test categories transform to all-zero country indicators
+summary,customer_id_encoded,False,Customer ID excluded before preprocessing
+learned_category,train_category,0,Australia
+learned_category,train_category,1,Austria
+learned_category,train_category,2,Bahrain
+learned_category,train_category,3,Belgium
+learned_category,train_category,4,Brazil
+learned_category,train_category,5,Canada
+learned_category,train_category,6,Channel Islands
+learned_category,train_category,7,Cyprus
+learned_category,train_category,8,Denmark
+learned_category,train_category,9,EIRE
+learned_category,train_category,10,European Community
+learned_category,train_category,11,Finland
+learned_category,train_category,12,France
+learned_category,train_category,13,Germany
+learned_category,train_category,14,Greece
+learned_category,train_category,15,Iceland
+learned_category,train_category,16,Israel
+learned_category,train_category,17,Italy
+learned_category,train_category,18,Japan
+learned_category,train_category,19,Malta
+learned_category,train_category,20,Netherlands
+learned_category,train_category,21,Norway
+learned_category,train_category,22,Poland
+learned_category,train_category,23,Portugal
+learned_category,train_category,24,Singapore
+learned_category,train_category,25,Spain
+learned_category,train_category,26,Sweden
+learned_category,train_category,27,Switzerland
+learned_category,train_category,28,United Kingdom
+learned_category,train_category,29,Unspecified

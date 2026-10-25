@@ -1,0 +1,17 @@
+feature,structurally_missing_in_step7,train_missing_before,test_missing_before,train_derived_median,logistic_imputation_strategy,tree_imputation_strategy,train_missing_after,test_median_used_for_fit,full_dataset_median_used_for_fit
+RecencyDays,False,0,0,41.97708333333333,median fitted on Train only,median fitted on Train only,0,False,False
+Frequency,False,0,0,4.0,median fitted on Train only,median fitted on Train only,0,False,False
+Monetary,False,0,0,1099.23,median fitted on Train only,median fitted on Train only,0,False,False
+TotalQuantity,False,0,0,620.0,median fitted on Train only,median fitted on Train only,0,False,False
+AverageOrderValue,False,0,0,302.79,median fitted on Train only,median fitted on Train only,0,False,False
+AverageQuantityPerOrder,False,0,0,168.0,median fitted on Train only,median fitted on Train only,0,False,False
+ActivePurchaseDays,False,0,0,3.0,median fitted on Train only,median fitted on Train only,0,False,False
+UniqueProducts,False,0,0,52.0,median fitted on Train only,median fitted on Train only,0,False,False
+ProductsPerOrder,False,0,0,17.1,median fitted on Train only,median fitted on Train only,0,False,False
+CustomerAgeDays,False,0,0,285.8305555555556,median fitted on Train only,median fitted on Train only,0,False,False
+PurchaseSpanDays,False,0,0,224.20763888888888,median fitted on Train only,median fitted on Train only,0,False,False
+MeanInterpurchaseDays,True,351,94,57.47708333333334,median fitted on Train only,median fitted on Train only,0,False,False
+MedianInterpurchaseDays,True,351,94,48.14982638888889,median fitted on Train only,median fitted on Train only,0,False,False
+CancellationInvoiceCount,False,0,0,0.0,median fitted on Train only,median fitted on Train only,0,False,False
+CancellationValue,False,0,0,0.0,median fitted on Train only,median fitted on Train only,0,False,False
+CancellationInvoiceRate,False,0,0,0.0,median fitted on Train only,median fitted on Train only,0,False,False

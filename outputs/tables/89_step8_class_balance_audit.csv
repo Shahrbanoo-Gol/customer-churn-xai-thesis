@@ -1,0 +1,5 @@
+split,class_value,class_label,customer_count,percentage,full_snapshot_percentage,stratified
+train,1,Churn,586,29.821882951653944,29.833129833129835,True
+train,0,Non-Churn,1379,70.17811704834605,70.16687016687017,True
+test,1,Churn,147,29.878048780487802,29.833129833129835,True
+test,0,Non-Churn,345,70.1219512195122,70.16687016687017,True
