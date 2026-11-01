@@ -3,6 +3,7 @@ numpy
 scipy
 openpyxl
 matplotlib
+seaborn
 scikit-learn
 xgboost
 shap

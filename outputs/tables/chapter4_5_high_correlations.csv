@@ -1,0 +1,6 @@
+feature_a,feature_b,pearson_correlation,absolute_correlation,pairwise_n
+MeanInterpurchaseDays,MedianInterpurchaseDays,0.9806220150,0.9806220150,2012
+Frequency,ActivePurchaseDays,0.9719115128,0.9719115128,2457
+CustomerAgeDays,PurchaseSpanDays,0.9490138168,0.9490138168,2457
+Monetary,TotalQuantity,0.8792653661,0.8792653661,2457
+HasCancellation,CancellationInvoiceRate,0.8361124556,0.8361124556,2457
